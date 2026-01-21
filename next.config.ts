@@ -1,14 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Generate static HTML/CSS/JS files for shared hosting
-  output: "export",
-
-  // Optionally set a trailing slash for cleaner URLs on static hosts
+  // Keep as a server/edge app (no static export) so API routes keep working
   trailingSlash: true,
 
   images: {
-    // Required for static export - disable Next.js image optimization
+    // Disable Next.js image optimization because we use static assets
     unoptimized: true,
   },
 };

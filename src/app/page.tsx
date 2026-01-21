@@ -1,4 +1,5 @@
-import ElectricBackground from "@/components/ElectricBackground";
+import ElectricBackground from "@/components/electric-background";
+import EmailForm from "@/components/email-form";
 import Image from "next/image";
 
 export default function Home() {
@@ -67,31 +68,8 @@ export default function Home() {
             below to be the first to know when we launch.
           </p>
 
-          {/* Email Form (ignore client-only attributes/extensions during hydration) */}
-          <form
-            className="flex w-full max-w-md flex-col gap-4 sm:flex-row"
-            suppressHydrationWarning
-          >
-            <input
-              type="email"
-              placeholder="Enter your email here"
-              className="flex-1 border-b-2 border-purple-400/50 bg-transparent px-4 py-3 text-white placeholder-white/50 outline-none transition-colors focus:border-purple-400"
-              data-electric-mute
-              style={{ fontFamily: "var(--font-roboto)" }}
-              required
-              autoComplete="email"
-            />
-            <button
-              type="submit"
-              className="px-8 py-3 text-sm font-medium tracking-wider text-white transition-all hover:brightness-110"
-              style={{
-                fontFamily: "var(--font-oswald)",
-                background: "#9b59b6",
-              }}
-            >
-              SUBMIT
-            </button>
-          </form>
+          {/* Email Form */}
+          <EmailForm />
         </div>
 
         {/* Footer */}
