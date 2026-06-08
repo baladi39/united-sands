@@ -5,6 +5,8 @@
   --foreground: #ffffff;
   --purple-accent: #9b59b6;
   --purple-light: #c792ea;
+  --gold: #d4a853;
+  --gold-light: #f2d680;
 }
 
 @theme inline {
