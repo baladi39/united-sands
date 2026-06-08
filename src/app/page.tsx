@@ -7,6 +7,7 @@ import Nav from "@/components/home/nav";
 import MenuOverlay from "@/components/home/menu-overlay";
 import Hero from "@/components/home/hero";
 import ScrollText from "@/components/home/scroll-text";
+import WhyChoose from "@/components/home/why-choose";
 import GradientCircle from "@/components/home/gradient-circle";
 import { GradientCircleProvider } from "@/components/home/gradient-circle-context";
 
@@ -33,6 +34,7 @@ export default function Home() {
         <main>
           <Hero />
           <ScrollText />
+          <WhyChoose />
         </main>
       </GradientCircleProvider>
     </LenisProvider>

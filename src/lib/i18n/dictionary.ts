@@ -10,6 +10,13 @@ export type Lang = "en" | "ar";
 
 export type Option = { id: string; label: string };
 
+export type Stat = {
+  value: string; // big gradient number, e.g. "12", "97%"
+  unit: string; // small-caps suffix, e.g. "CITIES"; "" when none
+  label: string; // category, e.g. "Scale of Reach"
+  copy: string; // supporting sentence
+};
+
 export type Messages = {
   // Nav + chrome
   navRequest: string;
@@ -30,6 +37,14 @@ export type Messages = {
 
   // Scroll text (Part 3 — between-sections statement)
   scrollStatement: string;
+
+  // Why Choose / Stats (Part 4)
+  statsTitle: string; // "Why Choose\nUnited Sands?" — also the carousel aria-label
+  statsTagline: string;
+  statsIntro: string;
+  stats: Stat[];
+  statsPrev: string; // prev button aria-label
+  statsNext: string; // next button aria-label
 
   // Menu overlay
   menuLinks: string[];
@@ -83,6 +98,47 @@ export const en: Messages = {
   scrollHint: "SCROLL TO DISCOVER",
 
   scrollStatement: "The future doesn't happen to us. We design it.",
+
+  statsTitle: "Why Choose\nUnited Sands?",
+  statsTagline:
+    "A Saudi heart with a Global pulse. We are the smart city integrators of tomorrow.",
+  statsIntro:
+    "United Sands is the Kingdom's strategic smart city integrator, dedicated to accelerating the delivery of Saudi Arabia's Giga-Projects and Vision 2030 through comprehensive digital transformation.",
+  // PLACEHOLDER figures — pending client (Reina) confirmation; do not treat as final.
+  stats: [
+    {
+      value: "12",
+      unit: "CITIES",
+      label: "Scale of Reach",
+      copy: "Active deployments across Saudi Arabia's most strategic industrial zones and urban centres.",
+    },
+    {
+      value: "97%",
+      unit: "",
+      label: "Customer Success",
+      copy: "Customer satisfaction measured across pilots, long-term engagements, and transformation programs.",
+    },
+    {
+      value: "15+",
+      unit: "YEARS",
+      label: "Combined Experience",
+      copy: "Leadership bringing decades of geospatial, digital twin, and smart-infrastructure expertise.",
+    },
+    {
+      value: "60",
+      unit: "EXPERTS",
+      label: "Team Strength",
+      copy: "Engineers, data scientists, and regulatory specialists — fluent in both global tech and local context.",
+    },
+    {
+      value: "30+",
+      unit: "PROJECTS",
+      label: "Strategic Delivery",
+      copy: "From city-scale command centres to field-grade reality-capture programs.",
+    },
+  ],
+  statsPrev: "Previous statistic",
+  statsNext: "Next statistic",
 
   menuLinks: [
     "Home",
@@ -163,6 +219,46 @@ export const ar: Messages = {
   scrollHint: "مرّر للاكتشاف",
 
   scrollStatement: "المستقبل لا يحدث لنا، بل نُصمّمه.",
+
+  statsTitle: "لماذا تختار\nالرمال المتحدة؟",
+  statsTagline: "قلبٌ سعودي بنبضٍ عالمي. نحن مُكاملو المدن الذكية للغد.",
+  statsIntro:
+    "الرمال المتحدة هي المُكامل الاستراتيجي للمدن الذكية في المملكة، مكرّسة لتسريع إنجاز المشاريع العملاقة ورؤية 2030 عبر التحول الرقمي الشامل.",
+  // أرقام مبدئية — بانتظار تأكيد العميل؛ ليست نهائية.
+  stats: [
+    {
+      value: "12",
+      unit: "مدينة",
+      label: "نطاق الانتشار",
+      copy: "عمليات نشر فاعلة عبر أهم المناطق الصناعية والمراكز الحضرية الاستراتيجية في السعودية.",
+    },
+    {
+      value: "97%",
+      unit: "",
+      label: "نجاح العملاء",
+      copy: "رضا العملاء مقاسٌ عبر التجارب الأولية والارتباطات طويلة الأمد وبرامج التحول.",
+    },
+    {
+      value: "+15",
+      unit: "سنة",
+      label: "خبرة مجتمعة",
+      copy: "قيادةٌ تحمل عقوداً من الخبرة في الجغرافيا المكانية والتوائم الرقمية والبنية الذكية.",
+    },
+    {
+      value: "60",
+      unit: "خبير",
+      label: "قوة الفريق",
+      copy: "مهندسون وعلماء بيانات ومختصون تنظيميون — يجيدون التقنية العالمية والسياق المحلي معاً.",
+    },
+    {
+      value: "+30",
+      unit: "مشروع",
+      label: "تسليم استراتيجي",
+      copy: "من مراكز القيادة على مستوى المدينة إلى برامج التقاط الواقع الميدانية.",
+    },
+  ],
+  statsPrev: "الإحصائية السابقة",
+  statsNext: "الإحصائية التالية",
 
   menuLinks: [
     "الرئيسية",
