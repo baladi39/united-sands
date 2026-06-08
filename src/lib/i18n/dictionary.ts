@@ -17,6 +17,10 @@ export type Stat = {
   copy: string; // supporting sentence
 };
 
+export type Sector = {
+  name: string; // sector window label (title-only on the homepage)
+};
+
 export type Messages = {
   // Nav + chrome
   navRequest: string;
@@ -51,6 +55,11 @@ export type Messages = {
   serveTitle: string; // may contain a "\n" line break
   serveBody: string;
   serveCta: string;
+
+  // Sectors (Part 6 — "Sectoral Evolution Through Technology")
+  sectorsTitle: string; // "Sectoral Evolution\nThrough Technology"
+  sectorsIntro: string;
+  sectors: Sector[];
 
   // Menu overlay
   menuLinks: string[];
@@ -157,6 +166,18 @@ export const en: Messages = {
   serveBody:
     "Digital transformation is not a milestone, it's a lifecycle. We walk with you from strategy to autonomy.",
   serveCta: "Walk With Us",
+
+  sectorsTitle: "Sectoral Evolution\nThrough Technology",
+  sectorsIntro:
+    "We provide a comprehensive ecosystem of advanced technologies designed to transform urban infrastructure and industrial operations through data-driven innovation.",
+  sectors: [
+    { name: "Smart Cities & Urban Platforms" },
+    { name: "Industrial, Manufacturing & Logistics" },
+    { name: "Environment, ESG & Resilience" },
+    { name: "Utilities, Energy & Water" },
+    { name: "Transport, Mobility & Mega-Infrastructure" },
+    { name: "Satellite Imagery & Geospatial Data" },
+  ],
 
   menuLinks: [
     "Home",
@@ -289,6 +310,18 @@ export const ar: Messages = {
   serveBody:
     "التحول الرقمي ليس محطة، بل رحلة متكاملة. نسير معك من الاستراتيجية حتى الاستقلالية.",
   serveCta: "سِر معنا",
+
+  sectorsTitle: "التطور القطاعي\nعبر التقنية",
+  sectorsIntro:
+    "نقدّم منظومة متكاملة من التقنيات المتقدمة المصممة لتحويل البنية التحتية الحضرية والعمليات الصناعية عبر الابتكار القائم على البيانات.",
+  sectors: [
+    { name: "المدن الذكية والمنصّات الحضرية" },
+    { name: "الصناعة والتصنيع والخدمات اللوجستية" },
+    { name: "البيئة والحوكمة والمرونة" },
+    { name: "المرافق والطاقة والمياه" },
+    { name: "النقل والتنقّل والبنية التحتية الكبرى" },
+    { name: "صور الأقمار الصناعية والبيانات الجغرافية المكانية" },
+  ],
 
   menuLinks: [
     "الرئيسية",
