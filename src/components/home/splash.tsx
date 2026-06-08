@@ -3,8 +3,10 @@
 import { AnimatePresence, motion, useMotionValue, useTransform, animate } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { useLang } from "@/lib/i18n/language-context";
 
 export default function Splash({ onComplete }: { onComplete: () => void }) {
+  const { t } = useLang();
   const [phase, setPhase] = useState<"counting" | "reveal" | "exit">("counting");
   const [visible, setVisible] = useState(true);
   const count = useMotionValue(0);
@@ -108,7 +110,7 @@ export default function Splash({ onComplete }: { onComplete: () => void }) {
             transition={{ duration: 0.3 }}
           >
             <span className="font-oswald text-[10px] tracking-[0.5em] text-white/40">
-              LOADING
+              {t.loading}
             </span>
             <div className="font-oswald text-3xl tracking-[0.3em] text-white/80">
               <motion.span>{rounded}</motion.span>

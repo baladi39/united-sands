@@ -2,6 +2,9 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useLang } from "@/lib/i18n/language-context";
+import { useRequestProject } from "@/lib/request-project-context";
+import LanguageToggle from "@/components/language-toggle";
 
 export default function Nav({
   show,
@@ -10,6 +13,9 @@ export default function Nav({
   show: boolean;
   onMenuOpen: () => void;
 }) {
+  const { t } = useLang();
+  const { openForm } = useRequestProject();
+
   return (
     <motion.nav
       className="fixed inset-x-0 top-0 z-50 flex items-center justify-between px-6 py-5 md:px-10"
@@ -28,20 +34,17 @@ export default function Nav({
 
       <div className="flex items-center gap-3 md:gap-5">
         <button
+          onClick={openForm}
           className="hidden rounded-full border border-[var(--gold)]/40 bg-[var(--gold)]/10 px-5 py-2 text-xs tracking-[0.2em] text-[var(--gold-light)] backdrop-blur transition hover:bg-[var(--gold)]/20 md:block font-oswald"
           type="button"
         >
-          REQUEST PROJECT
+          {t.navRequest}
         </button>
-        <div className="flex items-center gap-1 text-xs tracking-[0.2em] text-white/70 font-oswald">
-          <span className="text-white">EN</span>
-          <span className="text-white/30">/</span>
-          <span>AR</span>
-        </div>
+        <LanguageToggle />
         <button
           onClick={onMenuOpen}
           className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded-full border border-white/15 bg-white/5 backdrop-blur transition hover:border-white/30"
-          aria-label="Open menu"
+          aria-label={t.openMenu}
           type="button"
         >
           <span className="h-px w-4 bg-white" />

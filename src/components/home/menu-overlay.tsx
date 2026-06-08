@@ -3,22 +3,16 @@
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { useEffect } from "react";
+import { useLang } from "@/lib/i18n/language-context";
+import { useRequestProject } from "@/lib/request-project-context";
+import LanguageToggle from "@/components/language-toggle";
 
-const LINKS = [
-  "Home",
-  "Who We Are",
-  "Approach",
-  "Services",
-  "Sectors",
-  "Portfolio",
-  "Partners",
-  "Contact Us",
-];
-
+// Social set matches the website.psb design: X, LinkedIn, Meta, Instagram.
 const SOCIALS = [
   { label: "X", src: "/images/twitter.png", href: "#" },
   { label: "LinkedIn", src: "/images/linkedin.png", href: "#" },
   { label: "Meta", src: "/images/facebook.png", href: "#" },
+  { label: "Instagram", src: "/images/instagram.png", href: "#" },
 ];
 
 const container = {
@@ -41,6 +35,9 @@ export default function MenuOverlay({
   open: boolean;
   onClose: () => void;
 }) {
+  const { t } = useLang();
+  const { openForm } = useRequestProject();
+
   // Lock smooth scroll while the menu is open + close on Escape.
   useEffect(() => {
     const lenis = (window as unknown as { lenis?: { stop: () => void; start: () => void } }).lenis;
@@ -106,7 +103,7 @@ export default function MenuOverlay({
             <button
               onClick={onClose}
               className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white/80 transition hover:border-white/40 hover:text-white"
-              aria-label="Close menu"
+              aria-label={t.closeMenu}
               type="button"
             >
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -123,7 +120,7 @@ export default function MenuOverlay({
               initial="hidden"
               animate="show"
             >
-              {LINKS.map((link) => (
+              {t.menuLinks.map((link) => (
                 <motion.a
                   key={link}
                   href="#"
@@ -163,16 +160,16 @@ export default function MenuOverlay({
               </div>
 
               <div className="flex items-center gap-5">
-                <div className="flex items-center gap-1 text-xs tracking-[0.2em] text-white/70 font-oswald">
-                  <span className="text-white">EN</span>
-                  <span className="text-white/30">/</span>
-                  <span>AR</span>
-                </div>
+                <LanguageToggle />
                 <button
                   type="button"
+                  onClick={() => {
+                    onClose();
+                    openForm();
+                  }}
                   className="rounded-full border border-[var(--gold)]/40 bg-[var(--gold)]/10 px-6 py-2.5 text-xs tracking-[0.2em] text-[var(--gold-light)] transition hover:bg-[var(--gold)]/20 font-oswald"
                 >
-                  REQUEST PROJECT
+                  {t.navRequest}
                 </button>
               </div>
             </motion.div>

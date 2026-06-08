@@ -35,3 +35,18 @@ body {
 .font-roboto {
   font-family: var(--font-roboto), sans-serif;
 }
+
+/* Oswald/Roboto carry no Arabic glyphs. In RTL/Arabic, fall back to a
+   system Arabic stack so copy renders correctly. Swap for a branded Arabic
+   webfont (e.g. Tajawal / IBM Plex Sans Arabic) once Reina provides one. */
+[dir="rtl"] body,
+[dir="rtl"] .font-oswald,
+[dir="rtl"] .font-roboto {
+  font-family: "Tajawal", "Cairo", "Noto Sans Arabic", "Geeza Pro",
+    "Segoe UI", Tahoma, sans-serif;
+}
+
+/* Keep wide tracking from breaking Arabic letter-joining. */
+[dir="rtl"] [class*="tracking-"] {
+  letter-spacing: 0 !important;
+}

@@ -2,8 +2,12 @@
 
 import { motion, useScroll, useTransform, useMotionValueEvent } from "framer-motion";
 import { useRef } from "react";
+import Link from "next/link";
+import { useLang } from "@/lib/i18n/language-context";
 
 export default function Hero() {
+  const { t } = useLang();
+
   // The hero is the only section on the page, so the document's full scroll
   // range maps 1:1 to it. Using the global scroll progress (rather than a
   // target ref) keeps the measurement stable through the sticky + Lenis setup.
@@ -88,10 +92,10 @@ export default function Hero() {
           style={{ y: contentY, opacity: 1 }}
         >
           <p className="mb-6 text-xs tracking-[0.5em] text-[var(--gold-light)]/80 font-oswald">
-            UNITED SANDS
+            {t.heroEyebrow}
           </p>
           <h1
-            className="font-oswald text-5xl font-light leading-[0.95] tracking-tight md:text-7xl lg:text-8xl"
+            className="font-oswald text-5xl font-light leading-[0.95] tracking-tight whitespace-pre-line md:text-7xl lg:text-8xl"
             style={{
               background:
                 "linear-gradient(180deg, #ffffff 0%, #f2d680 58%, #8556c3 100%)",
@@ -99,21 +103,18 @@ export default function Hero() {
               WebkitTextFillColor: "transparent",
             }}
           >
-            WE SHAPE
-            <br />
-            THE FUTURE
+            {t.heroHeadline}
           </h1>
           <p className="mx-auto mt-8 max-w-md text-sm leading-relaxed text-white/70">
-            A Saudi-born technology consultancy engineering the next era of smart
-            cities, digital twins, and geospatial intelligence.
+            {t.heroSub}
           </p>
-          <button
-            type="button"
+          <Link
+            href="/about"
             className="mt-10 group flex items-center gap-3 rounded-full border border-white/20 bg-white/5 px-7 py-3 text-xs tracking-[0.25em] backdrop-blur transition hover:border-[var(--gold)]/60 hover:bg-[var(--gold)]/10 font-oswald"
           >
-            OUR STORY
-            <span className="transition-transform group-hover:translate-x-1">→</span>
-          </button>
+            {t.ourStory}
+            <span className="transition-transform group-hover:translate-x-1 rtl:-scale-x-100">→</span>
+          </Link>
         </motion.div>
 
         {/* Scroll indicator */}
@@ -123,7 +124,7 @@ export default function Hero() {
           style={{ opacity: 1 }}
         >
           <span className="text-[10px] tracking-[0.4em] text-white/50 font-oswald">
-            SCROLL TO DISCOVER
+            {t.scrollHint}
           </span>
           <motion.div
             className="h-10 w-px bg-gradient-to-b from-white/60 to-transparent"
