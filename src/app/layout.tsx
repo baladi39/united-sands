@@ -24,8 +24,9 @@ const roboto = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "United Sands - Coming Soon",
-  description: "Let's shape the future together",
+  title: "United Sands — We Shape the Future",
+  description:
+    "A Saudi-born technology consultancy engineering the next era of smart cities, digital twins, and geospatial intelligence.",
 };
 
 export default function RootLayout({

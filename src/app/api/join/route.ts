@@ -4,10 +4,12 @@ import { Resend } from "resend";
 // Ensure this route runs on the server (not static export)
 export const runtime = "nodejs";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function POST(req: Request) {
   try {
+    // Instantiate lazily so a missing key doesn't break the build (the key is
+    // only required at request time, not at module load).
+    const resend = new Resend(process.env.RESEND_API_KEY);
+
     const { email, website } = await req.json();
 
     // Honeypot check – bots typically fill hidden fields
