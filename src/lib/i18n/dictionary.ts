@@ -28,6 +28,9 @@ export type Messages = {
   ourStory: string;
   scrollHint: string;
 
+  // Scroll text (Part 3 — between-sections statement)
+  scrollStatement: string;
+
   // Menu overlay
   menuLinks: string[];
   email: string;
@@ -78,6 +81,8 @@ export const en: Messages = {
     "A Saudi-born technology consultancy engineering the next era of smart cities, digital twins, and geospatial intelligence.",
   ourStory: "OUR STORY",
   scrollHint: "SCROLL TO DISCOVER",
+
+  scrollStatement: "The future doesn't happen to us. We design it.",
 
   menuLinks: [
     "Home",
@@ -156,6 +161,8 @@ export const ar: Messages = {
     "شركة استشارات تقنية سعودية المنشأ، تهندس الحقبة القادمة من المدن الذكية والتوائم الرقمية والذكاء الجغرافي المكاني.",
   ourStory: "قصتنا",
   scrollHint: "مرّر للاكتشاف",
+
+  scrollStatement: "المستقبل لا يحدث لنا، بل نُصمّمه.",
 
   menuLinks: [
     "الرئيسية",

@@ -6,6 +6,9 @@ import Splash from "@/components/home/splash";
 import Nav from "@/components/home/nav";
 import MenuOverlay from "@/components/home/menu-overlay";
 import Hero from "@/components/home/hero";
+import ScrollText from "@/components/home/scroll-text";
+import GradientCircle from "@/components/home/gradient-circle";
+import { GradientCircleProvider } from "@/components/home/gradient-circle-context";
 
 export default function Home() {
   const [splashDone, setSplashDone] = useState(false);
@@ -22,12 +25,16 @@ export default function Home() {
 
   return (
     <LenisProvider>
-      <Splash onComplete={() => setSplashDone(true)} />
-      <Nav show={splashDone} onMenuOpen={() => setMenuOpen(true)} />
-      <MenuOverlay open={menuOpen} onClose={() => setMenuOpen(false)} />
-      <main>
-        <Hero />
-      </main>
+      <GradientCircleProvider>
+        <Splash onComplete={() => setSplashDone(true)} />
+        <Nav show={splashDone} onMenuOpen={() => setMenuOpen(true)} />
+        <MenuOverlay open={menuOpen} onClose={() => setMenuOpen(false)} />
+        <GradientCircle />
+        <main>
+          <Hero />
+          <ScrollText />
+        </main>
+      </GradientCircleProvider>
     </LenisProvider>
   );
 }

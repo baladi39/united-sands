@@ -8,10 +8,19 @@ import { useLang } from "@/lib/i18n/language-context";
 export default function Hero() {
   const { t } = useLang();
 
-  // The hero is the only section on the page, so the document's full scroll
-  // range maps 1:1 to it. Using the global scroll progress (rather than a
-  // target ref) keeps the measurement stable through the sticky + Lenis setup.
-  const { scrollYProgress } = useScroll();
+  // Measure scroll against this section (not the whole document) so the arch
+  // zoom completes within the hero's own 220vh regardless of the sections below
+  // it. ["start start", "end end"] maps progress 0→1 across the hero's pinned
+  // range — from when its top hits the viewport top (sticky engages) to when its
+  // bottom hits the viewport bottom (sticky releases), i.e. heroHeight − 100vh of
+  // travel. That's the same physical distance the old global mapping used back
+  // when the hero stood alone, so the zoom + navy crossfade still finish exactly
+  // as the section hands off to the content below.
+  const heroRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end end"],
+  });
 
   // Transform-bound scroll values (scale / y) scrub reliably.
   const bgScale = useTransform(scrollYProgress, [0, 1], [1, 2.4]);
@@ -35,7 +44,7 @@ export default function Hero() {
   });
 
   return (
-    <section id="top" className="relative h-[220vh]">
+    <section ref={heroRef} id="top" className="relative h-[220vh]">
       <div className="sticky top-0 h-screen w-full overflow-hidden">
         {/* Cosmic golden archway — the signature hero visual */}
         <motion.div
