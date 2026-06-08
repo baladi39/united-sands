@@ -46,6 +46,12 @@ export type Messages = {
   statsPrev: string; // prev button aria-label
   statsNext: string; // next button aria-label
 
+  // Value Chain banner (Part 5 — "Serving You Across Every Step")
+  serveEyebrow: string;
+  serveTitle: string; // may contain a "\n" line break
+  serveBody: string;
+  serveCta: string;
+
   // Menu overlay
   menuLinks: string[];
   email: string;
@@ -79,6 +85,12 @@ export type Messages = {
   aboutTitle: string;
   aboutBody: string;
   aboutBack: string;
+
+  // Value Chain stub page (inner /value-chain placeholder)
+  valueChainEyebrow: string;
+  valueChainTitle: string;
+  valueChainBody: string;
+  valueChainBack: string;
 };
 
 export const en: Messages = {
@@ -140,6 +152,12 @@ export const en: Messages = {
   statsPrev: "Previous statistic",
   statsNext: "Next statistic",
 
+  serveEyebrow: "Digital Value Chain",
+  serveTitle: "Serving You\nAcross Every Step",
+  serveBody:
+    "Digital transformation is not a milestone, it's a lifecycle. We walk with you from strategy to autonomy.",
+  serveCta: "Walk With Us",
+
   menuLinks: [
     "Home",
     "Who We Are",
@@ -200,6 +218,12 @@ export const en: Messages = {
   aboutBody:
     "A Saudi-born technology consultancy aligned with Vision 2030 — fluent in local regulation, rooted in cultural and stakeholder intelligence, and engineered to deliver. The full About Us page is on the way.",
   aboutBack: "Back to home",
+
+  valueChainEyebrow: "Digital Value Chain",
+  valueChainTitle: "Serving You Across Every Step",
+  valueChainBody:
+    "From vision and strategy through system architecture, integration, cybersecurity, and predictive optimization — we walk every step of the digital transformation lifecycle with you. The full value-chain page is on the way.",
+  valueChainBack: "Back to home",
 };
 
 export const ar: Messages = {
@@ -259,6 +283,12 @@ export const ar: Messages = {
   ],
   statsPrev: "الإحصائية السابقة",
   statsNext: "الإحصائية التالية",
+
+  serveEyebrow: "سلسلة القيمة الرقمية",
+  serveTitle: "نخدمك في\nكل خطوة",
+  serveBody:
+    "التحول الرقمي ليس محطة، بل رحلة متكاملة. نسير معك من الاستراتيجية حتى الاستقلالية.",
+  serveCta: "سِر معنا",
 
   menuLinks: [
     "الرئيسية",
@@ -320,6 +350,12 @@ export const ar: Messages = {
   aboutBody:
     "شركة استشارات تقنية سعودية المنشأ، متوائمة مع رؤية 2030 — ملمّة باللوائح المحلية، متجذّرة في الفهم الثقافي ومعرفة أصحاب المصلحة، ومهندَسة للإنجاز. صفحة «من نحن» الكاملة قادمة قريباً.",
   aboutBack: "العودة إلى الرئيسية",
+
+  valueChainEyebrow: "سلسلة القيمة الرقمية",
+  valueChainTitle: "نخدمك في كل خطوة",
+  valueChainBody:
+    "من الرؤية والاستراتيجية مروراً ببنية الأنظمة والتكامل والأمن السيبراني وصولاً إلى التحسين التنبئي — نسير معك في كل خطوة من رحلة التحول الرقمي. صفحة سلسلة القيمة الكاملة قادمة قريباً.",
+  valueChainBack: "العودة إلى الرئيسية",
 };
 
 export const messages: Record<Lang, Messages> = { en, ar };
