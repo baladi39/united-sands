@@ -15,6 +15,22 @@ const SOCIALS = [
   { label: "Instagram", src: "/images/instagram.png", href: "#" },
 ];
 
+// Scroll target for each menu link, index-matched to `dictionary.ts` menuLinks
+// (EN + AR share this order). "Approach" and "Services" intentionally share the
+// Services section. Keep in sync if menuLinks order changes.
+// "#…" entries smooth-scroll to a homepage section; "/…" entries navigate to a
+// route. Portfolio points at the case-studies grid (its own inner page).
+const MENU_TARGETS = [
+  "#top", // Home
+  "#who-we-are", // Who We Are
+  "#services", // Approach
+  "#services", // Services
+  "#sectors", // Sectors
+  "/case-studies", // Portfolio
+  "#partners", // Partners
+  "#contact", // Contact Us
+];
+
 const container = {
   hidden: {},
   show: { transition: { staggerChildren: 0.06, delayChildren: 0.15 } },
@@ -37,6 +53,29 @@ export default function MenuOverlay({
 }) {
   const { t } = useLang();
   const { openForm } = useRequestProject();
+
+  // Smooth-scroll to a section, then close the menu. The open menu calls
+  // lenis.stop(), so re-enable scrolling before scrolling. Mirrors the Lenis
+  // pattern in strategy.tsx (goToTeam), with a native scrollIntoView fallback.
+  const goTo = (target: string) => {
+    onClose();
+    const lenis = (
+      window as unknown as {
+        lenis?: {
+          start: () => void;
+          scrollTo: (t: string, opts?: { offset?: number }) => void;
+        };
+      }
+    ).lenis;
+    if (lenis) {
+      lenis.start();
+      lenis.scrollTo(target, { offset: -20 });
+    } else {
+      document
+        .querySelector(target)
+        ?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
 
   // Lock smooth scroll while the menu is open + close on Escape.
   useEffect(() => {
@@ -120,17 +159,29 @@ export default function MenuOverlay({
               initial="hidden"
               animate="show"
             >
-              {t.menuLinks.map((link) => (
-                <motion.a
-                  key={link}
-                  href="#"
-                  onClick={onClose}
-                  variants={item}
-                  className="font-oswald text-4xl font-light tracking-tight text-white/85 transition-colors hover:text-[var(--gold-light)] md:text-6xl"
-                >
-                  {link}
-                </motion.a>
-              ))}
+              {t.menuLinks.map((link, i) => {
+                const target = MENU_TARGETS[i] ?? "#top";
+                const isRoute = target.startsWith("/");
+                return (
+                  <motion.a
+                    key={link}
+                    href={target}
+                    onClick={(e) => {
+                      // In-page anchors smooth-scroll; routes navigate normally.
+                      if (isRoute) {
+                        onClose();
+                      } else {
+                        e.preventDefault();
+                        goTo(target);
+                      }
+                    }}
+                    variants={item}
+                    className="font-inter text-4xl font-light tracking-tight text-white/85 transition-colors hover:text-[var(--gold-light)] md:text-6xl"
+                  >
+                    {link}
+                  </motion.a>
+                );
+              })}
             </motion.nav>
 
             {/* Footer row */}
@@ -153,7 +204,7 @@ export default function MenuOverlay({
                 ))}
                 <a
                   href="mailto:info@unitedsands.co"
-                  className="font-roboto text-sm text-white/70 transition-colors hover:text-white"
+                  className="font-inter text-sm text-white/70 transition-colors hover:text-white"
                 >
                   info@unitedsands.co
                 </a>
@@ -167,7 +218,7 @@ export default function MenuOverlay({
                     onClose();
                     openForm();
                   }}
-                  className="rounded-full border border-[var(--gold)]/40 bg-[var(--gold)]/10 px-6 py-2.5 text-xs tracking-[0.2em] text-[var(--gold-light)] transition hover:bg-[var(--gold)]/20 font-oswald"
+                  className="rounded-full border border-[var(--gold)]/40 bg-[var(--gold)]/10 px-6 py-2.5 text-xs tracking-[0.2em] text-[var(--gold-light)] transition hover:bg-[var(--gold)]/20 font-inter"
                 >
                   {t.navRequest}
                 </button>

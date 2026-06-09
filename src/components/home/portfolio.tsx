@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useRef, useState } from "react";
 import { useLang } from "@/lib/i18n/language-context";
@@ -37,15 +38,15 @@ export default function Portfolio() {
   const dx = reduce ? 0 : dir === "rtl" ? -60 : 60;
 
   return (
-    <section ref={ref} className="relative z-10 px-6 py-32 md:py-48">
+    <section id="portfolio" ref={ref} className="relative z-10 px-6 py-32 md:py-48">
       <div className="mx-auto max-w-6xl">
         {/* Header — heading on the leading side, nav on the trailing side */}
         <div className="mb-12 flex items-end justify-between gap-6">
           <div className="max-w-md">
-            <p className="mb-4 font-oswald text-xs tracking-[0.4em] text-[var(--gold-light)]/70">
+            <p className="mb-4 font-inter text-xs tracking-[0.35em] text-[var(--gold-light)]/70">
               / 09
             </p>
-            <h2 className="font-oswald text-3xl font-light leading-[1.02] tracking-tight text-white md:text-5xl">
+            <h2 className="font-inter text-3xl font-light leading-[1.02] tracking-tight text-white md:text-5xl">
               {lead}
               <br />
               <span
@@ -58,7 +59,7 @@ export default function Portfolio() {
                 {brand}
               </span>
             </h2>
-            <p className="mt-5 font-roboto text-sm leading-relaxed text-white/65">
+            <p className="mt-5 font-inter text-sm leading-relaxed text-white/65">
               {t.portfolioIntro}
             </p>
           </div>
@@ -93,30 +94,30 @@ export default function Portfolio() {
               className="grid gap-10 p-10 md:grid-cols-[1fr_1.2fr] md:items-center md:p-16"
             >
               <div>
-                <div className="flex items-center gap-3 font-oswald text-xs tracking-[0.3em] text-white/50">
+                <div className="flex items-center gap-3 font-inter text-xs tracking-[0.3em] text-white/50">
                   <span>{p.client}</span>
                   <span className="h-px w-4 bg-white/30" />
                   <span>{p.country}</span>
                 </div>
-                <h3 className="mt-4 font-oswald text-3xl font-light leading-tight text-white md:text-5xl">
+                <h3 className="mt-4 font-inter text-3xl font-light leading-tight text-white md:text-5xl">
                   {p.title}
                 </h3>
                 <div className="mt-8 flex flex-wrap gap-2">
                   {p.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="rounded-full border border-white/15 bg-white/5 px-3 py-1 font-oswald text-[10px] tracking-[0.2em] text-white/70"
+                      className="rounded-full border border-white/15 bg-white/5 px-3 py-1 font-inter text-[10px] tracking-[0.2em] text-white/70"
                     >
                       {tag.toUpperCase()}
                     </span>
                   ))}
                 </div>
-                <button
-                  type="button"
-                  className="mt-10 flex items-center gap-3 font-oswald text-xs tracking-[0.3em] text-[var(--gold-light)] transition hover:text-white"
+                <Link
+                  href={p.slug ? `/case-studies/${p.slug}` : "/case-studies"}
+                  className="mt-10 flex items-center gap-3 font-inter text-xs tracking-[0.3em] text-[var(--gold-light)] transition hover:text-white"
                 >
                   {t.portfolioCaseStudy}
-                </button>
+                </Link>
               </div>
               <div className="relative flex items-center justify-center">
                 <div className="relative aspect-square w-full max-w-sm overflow-hidden rounded-2xl border border-[var(--gold)]/20 bg-gradient-to-br from-[var(--gold)]/10 via-transparent to-[var(--purple-accent)]/20">
@@ -131,7 +132,7 @@ export default function Portfolio() {
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0d0a1a] via-transparent to-transparent" />
                   <div className="absolute inset-x-0 bottom-0 flex flex-col p-8">
                     <span
-                      className="font-oswald text-7xl font-light leading-none md:text-8xl"
+                      className="font-inter text-7xl font-light leading-none md:text-8xl"
                       style={{
                         background: "linear-gradient(180deg, #f2d680, #8556c3)",
                         WebkitBackgroundClip: "text",
@@ -140,7 +141,7 @@ export default function Portfolio() {
                     >
                       {p.stat}
                     </span>
-                    <p className="mt-3 font-roboto text-xs leading-relaxed text-white/60">
+                    <p className="mt-3 font-inter text-xs leading-relaxed text-white/60">
                       {p.statLabel}
                     </p>
                   </div>

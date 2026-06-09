@@ -18,7 +18,8 @@ export type Stat = {
 };
 
 export type Sector = {
-  name: string; // sector window label (title-only on the homepage)
+  name: string; // sector window title
+  description: string; // short supporting copy shown under the title
 };
 
 export type Service = {
@@ -33,6 +34,25 @@ export type Project = {
   stat: string; // headline figure, e.g. "40%"
   statLabel: string; // supporting line under the figure
   tags: string[]; // capability tags
+  slug?: string; // links the homepage carousel item to its /case-studies/[slug] detail page
+};
+
+// A portfolio case study — powers both the /case-studies grid and each
+// /case-studies/[slug] detail page. Only studies with real website.psb copy
+// ship here; the grid pads the rest with "coming soon" tiles.
+export type CaseStudy = {
+  slug: string; // stable, language-independent route segment
+  client: string; // "Company" filter value
+  country: string; // shown in detail meta; "" when undisclosed
+  sector: string; // "Category" filter value, e.g. "Oil & Gas / Safety"
+  title: string;
+  stat: string; // headline figure, e.g. "40%"
+  statLabel: string; // supporting line under the figure
+  summary: string; // one line revealed on grid hover
+  description: string; // detail-page paragraph
+  tags: string[]; // services used (placeholder pending client sign-off)
+  image: string; // featured visual path
+  accent: "gold" | "purple"; // tile + detail tint
 };
 
 export type SaudiPillar = {
@@ -106,6 +126,24 @@ export type Messages = {
   portfolioNext: string; // next button aria-label
   portfolioCaseStudy: string; // case-study link label (arrow baked in per dir)
 
+  // Case Studies (Portfolio inner pages — listing grid + project detail)
+  caseStudiesEyebrow: string; // "[ OUR PORTFOLIO ]"
+  caseStudiesTitle: string; // lead line, e.g. "From Vision"
+  caseStudiesTitleAccent: string; // gradient line, e.g. "to Reality"
+  caseStudiesSubtitle: string; // "Smart Transformation Case Studies"
+  caseStudiesIntro: string;
+  caseStudiesFilterBy: string; // "Filter by"
+  caseStudiesFilterCategory: string; // "Category"
+  caseStudiesFilterCompany: string; // "Company"
+  caseStudiesFilterAll: string; // "All"
+  caseStudiesComingSoon: string; // muted placeholder-tile label
+  caseStudiesEmpty: string; // shown when filters match nothing
+  caseStudiesBackToGrid: string; // detail → grid link
+  caseStudyServicesUsed: string; // detail services-tags heading
+  caseStudyRequestCta: string; // circle CTA label
+  caseStudyNotFound: string; // unknown-slug message
+  caseStudies: CaseStudy[];
+
   // Saudi-Born (Part 10 — "Why Being Saudi-Born Matters")
   saudiEyebrow: string; // small Vision-2030 tag
   saudiTitle: string; // "Why Being\nSaudi-Born Matters" — split on "\n"
@@ -139,7 +177,8 @@ export type Messages = {
   contactPhone: string; // display string; tel: href derived in the component
   contactRights: string; // copyright line tail, e.g. "All rights reserved."
 
-  // Menu overlay
+  // Menu overlay (labels only; per-link scroll/route targets live in
+  // menu-overlay.tsx MENU_TARGETS, index-matched to this array)
   menuLinks: string[];
   email: string;
 
@@ -249,12 +288,35 @@ export const en: Messages = {
   sectorsIntro:
     "We provide a comprehensive ecosystem of advanced technologies designed to transform urban infrastructure and industrial operations through data-driven innovation.",
   sectors: [
-    { name: "Smart Cities & Urban Platforms" },
-    { name: "Industrial, Manufacturing & Logistics" },
-    { name: "Environment, ESG & Resilience" },
-    { name: "Utilities, Energy & Water" },
-    { name: "Transport, Mobility & Mega-Infrastructure" },
-    { name: "Satellite Imagery & Geospatial Data" },
+    {
+      name: "Smart Cities & Urban Platforms",
+      description:
+        "Unified city data, urban mobility, and governance dashboards.",
+    },
+    {
+      name: "Industrial, Manufacturing & Logistics",
+      description:
+        "Connected factories, predictive maintenance, and smart logistics.",
+    },
+    {
+      name: "Environment, ESG & Resilience",
+      description:
+        "Emissions monitoring, climate-risk modelling, and resilience planning.",
+    },
+    {
+      name: "Utilities, Energy & Water",
+      description: "Smart grids, demand forecasting, and leak detection.",
+    },
+    {
+      name: "Transport, Mobility & Mega-Infrastructure",
+      description:
+        "Traffic orchestration and digital twins for mega-projects.",
+    },
+    {
+      name: "Satellite Imagery & Geospatial Data",
+      description:
+        "Earth observation, change detection, and terrain analysis.",
+    },
   ],
 
   servicesEyebrow: "Services for a Connected Future",
@@ -294,6 +356,7 @@ export const en: Messages = {
       stat: "40%",
       statLabel: "Cost reduction vs. traditional inspection",
       tags: ["Reality Capture", "GIS", "Drone Intelligence"],
+      slug: "adnoc-pipeline-inspection",
     },
     {
       client: "NEOM",
@@ -315,6 +378,61 @@ export const en: Messages = {
   portfolioPrev: "Previous project",
   portfolioNext: "Next project",
   portfolioCaseStudy: "VIEW CASE STUDY →",
+
+  caseStudiesEyebrow: "[ OUR PORTFOLIO ]",
+  caseStudiesTitle: "From Vision",
+  caseStudiesTitleAccent: "to Reality",
+  caseStudiesSubtitle: "Smart Transformation Case Studies",
+  caseStudiesIntro:
+    "Real programs where data, geospatial intelligence, and digital twins turned ambition into measurable outcomes on the ground.",
+  caseStudiesFilterBy: "Filter by",
+  caseStudiesFilterCategory: "Category",
+  caseStudiesFilterCompany: "Company",
+  caseStudiesFilterAll: "All",
+  caseStudiesComingSoon: "Coming soon",
+  caseStudiesEmpty: "No case studies match these filters yet.",
+  caseStudiesBackToGrid: "All case studies",
+  caseStudyServicesUsed: "Services used",
+  caseStudyRequestCta: "Request Project",
+  caseStudyNotFound: "That case study could not be found.",
+  // Only the two studies with real website.psb copy ship as published. Figures +
+  // sector are from the PSB; service tags are placeholder pending client (Reina) sign-off.
+  caseStudies: [
+    {
+      slug: "adnoc-pipeline-inspection",
+      client: "ADNOC",
+      country: "UAE",
+      sector: "Oil & Gas / Safety",
+      title: "Pipeline Inspection for ADNOC (UAE)",
+      stat: "40%",
+      statLabel:
+        "Cost reduction vs. traditional inspection methods, while improving safety compliance.",
+      summary:
+        "Drone-led reality capture cut pipeline inspection cost by 40% while raising safety compliance.",
+      description:
+        "United Sands replaced manual pipeline survey routines with a reality-capture and geospatial-intelligence program — drone-based capture feeding a live GIS model of the network. The result was a 40% reduction in inspection cost compared with traditional methods, alongside measurable gains in safety compliance across the asset base.",
+      tags: ["Reality Capture", "GIS", "Drone Intelligence"],
+      image: "/assets/portfolio-city.webp",
+      accent: "gold",
+    },
+    {
+      slug: "integrated-urban-data-platform",
+      client: "Undisclosed",
+      country: "",
+      sector: "Smart City / Governance",
+      title: "Integrated Urban Data Platform",
+      stat: "40%",
+      statLabel:
+        "Reduction in municipal authority response times, driving citizen satisfaction.",
+      summary:
+        "A unified urban data platform that cut municipal response times by 40%.",
+      description:
+        "United Sands unified fragmented municipal data sources into a single command-and-control view — a governance-grade platform connecting city operations in real time. Municipal authority response times fell by 40%, driving a measurable lift in citizen satisfaction.",
+      tags: ["Command & Control", "Unified City Data", "Governance Dashboards"],
+      image: "/assets/portfolio-city.webp",
+      accent: "purple",
+    },
+  ],
 
   saudiEyebrow: "Vision 2030",
   saudiTitle: "Why Being\nSaudi-Born Matters",
@@ -543,12 +661,30 @@ export const ar: Messages = {
   sectorsIntro:
     "نقدّم منظومة متكاملة من التقنيات المتقدمة المصممة لتحويل البنية التحتية الحضرية والعمليات الصناعية عبر الابتكار القائم على البيانات.",
   sectors: [
-    { name: "المدن الذكية والمنصّات الحضرية" },
-    { name: "الصناعة والتصنيع والخدمات اللوجستية" },
-    { name: "البيئة والحوكمة والمرونة" },
-    { name: "المرافق والطاقة والمياه" },
-    { name: "النقل والتنقّل والبنية التحتية الكبرى" },
-    { name: "صور الأقمار الصناعية والبيانات الجغرافية المكانية" },
+    {
+      name: "المدن الذكية والمنصّات الحضرية",
+      description: "بيانات مدن موحّدة، وتنقّل حضري، ولوحات حوكمة.",
+    },
+    {
+      name: "الصناعة والتصنيع والخدمات اللوجستية",
+      description: "مصانع متّصلة، وصيانة تنبؤية، وخدمات لوجستية ذكية.",
+    },
+    {
+      name: "البيئة والحوكمة والمرونة",
+      description: "رصد الانبعاثات، ونمذجة المخاطر المناخية، وتخطيط المرونة.",
+    },
+    {
+      name: "المرافق والطاقة والمياه",
+      description: "شبكات ذكية، والتنبؤ بالطلب، وكشف التسرّب.",
+    },
+    {
+      name: "النقل والتنقّل والبنية التحتية الكبرى",
+      description: "تنظيم حركة المرور والتوائم الرقمية للمشاريع الكبرى.",
+    },
+    {
+      name: "صور الأقمار الصناعية والبيانات الجغرافية المكانية",
+      description: "رصد الأرض، وكشف التغيّرات، وتحليل التضاريس.",
+    },
   ],
 
   servicesEyebrow: "خدمات لمستقبلٍ متّصل",
@@ -588,6 +724,7 @@ export const ar: Messages = {
       stat: "40%",
       statLabel: "خفض التكلفة مقارنةً بالفحص التقليدي",
       tags: ["التقاط الواقع", "نظم المعلومات الجغرافية", "ذكاء الطائرات المسيّرة"],
+      slug: "adnoc-pipeline-inspection",
     },
     {
       client: "نيوم",
@@ -609,6 +746,59 @@ export const ar: Messages = {
   portfolioPrev: "المشروع السابق",
   portfolioNext: "المشروع التالي",
   portfolioCaseStudy: "عرض دراسة الحالة ←",
+
+  caseStudiesEyebrow: "[ أعمالنا ]",
+  caseStudiesTitle: "من الرؤية",
+  caseStudiesTitleAccent: "إلى الواقع",
+  caseStudiesSubtitle: "دراسات حالة التحوّل الذكي",
+  caseStudiesIntro:
+    "برامج حقيقية حوّلت فيها البيانات والذكاء الجغرافي المكاني والتوائم الرقمية الطموح إلى نتائج ملموسة على أرض الواقع.",
+  caseStudiesFilterBy: "تصفية حسب",
+  caseStudiesFilterCategory: "الفئة",
+  caseStudiesFilterCompany: "الشركة",
+  caseStudiesFilterAll: "الكل",
+  caseStudiesComingSoon: "قريباً",
+  caseStudiesEmpty: "لا توجد دراسات حالة مطابقة لهذه التصفية بعد.",
+  caseStudiesBackToGrid: "جميع دراسات الحالة",
+  caseStudyServicesUsed: "الخدمات المستخدمة",
+  caseStudyRequestCta: "اطلب مشروعاً",
+  caseStudyNotFound: "تعذّر العثور على دراسة الحالة هذه.",
+  caseStudies: [
+    {
+      slug: "adnoc-pipeline-inspection",
+      client: "أدنوك",
+      country: "الإمارات",
+      sector: "النفط والغاز / السلامة",
+      title: "فحص خطوط الأنابيب لأدنوك (الإمارات)",
+      stat: "40%",
+      statLabel:
+        "خفض التكلفة مقارنةً بطرق الفحص التقليدية، مع تحسين الامتثال للسلامة.",
+      summary:
+        "خفض التقاط الواقع بالطائرات المسيّرة تكلفة فحص خطوط الأنابيب بنسبة 40% مع رفع الامتثال للسلامة.",
+      description:
+        "استبدلت يونايتد ساندز إجراءات المسح اليدوي لخطوط الأنابيب ببرنامج التقاط الواقع والذكاء الجغرافي المكاني — التقاط بالطائرات المسيّرة يغذّي نموذجاً جغرافياً حياً للشبكة. وكانت النتيجة خفض تكلفة الفحص بنسبة 40% مقارنةً بالطرق التقليدية، إلى جانب مكاسب ملموسة في الامتثال للسلامة عبر الأصول.",
+      tags: ["التقاط الواقع", "نظم المعلومات الجغرافية", "ذكاء الطائرات المسيّرة"],
+      image: "/assets/portfolio-city.webp",
+      accent: "gold",
+    },
+    {
+      slug: "integrated-urban-data-platform",
+      client: "غير معلن",
+      country: "",
+      sector: "المدن الذكية / الحوكمة",
+      title: "منصة البيانات الحضرية المتكاملة",
+      stat: "40%",
+      statLabel:
+        "خفض أزمنة استجابة الجهات البلدية، بما يعزّز رضا المواطنين.",
+      summary:
+        "منصة بيانات حضرية موحّدة خفضت أزمنة الاستجابة البلدية بنسبة 40%.",
+      description:
+        "وحّدت يونايتد ساندز مصادر البيانات البلدية المتفرّقة في عرضٍ موحّد للقيادة والتحكّم — منصة بمستوى حوكمي تربط عمليات المدينة آنياً. وانخفضت أزمنة استجابة الجهات البلدية بنسبة 40%، بما عزّز رضا المواطنين بشكلٍ ملموس.",
+      tags: ["القيادة والتحكّم", "بيانات المدينة الموحّدة", "لوحات الحوكمة"],
+      image: "/assets/portfolio-city.webp",
+      accent: "purple",
+    },
+  ],
 
   saudiEyebrow: "رؤية 2030",
   saudiTitle: "لماذا يهمّ\nأن نكون سعوديي المنشأ",
