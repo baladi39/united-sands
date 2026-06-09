@@ -72,6 +72,10 @@ export type Messages = {
   servicesIntro: string;
   services: Service[];
 
+  // CTA morph (Part 8 — "Request Project" button morph)
+  ctaEyebrow: string;
+  ctaHeading: string; // "Ready to Shape\nYour Transformation?"
+
   // Menu overlay
   menuLinks: string[];
   email: string;
@@ -211,6 +215,9 @@ export const en: Messages = {
         "Reality capture, GIS (SuperMap), LiDAR, drone intelligence, and spatial analytics.",
     },
   ],
+
+  ctaEyebrow: "Let's Talk",
+  ctaHeading: "Ready to Shape\nYour Transformation?",
 
   menuLinks: [
     "Home",
@@ -377,6 +384,9 @@ export const ar: Messages = {
         "التقاط الواقع، ونظم المعلومات الجغرافية (سوبر ماب)، والليدار، وذكاء الطائرات المسيّرة، والتحليلات المكانية.",
     },
   ],
+
+  ctaEyebrow: "لنتحدّث",
+  ctaHeading: "هل أنت مستعدّ\nلبدء التحوّل؟",
 
   menuLinks: [
     "الرئيسية",
