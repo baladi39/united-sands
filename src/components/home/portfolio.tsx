@@ -9,6 +9,26 @@ import { useCircleWaypoint } from "./gradient-circle-context";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
+/** Left-pointing chevron; flip horizontally with `rotate-180` for the other way. */
+function Chevron({ rotated }: { rotated: boolean }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      className={`h-4 w-4 ${rotated ? "rotate-180" : ""}`}
+    >
+      <path
+        d="M15 18l-6-6 6-6"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 /**
  * Part 9 — "Latest Portfolio".
  *
@@ -37,133 +57,153 @@ export default function Portfolio() {
   // Slide enters from the leading edge; flip the sign under RTL (and flatten when reduced).
   const dx = reduce ? 0 : dir === "rtl" ? -60 : 60;
 
+  const counter = `${String(index + 1).padStart(2, "0")} / ${String(
+    projects.length
+  ).padStart(2, "0")}`;
+
+  // Arrow keys follow VISUAL direction, so they invert under RTL.
+  const onKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "ArrowRight") {
+      e.preventDefault();
+      (dir === "rtl" ? prev : next)();
+    } else if (e.key === "ArrowLeft") {
+      e.preventDefault();
+      (dir === "rtl" ? next : prev)();
+    }
+  };
+
   return (
     <section id="portfolio" ref={ref} className="relative z-10 px-6 py-32 md:py-48">
       <div className="mx-auto max-w-6xl">
-        {/* Header — heading on the leading side, nav on the trailing side */}
-        <div className="mb-12 flex items-end justify-between gap-6">
-          <div className="max-w-md">
-            <p className="mb-4 font-inter text-xs tracking-[0.35em] text-[var(--gold-light)]/70">
-              / 09
-            </p>
-            <h2 className="font-inter text-3xl font-light leading-[1.02] tracking-tight text-white md:text-5xl">
-              {lead}
-              <br />
-              <span
-                style={{
-                  background: "linear-gradient(90deg, #f2d680 0%, #8556c3 100%)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                }}
-              >
-                {brand}
-              </span>
-            </h2>
-            <p className="mt-5 font-inter text-sm leading-relaxed text-white/65">
-              {t.portfolioIntro}
-            </p>
-          </div>
-          <div className="flex shrink-0 items-center gap-3">
-            <button
-              onClick={prev}
-              className="flex h-12 w-12 items-center justify-center rounded-full border border-white/20 text-white/70 transition hover:border-[var(--gold)]/60 hover:text-white"
-              aria-label={t.portfolioPrev}
-              type="button"
+        {/* Header — heading only; navigation moves down beside the card */}
+        <div className="mb-10 max-w-md">
+          <p className="mb-4 font-inter text-xs tracking-[0.35em] text-[var(--gold-light)]/70">
+            / 09
+          </p>
+          <h2 className="font-inter text-3xl font-light leading-[1.02] tracking-tight text-white md:text-5xl">
+            {lead}
+            <br />
+            <span
+              style={{
+                background: "linear-gradient(90deg, #f2d680 0%, #8556c3 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }}
             >
-              {dir === "rtl" ? "→" : "←"}
-            </button>
-            <button
-              onClick={next}
-              className="flex h-12 w-12 items-center justify-center rounded-full border border-white/20 text-white/70 transition hover:border-[var(--gold)]/60 hover:text-white"
-              aria-label={t.portfolioNext}
-              type="button"
-            >
-              {dir === "rtl" ? "←" : "→"}
-            </button>
-          </div>
+              {brand}
+            </span>
+          </h2>
+          <p className="mt-5 font-inter text-sm leading-relaxed text-white/65">
+            {t.portfolioIntro}
+          </p>
         </div>
 
-        <div className="relative min-h-[420px] overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, x: dx }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -dx }}
-              transition={reduce ? { duration: 0 } : { duration: 0.5, ease: EASE }}
-              className="grid gap-10 p-10 md:grid-cols-[1fr_1.2fr] md:items-center md:p-16"
+        {/* Carousel — prev / counter / next cluster anchored above the card,
+            mirroring the "Why Choose" section (counter replaces the old dots). */}
+        <div
+          role="group"
+          aria-roledescription="carousel"
+          aria-label={t.portfolioTitle.replace("\n", " ")}
+          tabIndex={0}
+          onKeyDown={onKeyDown}
+          className="rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--gold)]"
+        >
+          <div className="mb-6 flex items-center gap-4">
+            <button
+              type="button"
+              onClick={prev}
+              aria-label={t.portfolioPrev}
+              className="flex h-12 w-12 items-center justify-center rounded-full border border-white/20 text-white/70 transition hover:border-[var(--gold)]/60 hover:text-white"
             >
-              <div>
-                <div className="flex items-center gap-3 font-inter text-xs tracking-[0.3em] text-white/50">
-                  <span>{p.client}</span>
-                  <span className="h-px w-4 bg-white/30" />
-                  <span>{p.country}</span>
+              <Chevron rotated={dir === "rtl"} />
+            </button>
+            <span
+              dir="ltr"
+              className="font-inter text-sm tracking-[0.2em] text-white/50"
+            >
+              {counter}
+            </span>
+            <button
+              type="button"
+              onClick={next}
+              aria-label={t.portfolioNext}
+              className="flex h-12 w-12 items-center justify-center rounded-full border border-white/20 text-white/70 transition hover:border-[var(--gold)]/60 hover:text-white"
+            >
+              <Chevron rotated={dir !== "rtl"} />
+            </button>
+          </div>
+
+          <div
+            aria-live="polite"
+            aria-atomic="true"
+            className="relative min-h-[420px] overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm"
+          >
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: dx }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -dx }}
+                transition={reduce ? { duration: 0 } : { duration: 0.5, ease: EASE }}
+                className="grid gap-10 p-10 md:grid-cols-[1fr_1.2fr] md:items-center md:p-16"
+              >
+                <div>
+                  <div className="flex items-center gap-3 font-inter text-xs tracking-[0.3em] text-white/50">
+                    <span>{p.client}</span>
+                    <span className="h-px w-4 bg-white/30" />
+                    <span>{p.country}</span>
+                  </div>
+                  <h3 className="mt-4 font-inter text-3xl font-light leading-tight text-white md:text-5xl">
+                    {p.title}
+                  </h3>
+                  <div className="mt-8 flex flex-wrap gap-2">
+                    {p.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="rounded-full border border-white/15 bg-white/5 px-3 py-1 font-inter text-[10px] tracking-[0.2em] text-white/70"
+                      >
+                        {tag.toUpperCase()}
+                      </span>
+                    ))}
+                  </div>
+                  <Link
+                    href={p.slug ? `/case-studies/${p.slug}` : "/case-studies"}
+                    className="mt-10 flex items-center gap-3 font-inter text-xs tracking-[0.3em] text-[var(--gold-light)] transition hover:text-white"
+                  >
+                    {t.portfolioCaseStudy}
+                  </Link>
                 </div>
-                <h3 className="mt-4 font-inter text-3xl font-light leading-tight text-white md:text-5xl">
-                  {p.title}
-                </h3>
-                <div className="mt-8 flex flex-wrap gap-2">
-                  {p.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-full border border-white/15 bg-white/5 px-3 py-1 font-inter text-[10px] tracking-[0.2em] text-white/70"
-                    >
-                      {tag.toUpperCase()}
-                    </span>
-                  ))}
-                </div>
-                <Link
-                  href={p.slug ? `/case-studies/${p.slug}` : "/case-studies"}
-                  className="mt-10 flex items-center gap-3 font-inter text-xs tracking-[0.3em] text-[var(--gold-light)] transition hover:text-white"
-                >
-                  {t.portfolioCaseStudy}
-                </Link>
-              </div>
-              <div className="relative flex items-center justify-center">
-                <div className="relative aspect-square w-full max-w-sm overflow-hidden rounded-2xl border border-[var(--gold)]/20 bg-gradient-to-br from-[var(--gold)]/10 via-transparent to-[var(--purple-accent)]/20">
-                  {/* Isometric smart-city render (PSB portfolio artboard) */}
-                  <Image
-                    src="/assets/portfolio-city.webp"
-                    alt=""
-                    fill
-                    sizes="(min-width: 768px) 24rem, 90vw"
-                    className="object-contain p-6"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0d0a1a] via-transparent to-transparent" />
-                  <div className="absolute inset-x-0 bottom-0 flex flex-col p-8">
-                    <span
-                      className="font-inter text-7xl font-light leading-none md:text-8xl"
-                      style={{
-                        background: "linear-gradient(180deg, #f2d680, #8556c3)",
-                        WebkitBackgroundClip: "text",
-                        WebkitTextFillColor: "transparent",
-                      }}
-                    >
-                      {p.stat}
-                    </span>
-                    <p className="mt-3 font-inter text-xs leading-relaxed text-white/60">
-                      {p.statLabel}
-                    </p>
+                <div className="relative flex items-center justify-center">
+                  <div className="relative aspect-square w-full max-w-sm overflow-hidden rounded-2xl border border-[var(--gold)]/20 bg-gradient-to-br from-[var(--gold)]/10 via-transparent to-[var(--purple-accent)]/20">
+                    {/* Isometric smart-city render (PSB portfolio artboard) */}
+                    <Image
+                      src="/assets/portfolio-city.webp"
+                      alt=""
+                      fill
+                      sizes="(min-width: 768px) 24rem, 90vw"
+                      className="object-contain p-6"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0d0a1a] via-transparent to-transparent" />
+                    <div className="absolute inset-x-0 bottom-0 flex flex-col p-8">
+                      <span
+                        className="font-inter text-7xl font-light leading-none md:text-8xl"
+                        style={{
+                          background: "linear-gradient(180deg, #f2d680, #8556c3)",
+                          WebkitBackgroundClip: "text",
+                          WebkitTextFillColor: "transparent",
+                        }}
+                      >
+                        {p.stat}
+                      </span>
+                      <p className="mt-3 font-inter text-xs leading-relaxed text-white/60">
+                        {p.statLabel}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </motion.div>
-          </AnimatePresence>
-        </div>
-
-        <div className="mt-6 flex justify-center gap-2">
-          {projects.map((proj, i) => (
-            <button
-              key={proj.client}
-              onClick={() => setIndex(i)}
-              className={`h-px transition-all ${
-                i === index ? "w-16 bg-[var(--gold)]" : "w-8 bg-white/20"
-              }`}
-              aria-label={`${proj.client} — ${proj.title}`}
-              aria-current={i === index}
-              type="button"
-            />
-          ))}
+              </motion.div>
+            </AnimatePresence>
+          </div>
         </div>
       </div>
     </section>

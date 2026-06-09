@@ -59,6 +59,10 @@ export default function Portfolio() {
             >
               ←
             </button>
+            <span className="font-inter text-sm tracking-[0.2em] text-white/50">
+              {String(index + 1).padStart(2, "0")} /{" "}
+              {String(PROJECTS.length).padStart(2, "0")}
+            </span>
             <button
               onClick={next}
               className="flex h-12 w-12 items-center justify-center rounded-full border border-white/20 text-white/70 transition hover:border-[var(--gold)]/60 hover:text-white"
@@ -128,20 +132,6 @@ export default function Portfolio() {
               </div>
             </motion.div>
           </AnimatePresence>
-        </div>
-
-        <div className="mt-6 flex justify-center gap-2">
-          {PROJECTS.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setIndex(i)}
-              className={`h-px w-8 transition-all ${
-                i === index ? "bg-[var(--gold)] w-16" : "bg-white/20"
-              }`}
-              aria-label={`Go to project ${i + 1}`}
-              type="button"
-            />
-          ))}
         </div>
       </div>
     </section>
