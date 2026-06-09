@@ -18,7 +18,7 @@ export default function Nav({
 
   return (
     <motion.nav
-      className="fixed inset-x-0 top-0 z-50 flex items-center justify-between px-6 py-5 md:px-10"
+      className="fixed inset-x-0 top-0 z-50 flex items-center justify-between border-b border-white/10 bg-[var(--background)]/40 px-6 py-5 backdrop-blur-xl backdrop-saturate-150 md:px-10"
       initial={{ y: -80, opacity: 0 }}
       animate={show ? { y: 0, opacity: 1 } : { y: -80, opacity: 0 }}
       transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: show ? 0.3 : 0 }}
