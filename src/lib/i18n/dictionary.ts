@@ -21,6 +21,11 @@ export type Sector = {
   name: string; // sector window label (title-only on the homepage)
 };
 
+export type Service = {
+  name: string; // service title
+  description: string; // short copy revealed when the card expands
+};
+
 export type Messages = {
   // Nav + chrome
   navRequest: string;
@@ -60,6 +65,12 @@ export type Messages = {
   sectorsTitle: string; // "Sectoral Evolution\nThrough Technology"
   sectorsIntro: string;
   sectors: Sector[];
+
+  // Services (Part 7 — "Integrated Digital Services")
+  servicesEyebrow: string;
+  servicesTitle: string; // "Integrated Digital\nServices"
+  servicesIntro: string;
+  services: Service[];
 
   // Menu overlay
   menuLinks: string[];
@@ -177,6 +188,28 @@ export const en: Messages = {
     { name: "Utilities, Energy & Water" },
     { name: "Transport, Mobility & Mega-Infrastructure" },
     { name: "Satellite Imagery & Geospatial Data" },
+  ],
+
+  servicesEyebrow: "Services for a Connected Future",
+  servicesTitle: "Integrated Digital\nServices",
+  servicesIntro:
+    "We deploy a comprehensive suite of technologies designed to bridge the gap between physical infrastructure and virtual intelligence. From initial strategy to fully autonomous operations, we build the digital nervous system for the modern world.",
+  services: [
+    {
+      name: "Digital Twin Solutions",
+      description:
+        "Live 4D simulation environments for real-time operations, predictive maintenance, and multi-scenario analysis.",
+    },
+    {
+      name: "Smart City Solutions",
+      description:
+        "Command & control, unified city data platforms, urban mobility, smart utilities, and governance dashboards.",
+    },
+    {
+      name: "GIS & Geospatial Intelligence",
+      description:
+        "Reality capture, GIS (SuperMap), LiDAR, drone intelligence, and spatial analytics.",
+    },
   ],
 
   menuLinks: [
@@ -321,6 +354,28 @@ export const ar: Messages = {
     { name: "المرافق والطاقة والمياه" },
     { name: "النقل والتنقّل والبنية التحتية الكبرى" },
     { name: "صور الأقمار الصناعية والبيانات الجغرافية المكانية" },
+  ],
+
+  servicesEyebrow: "خدمات لمستقبلٍ متّصل",
+  servicesTitle: "الخدمات الرقمية\nالمتكاملة",
+  servicesIntro:
+    "نوظّف منظومة متكاملة من التقنيات لسدّ الفجوة بين البنية التحتية المادية والذكاء الافتراضي. من الاستراتيجية الأولى حتى العمليات المستقلة بالكامل، نبني الجهاز العصبي الرقمي للعالم الحديث.",
+  services: [
+    {
+      name: "حلول التوأم الرقمي",
+      description:
+        "بيئات محاكاة رباعية الأبعاد للعمليات الآنية والصيانة التنبؤية وتحليل السيناريوهات المتعددة.",
+    },
+    {
+      name: "حلول المدن الذكية",
+      description:
+        "القيادة والتحكّم، ومنصّات بيانات المدينة الموحّدة، والتنقّل الحضري، والمرافق الذكية، ولوحات الحوكمة.",
+    },
+    {
+      name: "نظم المعلومات الجغرافية والذكاء المكاني",
+      description:
+        "التقاط الواقع، ونظم المعلومات الجغرافية (سوبر ماب)، والليدار، وذكاء الطائرات المسيّرة، والتحليلات المكانية.",
+    },
   ],
 
   menuLinks: [

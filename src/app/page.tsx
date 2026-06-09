@@ -10,6 +10,7 @@ import ScrollText from "@/components/home/scroll-text";
 import WhyChoose from "@/components/home/why-choose";
 import ValueChain from "@/components/home/value-chain";
 import Sectors from "@/components/home/sectors";
+import Services from "@/components/home/services";
 import GradientCircle from "@/components/home/gradient-circle";
 import { GradientCircleProvider } from "@/components/home/gradient-circle-context";
 
@@ -39,6 +40,7 @@ export default function Home() {
           <WhyChoose />
           <ValueChain />
           <Sectors />
+          <Services />
         </main>
       </GradientCircleProvider>
     </LenisProvider>
