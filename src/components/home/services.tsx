@@ -86,12 +86,12 @@ export default function Services() {
         className="object-cover object-right"
       />
       <div className="absolute inset-0 bg-[#0d0a1a]/80" />
-      <div className="absolute inset-0 bg-gradient-to-r from-[#0d0a1a] via-[#0d0a1a]/75 to-[#0d0a1a]/45" />
+      <div className="absolute inset-0 bg-linear-to-r from-[#0d0a1a] via-[#0d0a1a]/75 to-[#0d0a1a]/45" />
 
       <div className="relative z-10 mx-auto max-w-6xl">
         {/* Header */}
         <div className="mx-auto max-w-2xl text-center">
-          <p className="mb-5 font-inter text-xs uppercase tracking-[0.35em] text-[var(--gold-light)]/80">
+          <p className="mb-5 font-inter text-xs uppercase tracking-[0.35em] text-(--gold-light)/80">
             [ {t.servicesEyebrow} ]
           </p>
           <h2 className="font-inter text-4xl font-light leading-[1.02] tracking-tight text-white md:text-6xl">
@@ -121,7 +121,7 @@ export default function Services() {
             return (
               <div
                 key={s.name}
-                className="rounded-2xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur-sm transition-colors hover:border-white/20"
+                className="relative rounded-2xl border border-white/10 bg-white/4 p-6 backdrop-blur-sm transition-colors hover:border-white/20"
               >
                 <button
                   type="button"
@@ -129,9 +129,9 @@ export default function Services() {
                   aria-expanded={isOpen}
                   aria-controls={panelId}
                   onClick={() => setOpen(isOpen ? -1 : i)}
-                  className="flex w-full items-center gap-4 rounded-lg text-start focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--gold)]"
+                  className="flex w-full items-center gap-4 rounded-lg text-start after:absolute after:inset-0 after:rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--gold)"
                 >
-                  <span className="text-[var(--gold-light)]">
+                  <span className="text-(--gold-light)">
                     <ServiceIcon index={i} />
                   </span>
                   <span className="flex-1 font-inter text-base uppercase leading-snug tracking-[0.12em] text-white/90">
@@ -173,7 +173,7 @@ export default function Services() {
                       <p className="pt-4 font-inter text-sm leading-relaxed text-white/65">
                         {s.description}
                       </p>
-                      <div className="mt-4 h-px w-10 bg-gradient-to-r from-[var(--gold)] to-transparent" />
+                      <div className="mt-4 h-px w-10 bg-linear-to-r from-(--gold) to-transparent" />
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -189,7 +189,7 @@ export default function Services() {
             type="button"
             onClick={openForm}
             data-request-project
-            className="rounded-full border border-[var(--gold)]/40 bg-[var(--gold)]/10 px-8 py-3 font-inter text-xs uppercase tracking-[0.25em] text-[var(--gold-light)] transition hover:bg-[var(--gold)]/20"
+            className="rounded-full border border-(--gold)/40 bg-(--gold)/10 px-8 py-3 font-inter text-xs uppercase tracking-[0.25em] text-(--gold-light) transition hover:bg-(--gold)/20"
           >
             {t.navRequest}
           </button>
