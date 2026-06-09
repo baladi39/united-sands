@@ -60,20 +60,20 @@ export default function SaudiBorn() {
   ).padStart(2, "0")}`;
 
   return (
-    <section ref={ref} className="relative z-10 py-32 md:py-48">
+    <section id="who-we-are" ref={ref} className="relative z-10 py-32 md:py-48">
       <div className="mx-auto max-w-6xl px-6 md:px-12">
         <div className="grid gap-16 md:grid-cols-2 md:items-center md:gap-12">
           {/* Left — PSB framing */}
           <div>
             <div className="mb-5 flex items-center gap-3">
-              <span className="font-oswald text-xs tracking-[0.4em] text-[var(--gold-light)]/70">
+              <span className="font-inter text-xs tracking-[0.35em] text-[var(--gold-light)]/70">
                 / 10
               </span>
-              <span className="rounded-full border border-[var(--gold)]/30 px-3 py-1 font-oswald text-[10px] uppercase tracking-[0.25em] text-[var(--gold-light)]/80">
+              <span className="rounded-full border border-[var(--gold)]/30 px-3 py-1 font-inter text-[10px] uppercase tracking-[0.25em] text-[var(--gold-light)]/80">
                 {t.saudiEyebrow}
               </span>
             </div>
-            <h2 className="font-oswald text-3xl font-light leading-[1.05] tracking-tight md:text-5xl">
+            <h2 className="font-inter text-3xl font-light leading-[1.05] tracking-tight md:text-5xl">
               {titleLead}
               <br />
               <span
@@ -86,7 +86,7 @@ export default function SaudiBorn() {
                 {titleBrand}
               </span>
             </h2>
-            <p className="mt-6 max-w-md font-roboto text-base leading-relaxed text-white/70 md:text-lg">
+            <p className="mt-6 max-w-md font-inter text-base leading-relaxed text-white/70 md:text-lg">
               {t.saudiIntro}
             </p>
           </div>
@@ -111,7 +111,7 @@ export default function SaudiBorn() {
               </button>
               <span
                 dir="ltr"
-                className="font-oswald text-sm tracking-[0.2em] text-white/50"
+                className="font-inter text-sm tracking-[0.2em] text-white/50"
               >
                 {counter}
               </span>
@@ -157,14 +157,14 @@ export default function SaudiBorn() {
                   <span
                     aria-hidden="true"
                     dir="ltr"
-                    className="pointer-events-none absolute end-6 top-2 select-none font-oswald text-7xl font-light leading-none text-white/[0.05] md:text-8xl"
+                    className="pointer-events-none absolute end-6 top-2 select-none font-inter text-7xl font-light leading-none text-white/[0.05] md:text-8xl"
                   >
                     {String(index + 1).padStart(2, "0")}
                   </span>
-                  <h3 className="font-oswald text-2xl font-light leading-tight text-white md:text-4xl">
+                  <h3 className="font-inter text-2xl font-light leading-tight text-white md:text-4xl">
                     {p.title}
                   </h3>
-                  <p className="mt-5 max-w-md font-roboto text-base leading-relaxed text-white/65">
+                  <p className="mt-5 max-w-md font-inter text-base leading-relaxed text-white/65">
                     {p.copy}
                   </p>
                 </motion.div>

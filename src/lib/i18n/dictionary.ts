@@ -531,13 +531,12 @@ export const en: Messages = {
 
   menuLinks: [
     "Home",
-    "Who We Are",
-    "Approach",
-    "Services",
     "Sectors",
+    "Services",
     "Portfolio",
+    "Who We Are",
     "Partners",
-    "Contact Us",
+    "Contact",
   ],
   email: "info@unitedsands.co",
 
@@ -899,11 +898,10 @@ export const ar: Messages = {
 
   menuLinks: [
     "الرئيسية",
-    "من نحن",
-    "منهجيتنا",
-    "الخدمات",
     "القطاعات",
+    "الخدمات",
     "الأعمال",
+    "من نحن",
     "الشركاء",
     "تواصل معنا",
   ],
