@@ -42,3 +42,7 @@ next-env.d.ts
 
 # deployment bundles
 deployment-hostinger-*.zip
+
+# browser verification artifacts (Playwright MCP screenshots / snapshots)
+.playwright-mcp/
+part9-centered.png
