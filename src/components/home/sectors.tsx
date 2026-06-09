@@ -67,7 +67,7 @@ function CardContent({
 }) {
   return (
     <>
-      <span className="font-inter text-xs tracking-[0.35em] text-[var(--gold-light)]/60">
+      <span className="font-inter text-xs tracking-[0.35em] text-(--gold-light)/60">
         {String(index + 1).padStart(2, "0")}
       </span>
       {/* Centre the title block in the remaining height so the card reads as full
@@ -76,7 +76,7 @@ function CardContent({
         <p className="font-inter text-base uppercase leading-snug tracking-[0.14em] text-white md:text-lg">
           {name}
         </p>
-        <div className="mt-4 h-px w-10 bg-gradient-to-r from-[var(--gold)] to-transparent" />
+        <div className="mt-4 h-px w-10 bg-linear-to-r from-(--gold) to-transparent" />
         <p className="mt-4 font-inter text-sm leading-relaxed text-white/65">
           {description}
         </p>
@@ -105,7 +105,7 @@ function SectorCard({
 
   return (
     <motion.div
-      className={`absolute left-1/2 top-1/2 w-[26vw] min-h-[210px] min-w-[200px] max-w-[360px] -translate-x-1/2 -translate-y-1/2 ${CARD_CLASS}`}
+      className={`absolute left-1/2 top-1/2 w-[26vw] min-h-52.5 min-w-50 max-w-90 -translate-x-1/2 -translate-y-1/2 ${CARD_CLASS}`}
       style={{ x, y, rotate, scale }}
     >
       <CardContent index={index} name={name} description={description} />
@@ -117,7 +117,7 @@ function Heading({ title, intro }: { title: string; intro: string }) {
   const [lead, brand] = title.split("\n");
   return (
     <div>
-      <p className="mb-4 font-inter text-xs tracking-[0.35em] text-[var(--gold-light)]/70">
+      <p className="mb-4 font-inter text-xs tracking-[0.35em] text-(--gold-light)/70">
         / 06
       </p>
       <h2 className="font-inter text-4xl font-light leading-[0.95] tracking-tight text-white md:text-5xl">
@@ -163,7 +163,7 @@ export default function Sectors() {
         {t.sectors.map((s, i) => (
           <div
             key={s.name}
-            className={`mx-auto min-h-[210px] w-full max-w-[360px] ${CARD_CLASS}`}
+            className={`mx-auto min-h-52.5 w-full max-w-90 ${CARD_CLASS}`}
           >
             <CardContent index={i} name={s.name} description={s.description} />
           </div>
@@ -183,11 +183,20 @@ export default function Sectors() {
 
   return (
     <section id="sectors" ref={ref} className="relative z-10">
-      {/* Mobile / small screens — static grid (the parallax is desktop-first). */}
-      <div className="px-6 py-32 md:hidden">{staticGrid}</div>
+      {/* Static grid — shown whenever the viewport is too narrow OR too short to
+          host the parallax. A nav-clearing header plus two full card rows needs
+          ~820px of height; below that the pinned header overlaps the gathered
+          cards (see the md+ branch), so short laptops get this scrolling grid
+          instead. Hidden only when the viewport is BOTH wide (md) AND tall
+          (≥820px) — the exact complement of the parallax condition below. */}
+      <div className="block px-6 py-32 [@media(min-width:768px)_and_(min-height:820px)]:hidden">
+        {staticGrid}
+      </div>
 
-      {/* md+ — scroll-driven scatter → gather parallax. */}
-      <div className="hidden h-[240vh] md:block">
+      {/* Scroll-driven scatter → gather parallax — only when the viewport is both
+          wide (md) AND tall enough (≥820px) to lay it out without overlap. Hidden
+          otherwise, so its 240vh of scroll space collapses away on short screens. */}
+      <div className="hidden h-[240vh] [@media(min-width:768px)_and_(min-height:820px)]:block">
         <div className="sticky top-0 h-screen w-full overflow-hidden">
           {/* Static header at the top — only the cards animate. z above the cards
               so any card drifting up during the scatter passes behind it. Top
