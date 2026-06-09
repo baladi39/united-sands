@@ -19,11 +19,11 @@ export default function Splash({ onComplete }: { onComplete: () => void }) {
       ease: [0.25, 1, 0.5, 1],
       onComplete: () => {
         setPhase("reveal");
-        setTimeout(() => setPhase("exit"), 900);
+        setTimeout(() => setPhase("exit"), 800);
         setTimeout(() => {
           setVisible(false);
           onComplete();
-        }, 1700);
+        }, 1600);
       },
     });
     return controls.stop;
@@ -59,48 +59,25 @@ export default function Splash({ onComplete }: { onComplete: () => void }) {
             }}
           />
 
-          {/* U mark + full logo reveal */}
+          {/* U mark — stays on screen through the whole splash */}
           <div className="relative flex flex-col items-center">
-            <AnimatePresence mode="wait">
-              {phase === "counting" && (
-                <motion.div
-                  key="u"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: [1, 1.04, 1] }}
-                  exit={{ opacity: 0, scale: 1.2 }}
-                  transition={{
-                    opacity: { duration: 0.5 },
-                    scale: { duration: 2.4, repeat: Infinity, ease: "easeInOut" },
-                  }}
-                  className="relative h-[26vmin] max-h-[280px] aspect-[94/102]"
-                >
-                  <Image
-                    src="/assets/u-mark.svg"
-                    alt="United Sands"
-                    fill
-                    priority
-                    className="object-contain drop-shadow-[0_0_40px_rgba(212,168,83,0.35)]"
-                  />
-                </motion.div>
-              )}
-              {(phase === "reveal" || phase === "exit") && (
-                <motion.div
-                  key="logo"
-                  initial={{ opacity: 0, scale: 0.85, filter: "blur(20px)" }}
-                  animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-                  transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                  className="relative h-[36vmin] max-h-[380px] aspect-[140/154]"
-                >
-                  <Image
-                    src="/assets/logo-lockup.svg"
-                    alt="United Sands"
-                    fill
-                    priority
-                    className="object-contain"
-                  />
-                </motion.div>
-              )}
-            </AnimatePresence>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: [1, 1.04, 1] }}
+              transition={{
+                opacity: { duration: 0.5 },
+                scale: { duration: 2.4, repeat: Infinity, ease: "easeInOut" },
+              }}
+              className="relative h-[26vmin] max-h-[280px] aspect-[94/102]"
+            >
+              <Image
+                src="/assets/u-mark.svg"
+                alt="United Sands"
+                fill
+                priority
+                className="object-contain drop-shadow-[0_0_40px_rgba(212,168,83,0.35)]"
+              />
+            </motion.div>
           </div>
 
           {/* Counter */}
