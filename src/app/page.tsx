@@ -12,6 +12,7 @@ import ValueChain from "@/components/home/value-chain";
 import Sectors from "@/components/home/sectors";
 import Services from "@/components/home/services";
 import CtaMorph from "@/components/home/cta-morph";
+import Portfolio from "@/components/home/portfolio";
 import GradientCircle from "@/components/home/gradient-circle";
 import { GradientCircleProvider } from "@/components/home/gradient-circle-context";
 
@@ -43,6 +44,7 @@ export default function Home() {
           <Sectors />
           <Services />
           <CtaMorph />
+          <Portfolio />
         </main>
       </GradientCircleProvider>
     </LenisProvider>

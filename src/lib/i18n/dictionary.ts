@@ -26,6 +26,15 @@ export type Service = {
   description: string; // short copy revealed when the card expands
 };
 
+export type Project = {
+  client: string; // e.g. "ADNOC"
+  country: string; // e.g. "UAE"
+  title: string; // project title
+  stat: string; // headline figure, e.g. "40%"
+  statLabel: string; // supporting line under the figure
+  tags: string[]; // capability tags
+};
+
 export type Messages = {
   // Nav + chrome
   navRequest: string;
@@ -75,6 +84,14 @@ export type Messages = {
   // CTA morph (Part 8 — "Request Project" button morph)
   ctaEyebrow: string;
   ctaHeading: string; // "Ready to Shape\nYour Transformation?"
+
+  // Portfolio (Part 9 — "Latest Portfolio")
+  portfolioTitle: string; // "Latest\nPortfolio" — split on "\n"
+  portfolioIntro: string;
+  portfolio: Project[];
+  portfolioPrev: string; // prev button aria-label
+  portfolioNext: string; // next button aria-label
+  portfolioCaseStudy: string; // case-study link label (arrow baked in per dir)
 
   // Menu overlay
   menuLinks: string[];
@@ -218,6 +235,40 @@ export const en: Messages = {
 
   ctaEyebrow: "Let's Talk",
   ctaHeading: "Ready to Shape\nYour Transformation?",
+
+  portfolioTitle: "Latest\nPortfolio",
+  portfolioIntro:
+    "A snapshot of our newest engagements — from reality-capture programs to city-scale digital twins.",
+  // PLACEHOLDER projects — pending client (Reina) confirmation of the real 3 newest. Do not treat as final.
+  portfolio: [
+    {
+      client: "ADNOC",
+      country: "UAE",
+      title: "Pipeline Inspection Program",
+      stat: "40%",
+      statLabel: "Cost reduction vs. traditional inspection",
+      tags: ["Reality Capture", "GIS", "Drone Intelligence"],
+    },
+    {
+      client: "NEOM",
+      country: "KSA",
+      title: "Smart City Command Platform",
+      stat: "6M+",
+      statLabel: "IoT signals processed per day",
+      tags: ["Digital Twin", "Command & Control", "Predictive Ops"],
+    },
+    {
+      client: "Royal Commission",
+      country: "KSA",
+      title: "Industrial Zone Digital Twin",
+      stat: "24/7",
+      statLabel: "Live 4D operational visibility",
+      tags: ["Digital Twin", "LiDAR", "Spatial Analytics"],
+    },
+  ],
+  portfolioPrev: "Previous project",
+  portfolioNext: "Next project",
+  portfolioCaseStudy: "VIEW CASE STUDY →",
 
   menuLinks: [
     "Home",
@@ -387,6 +438,40 @@ export const ar: Messages = {
 
   ctaEyebrow: "لنتحدّث",
   ctaHeading: "هل أنت مستعدّ\nلبدء التحوّل؟",
+
+  portfolioTitle: "أحدث\nالأعمال",
+  portfolioIntro:
+    "لمحة عن أحدث مشاريعنا — من برامج التقاط الواقع إلى التوائم الرقمية على مستوى المدينة.",
+  // مشاريع مبدئية — بانتظار تأكيد العميل للمشاريع الثلاثة الأحدث؛ ليست نهائية.
+  portfolio: [
+    {
+      client: "أدنوك",
+      country: "الإمارات",
+      title: "برنامج فحص خطوط الأنابيب",
+      stat: "40%",
+      statLabel: "خفض التكلفة مقارنةً بالفحص التقليدي",
+      tags: ["التقاط الواقع", "نظم المعلومات الجغرافية", "ذكاء الطائرات المسيّرة"],
+    },
+    {
+      client: "نيوم",
+      country: "السعودية",
+      title: "منصة قيادة المدينة الذكية",
+      stat: "+6M",
+      statLabel: "إشارة إنترنت أشياء تُعالَج يومياً",
+      tags: ["التوأم الرقمي", "القيادة والتحكّم", "العمليات التنبؤية"],
+    },
+    {
+      client: "الهيئة الملكية",
+      country: "السعودية",
+      title: "التوأم الرقمي للمنطقة الصناعية",
+      stat: "24/7",
+      statLabel: "رؤية تشغيلية رباعية الأبعاد آنية",
+      tags: ["التوأم الرقمي", "الليدار", "التحليلات المكانية"],
+    },
+  ],
+  portfolioPrev: "المشروع السابق",
+  portfolioNext: "المشروع التالي",
+  portfolioCaseStudy: "عرض دراسة الحالة ←",
 
   menuLinks: [
     "الرئيسية",
