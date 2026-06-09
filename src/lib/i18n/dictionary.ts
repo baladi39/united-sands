@@ -40,6 +40,14 @@ export type SaudiPillar = {
   copy: string; // one supporting sentence
 };
 
+export type TeamMember = {
+  name: string; // person name (kept identical EN/AR)
+  role: string; // localized title
+  bio: string; // revealed on "Read Bio"
+  linkedin: string; // profile URL ("#" placeholder until provided)
+  initials: string; // monogram for the photo placeholder
+};
+
 export type Messages = {
   // Nav + chrome
   navRequest: string;
@@ -105,6 +113,16 @@ export type Messages = {
   saudiPillars: SaudiPillar[];
   saudiPrev: string; // prev button aria-label
   saudiNext: string; // next button aria-label
+
+  // Team (Part 11 — "THE TEAM")
+  teamEyebrow: string; // small tag, e.g. "THE TEAM"
+  teamTitle: string; // "The\nTeam" — split on "\n"
+  teamIntro: string;
+  team: TeamMember[];
+  teamReadBio: string; // expand button label
+  teamPrev: string; // prev button aria-label
+  teamNext: string; // next button aria-label
+  teamLinkedin: string; // aria base, composed with the member name
 
   // Menu overlay
   menuLinks: string[];
@@ -312,6 +330,53 @@ export const en: Messages = {
   ],
   saudiPrev: "Previous reason",
   saudiNext: "Next reason",
+
+  teamEyebrow: "The Team",
+  teamTitle: "The\nTeam",
+  teamIntro:
+    "A leadership team that pairs deep technical depth with on-the-ground knowledge of the Kingdom — the people building United Sands.",
+  // PLACEHOLDER team — names, roles, bios, photos, and LinkedIn URLs pending client (Reina). Do not treat as final.
+  team: [
+    {
+      name: "Faisal Al-Otaibi",
+      role: "Chief Executive Officer",
+      bio: "Two decades steering large-scale digital and infrastructure programs across the Gulf, with a focus on aligning delivery to Vision 2030 outcomes.",
+      linkedin: "#",
+      initials: "FA",
+    },
+    {
+      name: "Lina Haddad",
+      role: "Chief Technology Officer",
+      bio: "Leads the engineering practice across digital twins, geospatial platforms, and command-and-control systems, turning research into production at city scale.",
+      linkedin: "#",
+      initials: "LH",
+    },
+    {
+      name: "Omar Nasser",
+      role: "Head of Geospatial Intelligence",
+      bio: "Brings reality-capture, LiDAR, and GIS expertise from field-grade inspection programs to nationwide spatial-data initiatives.",
+      linkedin: "#",
+      initials: "ON",
+    },
+    {
+      name: "Sara Al-Qahtani",
+      role: "Director of Strategy",
+      bio: "Bridges client ambition and technical roadmaps, shaping engagements from first conversation through long-term transformation.",
+      linkedin: "#",
+      initials: "SQ",
+    },
+    {
+      name: "Yousef Karim",
+      role: "Head of Smart City Solutions",
+      bio: "Designs unified city data platforms and urban mobility systems, with a track record delivering integrated operations centres.",
+      linkedin: "#",
+      initials: "YK",
+    },
+  ],
+  teamReadBio: "Read Bio",
+  teamPrev: "Previous team members",
+  teamNext: "Next team members",
+  teamLinkedin: "on LinkedIn",
 
   menuLinks: [
     "Home",
@@ -545,6 +610,53 @@ export const ar: Messages = {
   ],
   saudiPrev: "السبب السابق",
   saudiNext: "السبب التالي",
+
+  teamEyebrow: "الفريق",
+  teamTitle: "الفريق",
+  teamIntro:
+    "فريق قيادي يجمع بين العمق التقني والمعرفة الميدانية بالمملكة — الأشخاص الذين يبنون الرمال المتحدة.",
+  // فريق مبدئي — الأسماء والمناصب والسير والصور وروابط لينكدإن بانتظار العميل؛ ليست نهائية.
+  team: [
+    {
+      name: "Faisal Al-Otaibi",
+      role: "الرئيس التنفيذي",
+      bio: "عقدان من قيادة البرامج الرقمية والبنية التحتية الكبرى في الخليج، مع تركيز على مواءمة التنفيذ مع مستهدفات رؤية 2030.",
+      linkedin: "#",
+      initials: "FA",
+    },
+    {
+      name: "Lina Haddad",
+      role: "رئيسة التقنية",
+      bio: "تقود الممارسة الهندسية عبر التوائم الرقمية والمنصّات الجغرافية وأنظمة القيادة والتحكّم، محوّلةً البحث إلى إنتاجٍ على مستوى المدينة.",
+      linkedin: "#",
+      initials: "LH",
+    },
+    {
+      name: "Omar Nasser",
+      role: "رئيس الذكاء الجغرافي المكاني",
+      bio: "يجلب خبرة التقاط الواقع والليدار ونظم المعلومات الجغرافية من برامج الفحص الميدانية إلى مبادرات البيانات المكانية الوطنية.",
+      linkedin: "#",
+      initials: "ON",
+    },
+    {
+      name: "Sara Al-Qahtani",
+      role: "مديرة الاستراتيجية",
+      bio: "تربط بين طموح العميل وخرائط الطريق التقنية، وتصوغ المشاريع من أول حوار حتى التحول طويل الأمد.",
+      linkedin: "#",
+      initials: "SQ",
+    },
+    {
+      name: "Yousef Karim",
+      role: "رئيس حلول المدن الذكية",
+      bio: "يصمّم منصّات بيانات المدينة الموحّدة وأنظمة التنقّل الحضري، بسجلٍّ حافل في تسليم مراكز عمليات متكاملة.",
+      linkedin: "#",
+      initials: "YK",
+    },
+  ],
+  teamReadBio: "اقرأ السيرة",
+  teamPrev: "أعضاء الفريق السابقون",
+  teamNext: "أعضاء الفريق التاليون",
+  teamLinkedin: "على لينكدإن",
 
   menuLinks: [
     "الرئيسية",

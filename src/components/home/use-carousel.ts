@@ -7,10 +7,14 @@ import type { PanInfo } from "framer-motion";
  * Shared next/previous carousel logic for the homepage's click + keyboard +
  * drag carousels (Part 10 "Why Being Saudi-Born Matters", Part 11 Team).
  *
- * Pure logic — it owns the wrapped index and hands back the handlers + the
- * `dragProps` to spread onto the animated slide. Each section keeps its own
- * markup. Everything that has a visual left/right (arrow keys, slide offset,
- * drag) mirrors under RTL.
+ * Pure logic — it owns the index and hands back the handlers + the `dragProps`
+ * to spread onto the animated slide. Each section keeps its own markup.
+ * Everything that has a visual left/right (arrow keys, slide offset, drag)
+ * mirrors under RTL.
+ *
+ * `wrap` (default true) → index wraps modulo `count`, for a one-at-a-time
+ * carousel (Part 10). `wrap: false` → index clamps to `[0, count-1]`, for a
+ * sliding track where wrapping past the end would jump jarringly (Part 11).
  */
 
 type Dir = "ltr" | "rtl";
@@ -38,18 +42,26 @@ export type CarouselApi = {
 
 export function useCarousel(
   count: number,
-  { dir, reduce }: { dir: Dir; reduce: boolean | null }
+  { dir, reduce, wrap = true }: { dir: Dir; reduce: boolean | null; wrap?: boolean }
 ): CarouselApi {
   const [index, setIndex] = useState(0);
 
   const prev = useCallback(
-    () => setIndex((i) => (i - 1 + count) % count),
-    [count]
+    () =>
+      setIndex((i) => (wrap ? (i - 1 + count) % count : Math.max(0, i - 1))),
+    [count, wrap]
   );
-  const next = useCallback(() => setIndex((i) => (i + 1) % count), [count]);
+  const next = useCallback(
+    () =>
+      setIndex((i) => (wrap ? (i + 1) % count : Math.min(count - 1, i + 1))),
+    [count, wrap]
+  );
   const goTo = useCallback(
-    (i: number) => setIndex(((i % count) + count) % count),
-    [count]
+    (i: number) =>
+      setIndex(
+        wrap ? ((i % count) + count) % count : Math.min(count - 1, Math.max(0, i))
+      ),
+    [count, wrap]
   );
 
   // Arrow keys follow VISUAL direction, so they invert under RTL.
