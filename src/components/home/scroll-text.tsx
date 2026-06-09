@@ -13,11 +13,12 @@ import { useCircleWaypoint } from "./gradient-circle-context";
 /**
  * Part 3 — Scroll Text Animation (between sections).
  *
- * A single statement that drifts gently sideways as the user scrolls, sized so
- * the whole sentence stays readable (spec ref: relm.co). Copy + flat brand
- * purple match the client PSB (`in_between` artboard). This is also where the
- * gradient circle first appears: the section registers a waypoint so the circle
- * fades in and settles behind the text.
+ * The `/demo` sweep, made readable: two oversized keyword bands drift sideways
+ * in opposite directions (clipping at the edges is intentional — they read as
+ * fragments) while the actual brand statement sits centred *between* them,
+ * fully legible and barely moving, so the reader can finish the sentence at
+ * rest. This is also where the gradient circle first appears: the section
+ * registers a waypoint so the circle settles behind the text.
  */
 export default function ScrollText() {
   const { t, dir } = useLang();
@@ -29,42 +30,68 @@ export default function ScrollText() {
     offset: ["start end", "end start"],
   });
 
-  // Subtle, bounded drift — the whole sentence stays on screen the entire time
-  // (not a marquee). Mirror the direction in RTL so it reads naturally either way.
-  const range: [string, string] =
+  // Large opposing drifts give the framing bands a parallax marquee feel; the
+  // centre statement only nudges ±5% so it stays readable. Mirror in RTL so
+  // each band still enters from the natural reading side.
+  const rangeTop: [string, string] =
+    dir === "rtl" ? ["-20%", "60%"] : ["20%", "-60%"];
+  const rangeBottom: [string, string] =
+    dir === "rtl" ? ["40%", "-30%"] : ["-40%", "30%"];
+  const rangeStatement: [string, string] =
     dir === "rtl" ? ["-5%", "5%"] : ["5%", "-5%"];
-  const x = useTransform(scrollYProgress, [0, 1], range);
+  const xTop = useTransform(scrollYProgress, [0, 1], rangeTop);
+  const xBottom = useTransform(scrollYProgress, [0, 1], rangeBottom);
+  const xStatement = useTransform(scrollYProgress, [0, 1], rangeStatement);
 
-  // The gradient sphere is this section's visual anchor — in the PSB the same
-  // statement sits over the purple sphere so the whitespace reads as composed,
-  // not empty. Bring it well forward (brighter + larger), offset behind/right
-  // of the sentence, to replicate that on the dark theme.
+  // The gradient sphere is this section's visual anchor — bring it well forward
+  // (brighter + larger), offset behind/right of the text, to echo the PSB.
   useCircleWaypoint(ref, { x: 22, y: -6, scale: 1.35, opacity: 0.82 });
 
   return (
     <section
       ref={ref}
-      className="relative flex flex-col items-center justify-center overflow-hidden py-24 md:py-36"
+      className="relative flex flex-col items-center overflow-hidden py-32 md:py-44"
     >
+      {/* Top band — bright gold→purple sweep (decorative; reads as fragments). */}
+      <motion.div
+        aria-hidden
+        style={reduce ? undefined : { x: xTop }}
+        className="self-stretch whitespace-nowrap"
+      >
+        <span
+          className="font-inter text-[12vw] font-light leading-none tracking-tight"
+          style={{
+            background:
+              "linear-gradient(90deg, #ffffff 0%, #f2d680 40%, #9b59b6 90%)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+          }}
+        >
+          {t.scrollTagline}
+        </span>
+      </motion.div>
+
+      {/* Centre — the actual statement, kept fully legible at rest. */}
       <motion.p
-        // Reduced motion: render static + centred, fully legible.
-        style={reduce ? undefined : { x }}
-        // Wraps on small screens; on md+ it's one line sized to stay fully
-        // visible (~75vw) with room for the drift.
-        className="relative z-10 mx-auto max-w-[92vw] text-center font-inter text-[2rem] font-bold uppercase leading-tight text-[var(--purple-accent)] md:whitespace-nowrap md:text-[3.4vw] md:leading-none"
+        style={reduce ? undefined : { x: xStatement }}
+        className="relative z-10 my-10 max-w-[92vw] text-center font-inter text-[2rem] font-bold uppercase leading-tight text-[var(--purple-accent)] md:my-14 md:whitespace-nowrap md:text-[3.2vw] md:leading-none"
       >
         {t.scrollStatement}
       </motion.p>
 
-      {/* Faint scroll cue — signals "this is a transition, keep going" so the
-          breather doesn't read as a broken/empty screen. */}
+      {/* Bottom band — faint stroked keyword sweep (decorative). */}
       <motion.div
         aria-hidden
-        className="relative z-10 mt-14 h-9 w-px bg-gradient-to-b from-[var(--purple-light)]/40 to-transparent"
-        style={{ transformOrigin: "top" }}
-        animate={reduce ? undefined : { scaleY: [0.5, 1, 0.5], opacity: [0.2, 0.6, 0.2] }}
-        transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
-      />
+        style={reduce ? undefined : { x: xBottom }}
+        className="self-stretch whitespace-nowrap"
+      >
+        <span
+          className="font-inter text-[10vw] font-light leading-none tracking-tight text-white/15"
+          style={{ WebkitTextStroke: "1px rgba(212, 168, 83, 0.3)" }}
+        >
+          {t.scrollKeywords}
+        </span>
+      </motion.div>
     </section>
   );
 }
