@@ -98,7 +98,7 @@ export default function Team() {
   const [titleLead, titleBrand] = t.teamTitle.split("\n");
 
   return (
-    <section ref={sectionRef} className="relative z-10 px-6 py-32 md:py-48">
+    <section id="team" ref={sectionRef} className="relative z-10 px-6 py-32 md:py-48">
       <div className="mx-auto max-w-6xl">
         {/* Header — title on the leading side, nav on the trailing side */}
         <div className="mb-12 flex items-end justify-between gap-6">

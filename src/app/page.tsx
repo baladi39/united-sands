@@ -15,6 +15,7 @@ import CtaMorph from "@/components/home/cta-morph";
 import Portfolio from "@/components/home/portfolio";
 import SaudiBorn from "@/components/home/saudi-born";
 import Team from "@/components/home/team";
+import Strategy from "@/components/home/strategy";
 import GradientCircle from "@/components/home/gradient-circle";
 import { GradientCircleProvider } from "@/components/home/gradient-circle-context";
 
@@ -49,6 +50,7 @@ export default function Home() {
           <Portfolio />
           <SaudiBorn />
           <Team />
+          <Strategy />
         </main>
       </GradientCircleProvider>
     </LenisProvider>
