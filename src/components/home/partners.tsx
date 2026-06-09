@@ -25,12 +25,12 @@ export default function Partners() {
   const [titleLead, titleBrand] = t.partnersTitle.split("\n");
 
   return (
-    <section ref={ref} className="relative z-10 px-6 py-32 md:py-48">
+    <section id="partners" ref={ref} className="relative z-10 px-6 py-32 md:py-48">
       <div className="mx-auto max-w-6xl text-center">
-        <p className="mb-5 font-oswald text-xs uppercase tracking-[0.3em] text-[var(--gold-light)]/80">
+        <p className="mb-5 font-inter text-xs uppercase tracking-[0.3em] text-[var(--gold-light)]/80">
           [ {t.partnersEyebrow} ]
         </p>
-        <h2 className="mx-auto max-w-3xl font-oswald text-3xl font-light leading-[1.05] tracking-tight text-white md:text-5xl">
+        <h2 className="mx-auto max-w-3xl font-inter text-3xl font-light leading-[1.05] tracking-tight text-white md:text-5xl">
           {titleLead}
           <br />
           <span
@@ -56,7 +56,7 @@ export default function Partners() {
             >
               <span
                 aria-hidden="true"
-                className="font-oswald text-sm tracking-[0.3em] text-white/25"
+                className="font-inter text-sm tracking-[0.3em] text-white/25"
               >
                 LOGO
               </span>

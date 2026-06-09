@@ -5,6 +5,10 @@ import { useRef } from "react";
 import Link from "next/link";
 import { useLang } from "@/lib/i18n/language-context";
 
+// Focal point of the zoom — the arch's mouth in the source frame. Both the
+// scene and the arch plane scale from here so the zoom drives into the portal.
+const FOCAL = "50% 48%";
+
 export default function Hero() {
   const { t } = useLang();
 
@@ -22,17 +26,26 @@ export default function Hero() {
     offset: ["start start", "end end"],
   });
 
-  // Transform-bound scroll values (scale / y) scrub reliably.
-  const bgScale = useTransform(scrollYProgress, [0, 1], [1, 2.4]);
+  // The hero visual is the real PSB artwork split into two planes that share an
+  // origin on the arch's mouth (FOCAL). The scene zooms gently while the golden
+  // arch zooms much faster and fades — so you appear to fly through the portal.
+  // (The PSB arch is a flat bake, so it was masked out of the scene into its own
+  // transparent layer; the scene has the arch removed to avoid a ghost double.)
+  const sceneScale = useTransform(scrollYProgress, [0, 1], [1, 1.85]);
+  const archScale = useTransform(scrollYProgress, [0, 1], [1, 4.6]);
   const contentY = useTransform(scrollYProgress, [0, 1], [0, -120]);
 
-  // Opacity scrubbing via MotionValue is unreliable here, so drive the three
-  // fades imperatively from the scroll progress instead.
+  // Opacity scrubbing via MotionValue is unreliable here, so drive the fades
+  // imperatively from the scroll progress instead.
+  const archRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const navyRef = useRef<HTMLDivElement>(null);
   const indicatorRef = useRef<HTMLDivElement>(null);
 
   useMotionValueEvent(scrollYProgress, "change", (v) => {
+    if (archRef.current)
+      // Arch rushes past the viewer and dissolves before the navy crossfade.
+      archRef.current.style.opacity = String(Math.max(0, 1 - v / 0.62));
     if (contentRef.current)
       contentRef.current.style.opacity = String(Math.max(0, 1 - v / 0.55));
     if (navyRef.current)
@@ -46,16 +59,30 @@ export default function Hero() {
   return (
     <section ref={heroRef} id="top" className="relative h-[220vh]">
       <div className="sticky top-0 h-screen w-full overflow-hidden">
-        {/* Cosmic golden archway — the signature hero visual */}
+        {/* Cosmic scene (arch removed) — slow zoom */}
         <motion.div
           className="absolute inset-0"
           style={{
-            scale: bgScale,
-            transformOrigin: "50% 46%",
-            backgroundImage: "url(/assets/hero-arch.webp)",
+            scale: sceneScale,
+            transformOrigin: FOCAL,
+            backgroundImage: "url(/assets/hero-scene.webp)",
             backgroundSize: "cover",
-            backgroundPosition: "center 46%",
-            filter: "brightness(0.9) saturate(1.05)",
+            backgroundPosition: "center 48%",
+            filter: "brightness(0.92) saturate(1.05)",
+          }}
+        />
+        {/* Golden arch — fast zoom + fade, flying past the viewer */}
+        <motion.div
+          ref={archRef}
+          className="absolute inset-0"
+          style={{
+            scale: archScale,
+            transformOrigin: FOCAL,
+            backgroundImage: "url(/assets/hero-arch-glow.webp)",
+            backgroundSize: "cover",
+            backgroundPosition: "center 48%",
+            opacity: 1,
+            willChange: "transform, opacity",
           }}
         />
 
@@ -104,15 +131,11 @@ export default function Hero() {
             {t.heroEyebrow}
           </p>
           <h1
-            className="font-inter text-5xl font-bold leading-[0.95] whitespace-pre-line md:text-7xl lg:text-8xl"
+            className="font-inter text-5xl font-bold leading-[0.95] whitespace-pre-line text-white md:text-7xl lg:text-8xl"
             style={{
-              // White→gold only (PSB hero is solid white Inter-Bold). Keeping a
-              // subtle gold fade for brand flair, but dropping the purple bottom
-              // stop that tanked contrast over the bright archway.
-              background:
-                "linear-gradient(180deg, #ffffff 0%, #ffffff 52%, #f2d680 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
+              // PSB hero title is solid white Inter-Bold. Soft shadow keeps it
+              // legible across the bright arch as it zooms past.
+              textShadow: "0 2px 40px rgba(13,10,26,0.55)",
             }}
           >
             {t.heroHeadline}

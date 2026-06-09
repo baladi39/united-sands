@@ -88,6 +88,8 @@ export type Messages = {
 
   // Scroll text (Part 3 — between-sections statement)
   scrollStatement: string;
+  scrollTagline: string; // bright top marquee band (· separated)
+  scrollKeywords: string; // faint bottom marquee band (· separated)
 
   // Why Choose / Stats (Part 4)
   statsTitle: string; // "Why Choose\nUnited Sands?" — also the carousel aria-label
@@ -236,6 +238,8 @@ export const en: Messages = {
   scrollHint: "SCROLL TO DISCOVER",
 
   scrollStatement: "The future doesn't happen to us. We design it.",
+  scrollTagline: "SHAPING THE FUTURE · ENGINEERING TOMORROW",
+  scrollKeywords: "SMART CITIES · DIGITAL TWINS · GEOSPATIAL INTELLIGENCE",
 
   statsTitle: "Why Choose\nUnited Sands?",
   statsTagline:
@@ -527,13 +531,12 @@ export const en: Messages = {
 
   menuLinks: [
     "Home",
-    "Who We Are",
-    "Approach",
-    "Services",
     "Sectors",
+    "Services",
     "Portfolio",
+    "Who We Are",
     "Partners",
-    "Contact Us",
+    "Contact",
   ],
   email: "info@unitedsands.co",
 
@@ -610,6 +613,8 @@ export const ar: Messages = {
   scrollHint: "مرّر للاكتشاف",
 
   scrollStatement: "المستقبل لا يحدث لنا، بل نُصمّمه.",
+  scrollTagline: "نَصنع المستقبل · نُهندس الغد",
+  scrollKeywords: "المدن الذكية · التوائم الرقمية · الذكاء الجغرافي المكاني",
 
   statsTitle: "لماذا تختار\nالرمال المتحدة؟",
   statsTagline: "قلبٌ سعودي بنبضٍ عالمي. نحن مُكاملو المدن الذكية للغد.",
@@ -893,11 +898,10 @@ export const ar: Messages = {
 
   menuLinks: [
     "الرئيسية",
-    "من نحن",
-    "منهجيتنا",
-    "الخدمات",
     "القطاعات",
+    "الخدمات",
     "الأعمال",
+    "من نحن",
     "الشركاء",
     "تواصل معنا",
   ],

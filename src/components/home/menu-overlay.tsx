@@ -16,20 +16,28 @@ const SOCIALS = [
 ];
 
 // Scroll target for each menu link, index-matched to `dictionary.ts` menuLinks
-// (EN + AR share this order). "Approach" and "Services" intentionally share the
-// Services section. Keep in sync if menuLinks order changes.
+// (EN + AR share this order). The order mirrors the on-page scroll order so the
+// menu reads top-to-bottom like the homepage. Keep in sync if menuLinks order
+// changes.
 // "#…" entries smooth-scroll to a homepage section; "/…" entries navigate to a
 // route. Portfolio points at the case-studies grid (its own inner page).
 const MENU_TARGETS = [
   "#top", // Home
-  "#who-we-are", // Who We Are
-  "#services", // Approach
-  "#services", // Services
   "#sectors", // Sectors
+  "#services", // Services
   "/case-studies", // Portfolio
+  "#who-we-are", // Who We Are
   "#partners", // Partners
-  "#contact", // Contact Us
+  "#contact", // Contact
 ];
+
+// Sectors scatters its cards at the section top and gathers them into the grid
+// as you scroll, reaching the assembled layout at scroll progress 0.6 (see
+// END_POSITIONS / useTransform ranges in sectors.tsx). Jumping to the section
+// top lands on the scattered start; we instead land just past the gather point
+// so the cards read as already assembled. Mobile renders a plain static grid, so
+// this only applies at the md+ parallax breakpoint (Tailwind md = 768px).
+const SECTORS_GATHER_PROGRESS = 0.62;
 
 const container = {
   hidden: {},
@@ -63,16 +71,33 @@ export default function MenuOverlay({
       window as unknown as {
         lenis?: {
           start: () => void;
-          scrollTo: (t: string, opts?: { offset?: number }) => void;
+          scrollTo: (t: string | number, opts?: { offset?: number }) => void;
         };
       }
     ).lenis;
+
+    // Sectors: land at the gathered state rather than the scattered top. Convert
+    // the section anchor to an absolute scroll position partway through the tall
+    // stage (top + gatherProgress × scrollable height).
+    let dest: string | number = target;
+    if (target === "#sectors") {
+      const el = document.getElementById("sectors");
+      const isDesktop = window.matchMedia("(min-width: 768px)").matches;
+      if (el && isDesktop) {
+        const elTop = el.getBoundingClientRect().top + window.scrollY;
+        dest = elTop + SECTORS_GATHER_PROGRESS * (el.offsetHeight - window.innerHeight);
+      }
+    }
+    const isOffset = typeof dest === "string";
+
     if (lenis) {
       lenis.start();
-      lenis.scrollTo(target, { offset: -20 });
+      lenis.scrollTo(dest, isOffset ? { offset: -20 } : undefined);
+    } else if (typeof dest === "number") {
+      window.scrollTo({ top: dest, behavior: "smooth" });
     } else {
       document
-        .querySelector(target)
+        .querySelector(dest)
         ?.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };

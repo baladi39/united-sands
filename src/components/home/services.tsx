@@ -73,6 +73,7 @@ export default function Services() {
 
   return (
     <section
+      id="services"
       ref={ref}
       className="relative z-10 overflow-hidden px-6 py-32 md:py-48"
     >
@@ -90,10 +91,10 @@ export default function Services() {
       <div className="relative z-10 mx-auto max-w-6xl">
         {/* Header */}
         <div className="mx-auto max-w-2xl text-center">
-          <p className="mb-5 font-oswald text-xs uppercase tracking-[0.35em] text-[var(--gold-light)]/80">
+          <p className="mb-5 font-inter text-xs uppercase tracking-[0.35em] text-[var(--gold-light)]/80">
             [ {t.servicesEyebrow} ]
           </p>
-          <h2 className="font-oswald text-4xl font-light leading-[1.02] tracking-tight text-white md:text-6xl">
+          <h2 className="font-inter text-4xl font-light leading-[1.02] tracking-tight text-white md:text-6xl">
             {lead}
             <br />
             <span
@@ -106,7 +107,7 @@ export default function Services() {
               {brand}
             </span>
           </h2>
-          <p className="mt-6 font-roboto text-sm leading-relaxed text-white/70 md:text-base">
+          <p className="mt-6 font-inter text-sm leading-relaxed text-white/70 md:text-base">
             {t.servicesIntro}
           </p>
         </div>
@@ -133,7 +134,7 @@ export default function Services() {
                   <span className="text-[var(--gold-light)]">
                     <ServiceIcon index={i} />
                   </span>
-                  <span className="flex-1 font-oswald text-base uppercase leading-snug tracking-[0.12em] text-white/90">
+                  <span className="flex-1 font-inter text-base uppercase leading-snug tracking-[0.12em] text-white/90">
                     {s.name}
                   </span>
                   <svg
@@ -169,7 +170,7 @@ export default function Services() {
                       }
                       className="overflow-hidden"
                     >
-                      <p className="pt-4 font-roboto text-sm leading-relaxed text-white/65">
+                      <p className="pt-4 font-inter text-sm leading-relaxed text-white/65">
                         {s.description}
                       </p>
                       <div className="mt-4 h-px w-10 bg-gradient-to-r from-[var(--gold)] to-transparent" />
@@ -188,7 +189,7 @@ export default function Services() {
             type="button"
             onClick={openForm}
             data-request-project
-            className="rounded-full border border-[var(--gold)]/40 bg-[var(--gold)]/10 px-8 py-3 font-oswald text-xs uppercase tracking-[0.25em] text-[var(--gold-light)] transition hover:bg-[var(--gold)]/20"
+            className="rounded-full border border-[var(--gold)]/40 bg-[var(--gold)]/10 px-8 py-3 font-inter text-xs uppercase tracking-[0.25em] text-[var(--gold-light)] transition hover:bg-[var(--gold)]/20"
           >
             {t.navRequest}
           </button>
