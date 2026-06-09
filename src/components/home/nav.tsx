@@ -1,7 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import Image from "next/image";
+import { useState } from "react";
 import { useLang } from "@/lib/i18n/language-context";
 import { useRequestProject } from "@/lib/request-project-context";
 import LanguageToggle from "@/components/language-toggle";
@@ -16,9 +17,27 @@ export default function Nav({
   const { t } = useLang();
   const { openForm } = useRequestProject();
 
+  // Transparent over the hero, frosted once it scrolls past. The hero (#top) is
+  // 220vh with a 100vh sticky inner, so it hands off to the content below at
+  // heroHeight − viewport of scroll. The hero ends in a navy crossfade, so the
+  // frost fades in over flat navy and the handoff is seamless.
+  const { scrollY } = useScroll();
+  const [scrolled, setScrolled] = useState(false);
+  useMotionValueEvent(scrollY, "change", (y) => {
+    const hero = document.getElementById("top");
+    const threshold = hero
+      ? hero.offsetHeight - window.innerHeight
+      : window.innerHeight;
+    setScrolled(y > threshold);
+  });
+
   return (
     <motion.nav
-      className="fixed inset-x-0 top-0 z-50 flex items-center justify-between border-b border-white/10 bg-[var(--background)]/40 px-6 py-5 backdrop-blur-xl backdrop-saturate-150 md:px-10"
+      className={`fixed inset-x-0 top-0 z-50 flex items-center justify-between border-b px-6 py-5 transition-[background-color,border-color,backdrop-filter] duration-500 ease-out md:px-10 ${
+        scrolled
+          ? "border-white/10 bg-[var(--background)]/40 backdrop-blur-xl backdrop-saturate-150"
+          : "border-transparent bg-transparent backdrop-blur-none backdrop-saturate-100"
+      }`}
       initial={{ y: -80, opacity: 0 }}
       animate={show ? { y: 0, opacity: 1 } : { y: -80, opacity: 0 }}
       transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: show ? 0.3 : 0 }}
