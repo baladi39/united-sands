@@ -155,7 +155,7 @@ export default function Hero() {
         {/* Scroll indicator */}
         <div
           ref={indicatorRef}
-          className="absolute bottom-10 left-1/2 z-10 -translate-x-1/2 flex flex-col items-center gap-2"
+          className="absolute bottom-10 left-1/2 z-10 -translate-x-1/2 flex flex-col items-center gap-2 [@media(max-height:600px)]:hidden"
           style={{ opacity: 1 }}
         >
           <span className="text-[10px] tracking-[0.4em] text-white/50 font-inter">
