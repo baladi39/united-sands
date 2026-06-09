@@ -130,6 +130,15 @@ export type Messages = {
   strategyBody: string;
   strategyCta: string; // scrolls to the Part 11 team carousel
 
+  // Partners + Contact finale (Part 13 — circle-morph finale)
+  partnersEyebrow: string; // rendered bracketed
+  partnersTitle: string; // "Strategic Alliances &\nGlobal Technology Partners"
+  contactEyebrow: string; // rendered bracketed
+  contactTitle: string; // big gradient heading, "Want to talk?"
+  contactAddress: string;
+  contactPhone: string; // display string; tel: href derived in the component
+  contactRights: string; // copyright line tail, e.g. "All rights reserved."
+
   // Menu overlay
   menuLinks: string[];
   email: string;
@@ -389,6 +398,14 @@ export const en: Messages = {
   strategyBody:
     "Success at United Sands is never accidental—it is the result of a unified vision. Our founding team works in lockstep with a formidable network of Limited Partners and advisors from the government and defense sectors to turn complex logistics into seamless execution. With decades of shared history at the helm, we provide the strategic depth that ensures every project under the United Sands umbrella is built to last.",
   strategyCta: "Meet the rest of the team",
+
+  partnersEyebrow: "Powering Progress Together",
+  partnersTitle: "Strategic Alliances &\nGlobal Technology Partners",
+  contactEyebrow: "Contact Us",
+  contactTitle: "Want to talk?",
+  contactAddress: "Anas Ibn Malik Rd, Almalqa, Riyadh 13521, Saudi Arabia",
+  contactPhone: "00966 059 915 7370",
+  contactRights: "All rights reserved.",
 
   menuLinks: [
     "Home",
@@ -675,6 +692,14 @@ export const ar: Messages = {
   strategyBody:
     "النجاح في الرمال المتحدة ليس صدفة، بل ثمرة رؤية موحّدة. يعمل فريقنا المؤسّس جنباً إلى جنب مع شبكة قوية من الشركاء المحدودين والمستشارين من القطاعين الحكومي والدفاعي لتحويل أعقد العمليات اللوجستية إلى تنفيذ سلس. وبعقودٍ من التاريخ المشترك في القيادة، نوفّر العمق الاستراتيجي الذي يضمن أن كل مشروع تحت مظلة الرمال المتحدة مبنيٌّ ليدوم.",
   strategyCta: "تعرّف على بقية الفريق",
+
+  partnersEyebrow: "نصنع التقدّم معاً",
+  partnersTitle: "تحالفات استراتيجية\nوشركاء تقنيون عالميون",
+  contactEyebrow: "تواصل معنا",
+  contactTitle: "هل تريد التحدّث؟",
+  contactAddress: "طريق أنس بن مالك، الملقا، الرياض 13521، المملكة العربية السعودية",
+  contactPhone: "00966 059 915 7370",
+  contactRights: "جميع الحقوق محفوظة.",
 
   menuLinks: [
     "الرئيسية",

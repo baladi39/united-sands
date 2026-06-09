@@ -16,6 +16,8 @@ import Portfolio from "@/components/home/portfolio";
 import SaudiBorn from "@/components/home/saudi-born";
 import Team from "@/components/home/team";
 import Strategy from "@/components/home/strategy";
+import Partners from "@/components/home/partners";
+import ContactFinale from "@/components/home/contact-finale";
 import GradientCircle from "@/components/home/gradient-circle";
 import { GradientCircleProvider } from "@/components/home/gradient-circle-context";
 
@@ -51,6 +53,8 @@ export default function Home() {
           <SaudiBorn />
           <Team />
           <Strategy />
+          <Partners />
+          <ContactFinale />
         </main>
       </GradientCircleProvider>
     </LenisProvider>
