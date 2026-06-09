@@ -35,6 +35,11 @@ export type Project = {
   tags: string[]; // capability tags
 };
 
+export type SaudiPillar = {
+  title: string; // differentiator name, e.g. "Deep Alignment with Vision 2030"
+  copy: string; // one supporting sentence
+};
+
 export type Messages = {
   // Nav + chrome
   navRequest: string;
@@ -92,6 +97,14 @@ export type Messages = {
   portfolioPrev: string; // prev button aria-label
   portfolioNext: string; // next button aria-label
   portfolioCaseStudy: string; // case-study link label (arrow baked in per dir)
+
+  // Saudi-Born (Part 10 — "Why Being Saudi-Born Matters")
+  saudiEyebrow: string; // small Vision-2030 tag
+  saudiTitle: string; // "Why Being\nSaudi-Born Matters" — split on "\n"
+  saudiIntro: string;
+  saudiPillars: SaudiPillar[];
+  saudiPrev: string; // prev button aria-label
+  saudiNext: string; // next button aria-label
 
   // Menu overlay
   menuLinks: string[];
@@ -269,6 +282,36 @@ export const en: Messages = {
   portfolioPrev: "Previous project",
   portfolioNext: "Next project",
   portfolioCaseStudy: "VIEW CASE STUDY →",
+
+  saudiEyebrow: "Vision 2030",
+  saudiTitle: "Why Being\nSaudi-Born Matters",
+  saudiIntro:
+    "Global capability is only half the equation. Being Saudi-born is the other — the local fluency, trust, and alignment that turn ambition into delivery on the ground.",
+  // PLACEHOLDER copy — pending client (Reina) confirmation. Do not treat as final.
+  saudiPillars: [
+    {
+      title: "Deep Alignment with Vision 2030",
+      copy: "Every engagement is engineered to advance the Kingdom's national goals — from Giga-Project delivery to the wider digital transformation agenda.",
+    },
+    {
+      title: "Fluent in Saudi Regulation",
+      copy: "We navigate local compliance, data sovereignty, and procurement frameworks natively, so projects move without regulatory friction.",
+    },
+    {
+      title: "Cultural & Stakeholder Intelligence",
+      copy: "Rooted in the local context, we read the stakeholders and decision dynamics that outside firms miss — earning trust faster.",
+    },
+    {
+      title: "Growing Saudi Talent",
+      copy: "We invest in Saudi engineers and data scientists, building lasting national capability rather than importing it.",
+    },
+    {
+      title: "Agility with Accountability",
+      copy: "Startup-speed delivery backed by enterprise-grade governance — we move fast and own the outcome.",
+    },
+  ],
+  saudiPrev: "Previous reason",
+  saudiNext: "Next reason",
 
   menuLinks: [
     "Home",
@@ -472,6 +515,36 @@ export const ar: Messages = {
   portfolioPrev: "المشروع السابق",
   portfolioNext: "المشروع التالي",
   portfolioCaseStudy: "عرض دراسة الحالة ←",
+
+  saudiEyebrow: "رؤية 2030",
+  saudiTitle: "لماذا يهمّ\nأن نكون سعوديي المنشأ",
+  saudiIntro:
+    "القدرة العالمية نصف المعادلة فقط، والنصف الآخر هو كوننا سعوديي المنشأ — الفهم المحلي والثقة والتوافق الذي يحوّل الطموح إلى إنجازٍ على أرض الواقع.",
+  // نصوص مبدئية — بانتظار تأكيد العميل؛ ليست نهائية.
+  saudiPillars: [
+    {
+      title: "توافق عميق مع رؤية 2030",
+      copy: "كل مشروع مهندَس لخدمة أهداف المملكة الوطنية — من إنجاز المشاريع العملاقة إلى أجندة التحول الرقمي الأوسع.",
+    },
+    {
+      title: "إلمام باللوائح السعودية",
+      copy: "نتعامل مع الامتثال المحلي وسيادة البيانات وأطر التوريد بطلاقة، لتسير المشاريع دون عوائق تنظيمية.",
+    },
+    {
+      title: "ذكاء ثقافي ومعرفة بأصحاب المصلحة",
+      copy: "متجذّرون في السياق المحلي، نقرأ أصحاب المصلحة وديناميكيات القرار التي تغفل عنها الشركات الخارجية — فنكسب الثقة أسرع.",
+    },
+    {
+      title: "تنمية الكفاءات السعودية",
+      copy: "نستثمر في المهندسين وعلماء البيانات السعوديين، فنبني قدرة وطنية دائمة بدل استيرادها.",
+    },
+    {
+      title: "مرونة مع مساءلة",
+      copy: "سرعة إنجازٍ كالشركات الناشئة مدعومة بحوكمةٍ بمستوى المؤسسات — نتحرك بسرعة ونتحمّل مسؤولية النتيجة.",
+    },
+  ],
+  saudiPrev: "السبب السابق",
+  saudiNext: "السبب التالي",
 
   menuLinks: [
     "الرئيسية",
