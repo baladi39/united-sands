@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useId, useRef, useState } from "react";
 import { useLang } from "@/lib/i18n/language-context";
@@ -71,8 +72,22 @@ export default function Services() {
   const [lead, brand] = t.servicesTitle.split("\n");
 
   return (
-    <section ref={ref} className="relative z-10 px-6 py-32 md:py-48">
-      <div className="mx-auto max-w-6xl">
+    <section
+      ref={ref}
+      className="relative z-10 overflow-hidden px-6 py-32 md:py-48"
+    >
+      {/* Businessman backdrop (PSB Group_20 services panel) under a dim overlay */}
+      <Image
+        src="/assets/services.webp"
+        alt=""
+        fill
+        sizes="100vw"
+        className="object-cover object-right"
+      />
+      <div className="absolute inset-0 bg-[#0d0a1a]/80" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#0d0a1a] via-[#0d0a1a]/75 to-[#0d0a1a]/45" />
+
+      <div className="relative z-10 mx-auto max-w-6xl">
         {/* Header */}
         <div className="mx-auto max-w-2xl text-center">
           <p className="mb-5 font-oswald text-xs uppercase tracking-[0.35em] text-[var(--gold-light)]/80">

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useRef } from "react";
 import { useLang } from "@/lib/i18n/language-context";
@@ -124,13 +125,22 @@ export default function SaudiBorn() {
               </button>
             </div>
 
-            {/* TODO: swap this abstract panel for the Saudi / Vision-2030 imagery
-                (/assets/saudi-2030.webp, dim overlay per Part 5) once Reina delivers it. */}
+            {/* Saudi / Vision-2030 cityscape (PSB Group_7) under a dim overlay,
+                with the pillar carousel riding on top. */}
             <div
               aria-live="polite"
               aria-atomic="true"
-              className="relative min-h-[320px] overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] p-8 backdrop-blur-sm md:p-12"
+              className="relative min-h-[320px] overflow-hidden rounded-2xl border border-white/10 p-8 backdrop-blur-sm md:p-12"
             >
+              <Image
+                src="/assets/saudi-2030.webp"
+                alt=""
+                fill
+                sizes="(min-width: 768px) 40vw, 90vw"
+                className="object-cover object-center"
+              />
+              <div className="absolute inset-0 bg-[#0d0a1a]/75" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0d0a1a] via-[#0d0a1a]/55 to-[#0d0a1a]/30" />
               <AnimatePresence mode="wait">
                 <motion.div
                   key={index}
@@ -141,7 +151,7 @@ export default function SaudiBorn() {
                   transition={
                     reduce ? { duration: 0.2 } : { duration: 0.5, ease: EASE }
                   }
-                  className="cursor-grab touch-pan-y active:cursor-grabbing"
+                  className="relative z-10 cursor-grab touch-pan-y active:cursor-grabbing"
                 >
                   {/* Faint position watermark — decorative imagery stand-in */}
                   <span

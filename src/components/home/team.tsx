@@ -11,6 +11,17 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 /** Gap between cards, in px — must match the `gap-6` (1.5rem) on the track. */
 const GAP = 24;
 
+/**
+ * Member photos by position (PSB freepik portraits). Any member without one
+ * (e.g. the 5th, pending the client's photo) falls back to the initials monogram.
+ */
+const PHOTOS = [
+  "/assets/team/faisal.webp",
+  "/assets/team/lina.webp",
+  "/assets/team/omar.webp",
+  "/assets/team/sara.webp",
+];
+
 /** Left-pointing chevron; flip horizontally with `rotate-180` for the other way. */
 function Chevron({ rotated }: { rotated: boolean }) {
   return (
@@ -183,12 +194,23 @@ export default function Team() {
                   className="shrink-0 grow-0 basis-full sm:basis-[calc((100%_-_24px)/2)] lg:basis-[calc((100%_-_48px)/3)]"
                 >
                   <div className="relative h-[440px] overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]">
-                    {/* Photo placeholder — TODO: swap for /assets/team/<slug>.webp (dim overlay per Part 5). */}
-                    <div className="absolute inset-0 grid place-items-center bg-gradient-to-br from-[var(--purple-accent)]/35 via-[#0d0a1a] to-[var(--gold)]/15">
-                      <span className="select-none font-oswald text-7xl font-light text-white/10">
-                        {m.initials}
-                      </span>
-                    </div>
+                    {/* PSB portrait, or the initials monogram when none is set. */}
+                    {PHOTOS[i] ? (
+                      <Image
+                        src={PHOTOS[i]}
+                        alt={m.name}
+                        fill
+                        sizes="(min-width: 1024px) 22rem, (min-width: 640px) 50vw, 100vw"
+                        className="object-cover object-top"
+                        draggable={false}
+                      />
+                    ) : (
+                      <div className="absolute inset-0 grid place-items-center bg-gradient-to-br from-[var(--purple-accent)]/35 via-[#0d0a1a] to-[var(--gold)]/15">
+                        <span className="select-none font-oswald text-7xl font-light text-white/10">
+                          {m.initials}
+                        </span>
+                      </div>
+                    )}
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0d0a1a] via-[#0d0a1a]/40 to-transparent" />
 
                     {/* Bottom content */}

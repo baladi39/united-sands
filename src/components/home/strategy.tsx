@@ -1,6 +1,15 @@
 "use client";
 
+import Image from "next/image";
 import { useLang } from "@/lib/i18n/language-context";
+
+/** The four founding-team portraits shown as the Part 12 collage (PSB). */
+const STRATEGY_PHOTOS = [
+  "/assets/team/faisal.webp",
+  "/assets/team/lina.webp",
+  "/assets/team/omar.webp",
+  "/assets/team/sara.webp",
+];
 
 /**
  * Part 12 — "Now Meet the Strategy".
@@ -73,12 +82,24 @@ export default function Strategy() {
             </button>
           </div>
 
-          {/* Feature image — TODO: swap for /assets/strategy.webp (founding-team
-              photo, dim overlay) once the client delivers it. */}
-          <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-white/10 md:aspect-auto md:h-[520px]">
-            <div className="absolute inset-0 bg-gradient-to-br from-[var(--purple-accent)]/40 via-[#0d0a1a] to-[var(--gold)]/15" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0d0a1a]/80 via-transparent to-transparent" />
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_30%,rgba(133,86,195,0.25),transparent_60%)]" />
+          {/* Founding-team collage (PSB freepik portraits) — placeholders until
+              the client delivers their own. */}
+          <div className="grid aspect-[4/5] grid-cols-2 grid-rows-2 gap-3 md:aspect-auto md:h-[520px]">
+            {STRATEGY_PHOTOS.map((src) => (
+              <div
+                key={src}
+                className="relative overflow-hidden rounded-xl border border-white/10"
+              >
+                <Image
+                  src={src}
+                  alt=""
+                  fill
+                  sizes="(min-width: 768px) 13rem, 45vw"
+                  className="object-cover object-top"
+                />
+                <div className="absolute inset-0 bg-[#0d0a1a]/15" />
+              </div>
+            ))}
           </div>
         </div>
       </div>

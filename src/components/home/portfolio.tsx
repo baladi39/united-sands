@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useRef, useState } from "react";
 import { useLang } from "@/lib/i18n/language-context";
@@ -118,8 +119,17 @@ export default function Portfolio() {
                 </button>
               </div>
               <div className="relative flex items-center justify-center">
-                <div className="aspect-square w-full max-w-sm rounded-2xl border border-[var(--gold)]/20 bg-gradient-to-br from-[var(--gold)]/10 via-transparent to-[var(--purple-accent)]/20 p-10">
-                  <div className="flex h-full flex-col justify-end">
+                <div className="relative aspect-square w-full max-w-sm overflow-hidden rounded-2xl border border-[var(--gold)]/20 bg-gradient-to-br from-[var(--gold)]/10 via-transparent to-[var(--purple-accent)]/20">
+                  {/* Isometric smart-city render (PSB portfolio artboard) */}
+                  <Image
+                    src="/assets/portfolio-city.webp"
+                    alt=""
+                    fill
+                    sizes="(min-width: 768px) 24rem, 90vw"
+                    className="object-contain p-6"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0d0a1a] via-transparent to-transparent" />
+                  <div className="absolute inset-x-0 bottom-0 flex flex-col p-8">
                     <span
                       className="font-oswald text-7xl font-light leading-none md:text-8xl"
                       style={{
