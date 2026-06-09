@@ -26,11 +26,11 @@ export default function AboutPage() {
       </Link>
 
       <div className="relative max-w-xl">
-        <p className="mb-5 text-xs tracking-[0.5em] text-[var(--gold-light)]/80 font-oswald">
+        <p className="mb-5 text-xs tracking-[0.35em] text-[var(--gold-light)]/80 font-inter">
           {t.aboutEyebrow}
         </p>
         <h1
-          className="font-oswald text-4xl font-light leading-tight md:text-6xl"
+          className="font-inter text-4xl font-light leading-tight md:text-6xl"
           style={{
             background:
               "linear-gradient(180deg, #ffffff 0%, #f2d680 58%, #8556c3 100%)",
@@ -45,7 +45,7 @@ export default function AboutPage() {
         </p>
         <Link
           href="/"
-          className="mt-10 inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/5 px-7 py-3 text-xs tracking-[0.25em] text-white/80 backdrop-blur transition hover:border-[var(--gold)]/60 hover:bg-[var(--gold)]/10 font-oswald"
+          className="mt-10 inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/5 px-7 py-3 text-xs tracking-[0.25em] text-white/80 backdrop-blur transition hover:border-[var(--gold)]/60 hover:bg-[var(--gold)]/10 font-inter"
         >
           {t.aboutBack}
         </Link>

@@ -114,10 +114,10 @@ export default function Team() {
         {/* Header — title on the leading side, nav on the trailing side */}
         <div className="mb-12 flex items-end justify-between gap-6">
           <div className="max-w-md">
-            <p className="mb-4 font-oswald text-xs tracking-[0.4em] text-[var(--gold-light)]/70">
+            <p className="mb-4 font-inter text-xs tracking-[0.35em] text-[var(--gold-light)]/70">
               / 11
             </p>
-            <h2 className="font-oswald text-3xl font-light leading-[1.02] tracking-tight text-white md:text-5xl">
+            <h2 className="font-inter text-3xl font-light leading-[1.02] tracking-tight text-white md:text-5xl">
               {titleBrand ? (
                 <>
                   {titleLead}
@@ -137,7 +137,7 @@ export default function Team() {
                 titleLead
               )}
             </h2>
-            <p className="mt-5 font-roboto text-sm leading-relaxed text-white/65">
+            <p className="mt-5 font-inter text-sm leading-relaxed text-white/65">
               {t.teamIntro}
             </p>
           </div>
@@ -206,7 +206,7 @@ export default function Team() {
                       />
                     ) : (
                       <div className="absolute inset-0 grid place-items-center bg-gradient-to-br from-[var(--purple-accent)]/35 via-[#0d0a1a] to-[var(--gold)]/15">
-                        <span className="select-none font-oswald text-7xl font-light text-white/10">
+                        <span className="select-none font-inter text-7xl font-light text-white/10">
                           {m.initials}
                         </span>
                       </div>
@@ -215,10 +215,10 @@ export default function Team() {
 
                     {/* Bottom content */}
                     <div className="absolute inset-x-0 bottom-0 p-6">
-                      <h3 className="font-oswald text-2xl font-light leading-tight text-white">
+                      <h3 className="font-inter text-2xl font-light leading-tight text-white">
                         {m.name}
                       </h3>
-                      <p className="mt-1 font-oswald text-xs uppercase tracking-[0.25em] text-[var(--gold-light)]/80">
+                      <p className="mt-1 font-inter text-xs uppercase tracking-[0.25em] text-[var(--gold-light)]/80">
                         {m.role}
                       </p>
                       <div className="mt-5 flex items-center justify-between">
@@ -226,7 +226,7 @@ export default function Team() {
                           type="button"
                           onClick={() => setExpanded(isOpen ? null : i)}
                           aria-expanded={isOpen}
-                          className="font-oswald text-xs tracking-[0.3em] text-white/80 transition hover:text-[var(--gold-light)]"
+                          className="font-inter text-xs tracking-[0.3em] text-white/80 transition hover:text-[var(--gold-light)]"
                         >
                           {t.teamReadBio}
                         </button>
@@ -262,10 +262,10 @@ export default function Team() {
                         >
                           <div className="flex items-start justify-between gap-3">
                             <div>
-                              <h3 className="font-oswald text-xl font-light leading-tight text-white">
+                              <h3 className="font-inter text-xl font-light leading-tight text-white">
                                 {m.name}
                               </h3>
-                              <p className="mt-1 font-oswald text-xs uppercase tracking-[0.25em] text-[var(--gold-light)]/80">
+                              <p className="mt-1 font-inter text-xs uppercase tracking-[0.25em] text-[var(--gold-light)]/80">
                                 {m.role}
                               </p>
                             </div>
@@ -284,7 +284,7 @@ export default function Team() {
                               </svg>
                             </button>
                           </div>
-                          <p className="mt-5 font-roboto text-sm leading-relaxed text-white/75">
+                          <p className="mt-5 font-inter text-sm leading-relaxed text-white/75">
                             {m.bio}
                           </p>
                         </motion.div>

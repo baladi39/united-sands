@@ -35,23 +35,36 @@ export default function ScrollText() {
     dir === "rtl" ? ["-5%", "5%"] : ["5%", "-5%"];
   const x = useTransform(scrollYProgress, [0, 1], range);
 
-  // The circle settles to the right of / behind the sentence as it scrolls past.
-  useCircleWaypoint(ref, { x: 20, y: -6, scale: 1.15, opacity: 0.5 });
+  // The gradient sphere is this section's visual anchor — in the PSB the same
+  // statement sits over the purple sphere so the whitespace reads as composed,
+  // not empty. Bring it well forward (brighter + larger), offset behind/right
+  // of the sentence, to replicate that on the dark theme.
+  useCircleWaypoint(ref, { x: 22, y: -6, scale: 1.35, opacity: 0.82 });
 
   return (
     <section
       ref={ref}
-      className="relative flex justify-center overflow-hidden py-32 md:py-48"
+      className="relative flex flex-col items-center justify-center overflow-hidden py-24 md:py-36"
     >
       <motion.p
         // Reduced motion: render static + centred, fully legible.
         style={reduce ? undefined : { x }}
         // Wraps on small screens; on md+ it's one line sized to stay fully
         // visible (~75vw) with room for the drift.
-        className="relative z-10 mx-auto max-w-[92vw] text-center font-oswald text-[2rem] font-bold uppercase leading-tight tracking-tight text-[var(--purple-accent)] md:whitespace-nowrap md:text-[3.4vw] md:leading-none"
+        className="relative z-10 mx-auto max-w-[92vw] text-center font-inter text-[2rem] font-bold uppercase leading-tight text-[var(--purple-accent)] md:whitespace-nowrap md:text-[3.4vw] md:leading-none"
       >
         {t.scrollStatement}
       </motion.p>
+
+      {/* Faint scroll cue — signals "this is a transition, keep going" so the
+          breather doesn't read as a broken/empty screen. */}
+      <motion.div
+        aria-hidden
+        className="relative z-10 mt-14 h-9 w-px bg-gradient-to-b from-[var(--purple-light)]/40 to-transparent"
+        style={{ transformOrigin: "top" }}
+        animate={reduce ? undefined : { scaleY: [0.5, 1, 0.5], opacity: [0.2, 0.6, 0.2] }}
+        transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
+      />
     </section>
   );
 }

@@ -39,7 +39,7 @@ The repo contains three parallel front-doors. Know which one you're touching bef
 ## Theme & fonts
 
 - Brand palette lives as CSS custom properties in `src/app/globals.css`: `--background` (`#0d0a1a` dark navy), `--purple-accent`, `--purple-light`, `--gold`, `--gold-light`. Tailwind v4 `@theme inline` bridges them. The site is dark-themed with purple/violet + gold accents.
-- Fonts are **local** (`next/font/local` in `src/app/layout.tsx`): Oswald (headings) and Roboto (body), exposed as `--font-oswald` / `--font-roboto`. Apply via the `font-oswald` / `font-roboto` utility classes or `style={{ fontFamily: "var(--font-oswald)" }}`.
+- Fonts are **local** (`next/font/local` in `src/app/layout.tsx`): a single typeface, **Inter** (matches the PSB — Bold for the hero/statements, SemiBold for section titles, Light/Regular for body), shipped as one variable file (`public/fonts/Inter-Variable.ttf`, weight 100–900) and exposed as `--font-inter`. Apply via the `font-inter` utility class or `style={{ fontFamily: "var(--font-inter)" }}`; the `body` falls back to it too. (The site previously used Oswald + Roboto — both removed.)
 - `ElectricBackground` respects opt-out hooks on elements: `data-electric-mute` and `data-electric-safezone`.
 
 ## Email signup (`/api/join`)

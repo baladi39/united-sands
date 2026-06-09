@@ -47,10 +47,10 @@ export default function Stats() {
       <div className="mx-auto max-w-6xl px-6 md:px-12">
         <div className="mb-16 flex items-end justify-between gap-6">
           <div>
-            <p className="mb-3 text-xs tracking-[0.4em] text-[var(--gold-light)]/70 font-oswald">
+            <p className="mb-3 text-xs tracking-[0.35em] text-[var(--gold-light)]/70 font-inter">
               / 04
             </p>
-            <h2 className="font-oswald text-3xl font-light tracking-tight md:text-5xl">
+            <h2 className="font-inter text-3xl font-light tracking-tight md:text-5xl">
               Why Choose
               <br />
               <span className="text-[var(--gold-light)]">United Sands?</span>
@@ -65,7 +65,7 @@ export default function Stats() {
             >
               ←
             </button>
-            <span className="font-oswald text-sm tracking-[0.2em] text-white/50">
+            <span className="font-inter text-sm tracking-[0.2em] text-white/50">
               {String(index + 1).padStart(2, "0")} /{" "}
               {String(STATS.length).padStart(2, "0")}
             </span>
@@ -93,7 +93,7 @@ export default function Stats() {
               <div>
                 <div className="flex items-baseline gap-3">
                   <span
-                    className="font-oswald text-8xl font-light leading-none md:text-9xl"
+                    className="font-inter text-8xl font-light leading-none md:text-9xl"
                     style={{
                       background:
                         "linear-gradient(180deg, #f2d680 0%, #d4a853 60%, #9b59b6 100%)",
@@ -104,12 +104,12 @@ export default function Stats() {
                     {s.value}
                   </span>
                   {s.unit && (
-                    <span className="font-oswald text-sm tracking-[0.3em] text-[var(--gold-light)]/80">
+                    <span className="font-inter text-sm tracking-[0.3em] text-[var(--gold-light)]/80">
                       {s.unit}
                     </span>
                   )}
                 </div>
-                <p className="mt-4 font-oswald text-lg tracking-[0.15em] text-white/90">
+                <p className="mt-4 font-inter text-lg tracking-[0.15em] text-white/90">
                   {s.label}
                 </p>
               </div>

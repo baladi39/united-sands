@@ -71,15 +71,15 @@ export default function WhyChoose() {
         <div className="grid gap-16 md:grid-cols-2 md:items-center md:gap-12">
           {/* Left — PSB framing */}
           <div>
-            <p className="mb-5 max-w-xs font-oswald text-xs uppercase leading-relaxed tracking-[0.25em] text-[var(--gold-light)]/70">
+            <p className="mb-5 max-w-xs font-inter text-xs uppercase leading-relaxed tracking-[0.25em] text-[var(--gold-light)]/70">
               {t.statsTagline}
             </p>
-            <h2 className="font-oswald text-3xl font-light leading-[1.05] tracking-tight md:text-5xl">
+            <h2 className="font-inter text-3xl font-light leading-[1.05] tracking-tight md:text-5xl">
               {titleLead}
               <br />
               <span className="text-[var(--gold-light)]">{titleBrand}</span>
             </h2>
-            <p className="mt-6 max-w-md font-roboto text-base leading-relaxed text-white/70 md:text-lg">
+            <p className="mt-6 max-w-md font-inter text-base leading-relaxed text-white/70 md:text-lg">
               {t.statsIntro}
             </p>
           </div>
@@ -104,7 +104,7 @@ export default function WhyChoose() {
               </button>
               <span
                 dir="ltr"
-                className="font-oswald text-sm tracking-[0.2em] text-white/50"
+                className="font-inter text-sm tracking-[0.2em] text-white/50"
               >
                 {counter}
               </span>
@@ -135,7 +135,7 @@ export default function WhyChoose() {
                 >
                   <div className="flex items-baseline gap-3">
                     <span
-                      className="font-oswald text-7xl font-light leading-none md:text-8xl"
+                      className="font-inter text-7xl font-light leading-none md:text-8xl"
                       style={{
                         background:
                           "linear-gradient(180deg, #f2d680 0%, #d4a853 60%, #8556c3 100%)",
@@ -146,15 +146,15 @@ export default function WhyChoose() {
                       {s.value}
                     </span>
                     {s.unit && (
-                      <span className="font-oswald text-sm tracking-[0.3em] text-[var(--gold-light)]/80">
+                      <span className="font-inter text-sm tracking-[0.3em] text-[var(--gold-light)]/80">
                         {s.unit}
                       </span>
                     )}
                   </div>
-                  <p className="mt-4 font-oswald text-lg tracking-[0.15em] text-white/90">
+                  <p className="mt-4 font-inter text-lg tracking-[0.15em] text-white/90">
                     {s.label}
                   </p>
-                  <p className="mt-4 font-roboto text-base leading-relaxed text-white/65">
+                  <p className="mt-4 font-inter text-base leading-relaxed text-white/65">
                     {s.copy}
                   </p>
                 </motion.div>

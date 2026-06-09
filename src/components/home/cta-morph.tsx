@@ -82,10 +82,10 @@ export default function CtaMorph() {
 
   const heading = (
     <div className="max-w-3xl">
-      <p className="mb-4 font-oswald text-xs uppercase tracking-[0.4em] text-[var(--gold-light)]/70">
+      <p className="mb-4 font-inter text-xs uppercase tracking-[0.35em] text-[var(--gold-light)]/70">
         [ {t.ctaEyebrow} ]
       </p>
-      <h2 className="font-oswald text-4xl font-light leading-[1.0] tracking-tight text-white md:text-6xl">
+      <h2 className="font-inter text-4xl font-light leading-[1.0] tracking-tight text-white md:text-6xl">
         {lead}
         <br />
         <span style={BRAND_GRADIENT}>{brand}</span>
@@ -99,7 +99,7 @@ export default function CtaMorph() {
       <button
         type="button"
         onClick={openForm}
-        className="mt-12 flex h-44 w-44 items-center justify-center rounded-full border border-[var(--gold)]/40 bg-[var(--gold)]/10 font-oswald text-xs uppercase tracking-[0.25em] text-[var(--gold-light)] transition hover:bg-[var(--gold)]/20"
+        className="mt-12 flex h-44 w-44 items-center justify-center rounded-full border border-[var(--gold)]/40 bg-[var(--gold)]/10 font-inter text-xs uppercase tracking-[0.25em] text-[var(--gold-light)] transition hover:bg-[var(--gold)]/20"
       >
         {t.navRequest}
       </button>
@@ -137,7 +137,7 @@ export default function CtaMorph() {
             type="button"
             onClick={openForm}
             aria-label={t.navRequest}
-            className="absolute flex -translate-x-1/2 -translate-y-1/2 items-center justify-center border border-[var(--gold)]/40 font-oswald uppercase backdrop-blur-sm"
+            className="absolute flex -translate-x-1/2 -translate-y-1/2 items-center justify-center border border-[var(--gold)]/40 font-inter uppercase backdrop-blur-sm"
             style={{
               width,
               height,

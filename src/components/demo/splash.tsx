@@ -67,7 +67,7 @@ export default function Splash({ onComplete }: { onComplete: () => void }) {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 1.2 }}
                   transition={{ duration: 0.5 }}
-                  className="font-oswald text-[22vmin] leading-none"
+                  className="font-inter text-[22vmin] leading-none"
                   style={{
                     background:
                       "linear-gradient(180deg, var(--gold-light) 0%, var(--gold) 50%, var(--purple-accent) 100%)",
@@ -102,7 +102,7 @@ export default function Splash({ onComplete }: { onComplete: () => void }) {
 
           {/* Counter */}
           <motion.div
-            className="mt-16 font-oswald text-3xl tracking-[0.3em] text-white/80"
+            className="mt-16 font-inter text-3xl tracking-[0.3em] text-white/80"
             animate={{ opacity: phase === "counting" ? 1 : 0 }}
             transition={{ duration: 0.3 }}
           >

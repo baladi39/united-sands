@@ -43,10 +43,10 @@ export default function CtaMorph() {
           style={{ opacity: headingOpacity }}
         >
           <div className="max-w-3xl">
-            <p className="mb-4 text-xs tracking-[0.4em] text-[var(--gold-light)]/70 font-oswald">
+            <p className="mb-4 text-xs tracking-[0.35em] text-[var(--gold-light)]/70 font-inter">
               / 08
             </p>
-            <h2 className="font-oswald text-4xl font-light leading-[0.95] tracking-tight md:text-6xl">
+            <h2 className="font-inter text-4xl font-light leading-[0.95] tracking-tight md:text-6xl">
               Ready to shape
               <br />
               <span className="text-[var(--gold-light)]">your transformation?</span>
@@ -60,7 +60,7 @@ export default function CtaMorph() {
         {/* Morphing button */}
         <motion.button
           type="button"
-          className="absolute flex -translate-x-1/2 -translate-y-1/2 items-center justify-center border border-[var(--gold)]/60 text-center font-oswald uppercase text-white backdrop-blur-sm"
+          className="absolute flex -translate-x-1/2 -translate-y-1/2 items-center justify-center border border-[var(--gold)]/60 text-center font-inter uppercase text-white backdrop-blur-sm"
           style={{
             width,
             height,

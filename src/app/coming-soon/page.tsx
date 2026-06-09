@@ -36,8 +36,8 @@ export default function ComingSoon() {
 
           {/* Under Renovation Text */}
           <p
-            className="mb-4 text-sm tracking-[0.3em] text-white/80 font-(--font-oswald)"
-            style={{ fontFamily: "var(--font-oswald)" }}
+            className="mb-4 text-sm tracking-[0.3em] text-white/80 font-(--font-inter)"
+            style={{ fontFamily: "var(--font-inter)" }}
           >
             UNDER RENOVATION
           </p>
@@ -46,7 +46,7 @@ export default function ComingSoon() {
           <h1
             className="mb-6 text-2xl tracking-[0.2em] md:text-3xl lg:text-4xl"
             style={{
-              fontFamily: "var(--font-oswald)",
+              fontFamily: "var(--font-inter)",
               fontWeight: 300,
               background:
                 "linear-gradient(90deg, #c792ea 0%, #9b59b6 50%, #c792ea 100%)",
@@ -62,7 +62,7 @@ export default function ComingSoon() {
           <p
             className="mb-12 max-w-xl text-sm leading-relaxed text-white/70 md:text-base"
             data-electric-safezone
-            style={{ fontFamily: "var(--font-roboto)" }}
+            style={{ fontFamily: "var(--font-inter)" }}
           >
             We are currently working on something amazing. Enter your email
             below to be the first to know when we launch.
@@ -129,7 +129,7 @@ export default function ComingSoon() {
           {/* Copyright */}
           <p
             className="text-xs text-white/50"
-            style={{ fontFamily: "var(--font-roboto)" }}
+            style={{ fontFamily: "var(--font-inter)" }}
           >
             &copy; {new Date().getFullYear()} United Sands. All rights reserved.
           </p>

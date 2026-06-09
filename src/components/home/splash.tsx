@@ -86,10 +86,10 @@ export default function Splash({ onComplete }: { onComplete: () => void }) {
             animate={{ opacity: phase === "counting" ? 1 : 0 }}
             transition={{ duration: 0.3 }}
           >
-            <span className="font-oswald text-[10px] tracking-[0.5em] text-white/40">
+            <span className="font-inter text-[10px] tracking-[0.5em] text-white/40">
               {t.loading}
             </span>
-            <div className="font-oswald text-3xl tracking-[0.3em] text-white/80">
+            <div className="font-inter text-3xl tracking-[0.3em] text-white/80">
               <motion.span>{rounded}</motion.span>
               <span className="text-white/30"> / 100</span>
             </div>

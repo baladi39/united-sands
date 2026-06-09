@@ -23,12 +23,12 @@ export default function Nav({ show }: { show: boolean }) {
 
       <div className="flex items-center gap-3 md:gap-5">
         <button
-          className="hidden rounded-full border border-[var(--gold)]/40 bg-[var(--gold)]/10 px-5 py-2 text-xs tracking-[0.2em] text-[var(--gold-light)] backdrop-blur transition hover:bg-[var(--gold)]/20 md:block font-oswald"
+          className="hidden rounded-full border border-[var(--gold)]/40 bg-[var(--gold)]/10 px-5 py-2 text-xs tracking-[0.2em] text-[var(--gold-light)] backdrop-blur transition hover:bg-[var(--gold)]/20 md:block font-inter"
           type="button"
         >
           REQUEST PROJECT
         </button>
-        <div className="flex items-center gap-1 text-xs tracking-[0.2em] text-white/70 font-oswald">
+        <div className="flex items-center gap-1 text-xs tracking-[0.2em] text-white/70 font-inter">
           <span className="text-white">EN</span>
           <span className="text-white/30">/</span>
           <span>AR</span>

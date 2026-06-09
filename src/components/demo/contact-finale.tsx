@@ -35,10 +35,10 @@ export default function ContactFinale() {
         className="relative z-10 mx-auto max-w-3xl px-6 text-center"
         style={{ opacity: contentOpacity }}
       >
-        <p className="mb-6 text-xs tracking-[0.4em] text-[var(--gold-light)]/80 font-oswald">
+        <p className="mb-6 text-xs tracking-[0.35em] text-[var(--gold-light)]/80 font-inter">
           / CONTACT US
         </p>
-        <h2 className="font-oswald text-5xl font-light leading-[0.95] tracking-tight md:text-8xl">
+        <h2 className="font-inter text-5xl font-light leading-[0.95] tracking-tight md:text-8xl">
           <span
             style={{
               background:
@@ -58,18 +58,18 @@ export default function ContactFinale() {
         <div className="mt-10 flex flex-wrap justify-center gap-3">
           <button
             type="button"
-            className="rounded-full border border-[var(--gold)]/60 bg-[var(--gold)]/20 px-8 py-3 text-xs tracking-[0.3em] text-white backdrop-blur transition hover:bg-[var(--gold)]/30 font-oswald"
+            className="rounded-full border border-[var(--gold)]/60 bg-[var(--gold)]/20 px-8 py-3 text-xs tracking-[0.3em] text-white backdrop-blur transition hover:bg-[var(--gold)]/30 font-inter"
           >
             REQUEST PROJECT
           </button>
           <button
             type="button"
-            className="rounded-full border border-white/20 bg-white/5 px-8 py-3 text-xs tracking-[0.3em] text-white/80 backdrop-blur transition hover:border-white/40 font-oswald"
+            className="rounded-full border border-white/20 bg-white/5 px-8 py-3 text-xs tracking-[0.3em] text-white/80 backdrop-blur transition hover:border-white/40 font-inter"
           >
             SCHEDULE A CALL
           </button>
         </div>
-        <div className="mt-20 flex flex-col items-center gap-2 text-xs tracking-[0.3em] text-white/40 font-oswald">
+        <div className="mt-20 flex flex-col items-center gap-2 text-xs tracking-[0.3em] text-white/40 font-inter">
           <span>UNITED SANDS</span>
           <span>© {new Date().getFullYear()}</span>
         </div>

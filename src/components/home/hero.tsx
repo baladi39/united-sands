@@ -100,14 +100,17 @@ export default function Hero() {
           className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center"
           style={{ y: contentY, opacity: 1 }}
         >
-          <p className="mb-6 text-xs tracking-[0.5em] text-[var(--gold-light)]/80 font-oswald">
+          <p className="mb-6 text-xs tracking-[0.35em] text-[var(--gold-light)]/80 font-inter">
             {t.heroEyebrow}
           </p>
           <h1
-            className="font-oswald text-5xl font-light leading-[0.95] tracking-tight whitespace-pre-line md:text-7xl lg:text-8xl"
+            className="font-inter text-5xl font-bold leading-[0.95] whitespace-pre-line md:text-7xl lg:text-8xl"
             style={{
+              // White→gold only (PSB hero is solid white Inter-Bold). Keeping a
+              // subtle gold fade for brand flair, but dropping the purple bottom
+              // stop that tanked contrast over the bright archway.
               background:
-                "linear-gradient(180deg, #ffffff 0%, #f2d680 58%, #8556c3 100%)",
+                "linear-gradient(180deg, #ffffff 0%, #ffffff 52%, #f2d680 100%)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
             }}
@@ -119,7 +122,7 @@ export default function Hero() {
           </p>
           <Link
             href="/about"
-            className="mt-10 group flex items-center gap-3 rounded-full border border-white/20 bg-white/5 px-7 py-3 text-xs tracking-[0.25em] backdrop-blur transition hover:border-[var(--gold)]/60 hover:bg-[var(--gold)]/10 font-oswald"
+            className="mt-10 group flex items-center gap-3 rounded-full border border-white/20 bg-white/5 px-7 py-3 text-xs tracking-[0.25em] backdrop-blur transition hover:border-[var(--gold)]/60 hover:bg-[var(--gold)]/10 font-inter"
           >
             {t.ourStory}
             <span className="transition-transform group-hover:translate-x-1 rtl:-scale-x-100">→</span>
@@ -132,7 +135,7 @@ export default function Hero() {
           className="absolute bottom-10 left-1/2 z-10 -translate-x-1/2 flex flex-col items-center gap-2"
           style={{ opacity: 1 }}
         >
-          <span className="text-[10px] tracking-[0.4em] text-white/50 font-oswald">
+          <span className="text-[10px] tracking-[0.4em] text-white/50 font-inter">
             {t.scrollHint}
           </span>
           <motion.div

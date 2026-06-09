@@ -156,14 +156,14 @@ export default function RequestModal() {
                     />
                   </svg>
                 </div>
-                <h2 className="font-oswald text-2xl text-white">
+                <h2 className="font-inter text-2xl text-white">
                   {t.formSuccessTitle}
                 </h2>
                 <p className="mt-2 text-sm text-white/65">{t.formSuccessBody}</p>
                 <button
                   type="button"
                   onClick={closeForm}
-                  className="mt-7 rounded-full border border-white/20 bg-white/5 px-7 py-2.5 text-xs tracking-[0.2em] text-white/80 transition hover:bg-white/10 font-oswald"
+                  className="mt-7 rounded-full border border-white/20 bg-white/5 px-7 py-2.5 text-xs tracking-[0.2em] text-white/80 transition hover:bg-white/10 font-inter"
                 >
                   {t.formClose}
                 </button>
@@ -181,10 +181,10 @@ export default function RequestModal() {
                 />
 
                 <header className="mb-7">
-                  <p className="mb-2 text-[10px] tracking-[0.4em] text-[var(--gold-light)]/80 font-oswald">
+                  <p className="mb-2 text-[10px] tracking-[0.35em] text-[var(--gold-light)]/80 font-inter">
                     {t.navRequest}
                   </p>
-                  <h2 className="font-oswald text-3xl font-light text-white">
+                  <h2 className="font-inter text-3xl font-light text-white">
                     {t.formTitle}
                   </h2>
                   <p className="mt-2 text-sm text-white/60">{t.formSubtitle}</p>
@@ -267,7 +267,7 @@ export default function RequestModal() {
                 <button
                   type="submit"
                   disabled={status === "loading"}
-                  className="mt-8 w-full rounded-full bg-gradient-to-r from-[var(--purple-accent)] to-[var(--gold)] px-8 py-3.5 text-xs font-medium tracking-[0.25em] text-white transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-60 font-oswald"
+                  className="mt-8 w-full rounded-full bg-gradient-to-r from-[var(--purple-accent)] to-[var(--gold)] px-8 py-3.5 text-xs font-medium tracking-[0.25em] text-white transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-60 font-inter"
                 >
                   {status === "loading" ? t.formSending : t.formSubmit}
                 </button>
@@ -289,7 +289,7 @@ function SectionLabel({
 }) {
   return (
     <p
-      className={`mb-3 text-[11px] uppercase tracking-[0.3em] text-white/45 font-oswald ${className}`}
+      className={`mb-3 text-[11px] uppercase tracking-[0.3em] text-white/45 font-inter ${className}`}
     >
       {children}
     </p>

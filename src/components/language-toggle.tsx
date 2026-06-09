@@ -12,7 +12,7 @@ export default function LanguageToggle({
 
   return (
     <div
-      className={`flex items-center gap-1 text-xs tracking-[0.2em] font-oswald ${className}`}
+      className={`flex items-center gap-1 text-xs tracking-[0.2em] font-inter ${className}`}
       role="group"
       aria-label="Language"
     >

@@ -35,18 +35,18 @@ export default function ValueChain() {
 
       {/* Content */}
       <div className="relative z-10 mx-auto flex max-w-3xl flex-col items-center px-6 py-24 text-center md:py-32">
-        <p className="mb-6 font-oswald text-xs uppercase tracking-[0.35em] text-[var(--gold-light)]/80">
+        <p className="mb-6 font-inter text-xs uppercase tracking-[0.35em] text-[var(--gold-light)]/80">
           [ {t.serveEyebrow} ]
         </p>
-        <h2 className="whitespace-pre-line font-oswald text-4xl font-light uppercase leading-[0.98] tracking-tight text-white md:text-6xl lg:text-7xl">
+        <h2 className="whitespace-pre-line font-inter text-4xl font-light uppercase leading-[0.98] tracking-tight text-white md:text-6xl lg:text-7xl">
           {t.serveTitle}
         </h2>
-        <p className="mt-6 max-w-md font-roboto text-sm leading-relaxed text-white/70 md:text-base">
+        <p className="mt-6 max-w-md font-inter text-sm leading-relaxed text-white/70 md:text-base">
           {t.serveBody}
         </p>
         <Link
           href="/value-chain"
-          className="group mt-10 inline-flex items-center gap-3 rounded-full border border-white/30 bg-white/5 px-8 py-3 font-oswald text-xs uppercase tracking-[0.25em] text-white/85 backdrop-blur transition hover:border-[var(--gold)]/60 hover:bg-[var(--gold)]/10 hover:text-white"
+          className="group mt-10 inline-flex items-center gap-3 rounded-full border border-white/30 bg-white/5 px-8 py-3 font-inter text-xs uppercase tracking-[0.25em] text-white/85 backdrop-blur transition hover:border-[var(--gold)]/60 hover:bg-[var(--gold)]/10 hover:text-white"
         >
           {t.serveCta}
           <span className="transition-transform group-hover:translate-x-1 rtl:-scale-x-100">

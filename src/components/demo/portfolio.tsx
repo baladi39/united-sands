@@ -41,10 +41,10 @@ export default function Portfolio() {
       <div className="mx-auto max-w-6xl px-6 md:px-12">
         <div className="mb-12 flex items-end justify-between gap-6">
           <div>
-            <p className="mb-3 text-xs tracking-[0.4em] text-[var(--gold-light)]/70 font-oswald">
+            <p className="mb-3 text-xs tracking-[0.35em] text-[var(--gold-light)]/70 font-inter">
               / 09
             </p>
-            <h2 className="font-oswald text-3xl font-light tracking-tight md:text-5xl">
+            <h2 className="font-inter text-3xl font-light tracking-tight md:text-5xl">
               Latest
               <br />
               <span className="text-[var(--gold-light)]">Portfolio</span>
@@ -81,19 +81,19 @@ export default function Portfolio() {
               className="grid gap-10 p-10 md:grid-cols-[1fr_1.2fr] md:items-center md:p-16"
             >
               <div>
-                <div className="flex items-center gap-3 text-xs tracking-[0.3em] text-white/50 font-oswald">
+                <div className="flex items-center gap-3 text-xs tracking-[0.3em] text-white/50 font-inter">
                   <span>{p.client}</span>
                   <span className="h-px w-4 bg-white/30" />
                   <span>{p.country}</span>
                 </div>
-                <h3 className="mt-4 font-oswald text-3xl font-light leading-tight md:text-5xl">
+                <h3 className="mt-4 font-inter text-3xl font-light leading-tight md:text-5xl">
                   {p.title}
                 </h3>
                 <div className="mt-8 flex flex-wrap gap-2">
                   {p.tags.map((t) => (
                     <span
                       key={t}
-                      className="rounded-full border border-white/15 bg-white/5 px-3 py-1 text-[10px] tracking-[0.2em] text-white/70 font-oswald"
+                      className="rounded-full border border-white/15 bg-white/5 px-3 py-1 text-[10px] tracking-[0.2em] text-white/70 font-inter"
                     >
                       {t.toUpperCase()}
                     </span>
@@ -101,7 +101,7 @@ export default function Portfolio() {
                 </div>
                 <button
                   type="button"
-                  className="mt-10 flex items-center gap-3 text-xs tracking-[0.3em] text-[var(--gold-light)] transition hover:text-white font-oswald"
+                  className="mt-10 flex items-center gap-3 text-xs tracking-[0.3em] text-[var(--gold-light)] transition hover:text-white font-inter"
                 >
                   VIEW CASE STUDY →
                 </button>
@@ -110,7 +110,7 @@ export default function Portfolio() {
                 <div className="aspect-square w-full max-w-sm rounded-2xl border border-[var(--gold)]/20 bg-gradient-to-br from-[var(--gold)]/10 via-transparent to-[var(--purple-accent)]/20 p-10">
                   <div className="flex h-full flex-col justify-end">
                     <span
-                      className="font-oswald text-7xl font-light leading-none md:text-8xl"
+                      className="font-inter text-7xl font-light leading-none md:text-8xl"
                       style={{
                         background:
                           "linear-gradient(180deg, #f2d680, #9b59b6)",

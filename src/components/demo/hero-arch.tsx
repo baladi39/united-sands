@@ -103,11 +103,11 @@ export default function HeroArch() {
           className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center"
           style={{ opacity: contentOpacity, y: contentY }}
         >
-          <p className="mb-6 text-xs tracking-[0.5em] text-[var(--gold-light)]/80 font-oswald">
+          <p className="mb-6 text-xs tracking-[0.35em] text-[var(--gold-light)]/80 font-inter">
             UNITED SANDS
           </p>
           <h1
-            className="font-oswald text-5xl font-light leading-[0.95] tracking-tight md:text-7xl lg:text-8xl"
+            className="font-inter text-5xl font-light leading-[0.95] tracking-tight md:text-7xl lg:text-8xl"
             style={{
               background:
                 "linear-gradient(180deg, #ffffff 0%, #f2d680 60%, #9b59b6 100%)",
@@ -125,7 +125,7 @@ export default function HeroArch() {
           </p>
           <button
             type="button"
-            className="mt-10 group flex items-center gap-3 rounded-full border border-white/20 bg-white/5 px-7 py-3 text-xs tracking-[0.25em] backdrop-blur transition hover:border-[var(--gold)]/60 hover:bg-[var(--gold)]/10 font-oswald"
+            className="mt-10 group flex items-center gap-3 rounded-full border border-white/20 bg-white/5 px-7 py-3 text-xs tracking-[0.25em] backdrop-blur transition hover:border-[var(--gold)]/60 hover:bg-[var(--gold)]/10 font-inter"
           >
             OUR STORY
             <span className="transition-transform group-hover:translate-x-1">→</span>
@@ -137,7 +137,7 @@ export default function HeroArch() {
           className="absolute bottom-10 left-1/2 z-10 -translate-x-1/2 flex flex-col items-center gap-2"
           style={{ opacity: indicatorOpacity }}
         >
-          <span className="text-[10px] tracking-[0.4em] text-white/50 font-oswald">
+          <span className="text-[10px] tracking-[0.4em] text-white/50 font-inter">
             SCROLL
           </span>
           <motion.div

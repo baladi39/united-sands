@@ -47,13 +47,13 @@ export default function EmailForm() {
         <div className="rounded-lg border border-purple-400/30 bg-purple-900/20 px-6 py-4">
           <p
             className="text-lg text-white"
-            style={{ fontFamily: "var(--font-oswald)" }}
+            style={{ fontFamily: "var(--font-inter)" }}
           >
             Thank you for joining!
           </p>
           <p
             className="mt-2 text-sm text-white/70"
-            style={{ fontFamily: "var(--font-roboto)" }}
+            style={{ fontFamily: "var(--font-inter)" }}
           >
             Please check your email for confirmation.
           </p>
@@ -61,7 +61,7 @@ export default function EmailForm() {
         <button
           onClick={() => setStatus("idle")}
           className="mt-4 text-sm text-purple-400 underline hover:text-purple-300"
-          style={{ fontFamily: "var(--font-roboto)" }}
+          style={{ fontFamily: "var(--font-inter)" }}
         >
           Submit another email
         </button>
@@ -92,7 +92,7 @@ export default function EmailForm() {
         placeholder="Enter your email here"
         className="flex-1 border-b-2 border-purple-400/50 bg-transparent px-4 py-3 text-white placeholder-white/50 outline-none transition-colors focus:border-purple-400"
         data-electric-mute
-        style={{ fontFamily: "var(--font-roboto)" }}
+        style={{ fontFamily: "var(--font-inter)" }}
         required
         autoComplete="email"
         disabled={status === "loading"}
@@ -103,7 +103,7 @@ export default function EmailForm() {
         disabled={status === "loading"}
         className="px-8 py-3 text-sm font-medium tracking-wider text-white transition-all hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50"
         style={{
-          fontFamily: "var(--font-oswald)",
+          fontFamily: "var(--font-inter)",
           background: "#9b59b6",
         }}
       >
@@ -113,7 +113,7 @@ export default function EmailForm() {
       {status === "error" && (
         <p
           className="absolute -bottom-8 left-0 text-sm text-red-400"
-          style={{ fontFamily: "var(--font-roboto)" }}
+          style={{ fontFamily: "var(--font-inter)" }}
         >
           {errorMessage}
         </p>

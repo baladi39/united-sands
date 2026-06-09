@@ -20,7 +20,7 @@ export default function ScrollText() {
     >
       <motion.div style={{ x }} className="whitespace-nowrap">
         <span
-          className="font-oswald text-[14vw] font-light leading-none tracking-tight"
+          className="font-inter text-[14vw] font-light leading-none tracking-tight"
           style={{
             background:
               "linear-gradient(90deg, #ffffff 0%, #f2d680 40%, #9b59b6 90%)",
@@ -33,7 +33,7 @@ export default function ScrollText() {
       </motion.div>
       <motion.div style={{ x: x2 }} className="mt-6 whitespace-nowrap">
         <span
-          className="font-oswald text-[10vw] font-light leading-none tracking-tight text-white/15"
+          className="font-inter text-[10vw] font-light leading-none tracking-tight text-white/15"
           style={{ WebkitTextStroke: "1px rgba(212, 168, 83, 0.3)" }}
         >
           SMART CITIES · DIGITAL TWINS · GEOSPATIAL INTELLIGENCE ·

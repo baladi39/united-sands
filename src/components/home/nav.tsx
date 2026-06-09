@@ -54,7 +54,7 @@ export default function Nav({
       <div className="flex items-center gap-3 md:gap-5">
         <button
           onClick={openForm}
-          className="hidden rounded-full border border-[var(--gold)]/40 bg-[var(--gold)]/10 px-5 py-2 text-xs tracking-[0.2em] text-[var(--gold-light)] backdrop-blur transition hover:bg-[var(--gold)]/20 md:block font-oswald"
+          className="hidden rounded-full border border-[var(--gold)]/40 bg-[var(--gold)]/10 px-5 py-2 text-xs tracking-[0.2em] text-[var(--gold-light)] backdrop-blur transition hover:bg-[var(--gold)]/20 md:block font-inter"
           type="button"
         >
           {t.navRequest}

@@ -12,8 +12,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-oswald: var(--font-oswald);
-  --font-roboto: var(--font-roboto);
+  --font-inter: var(--font-inter);
 }
 
 * {
@@ -23,25 +22,20 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-roboto), Arial, sans-serif;
+  font-family: var(--font-inter), Arial, sans-serif;
   margin: 0;
   padding: 0;
 }
 
-.font-oswald {
-  font-family: var(--font-oswald), sans-serif;
+.font-inter {
+  font-family: var(--font-inter), sans-serif;
 }
 
-.font-roboto {
-  font-family: var(--font-roboto), sans-serif;
-}
-
-/* Oswald/Roboto carry no Arabic glyphs. In RTL/Arabic, fall back to a
-   system Arabic stack so copy renders correctly. Swap for a branded Arabic
-   webfont (e.g. Tajawal / IBM Plex Sans Arabic) once Reina provides one. */
+/* Inter carries no Arabic glyphs. In RTL/Arabic, fall back to a system Arabic
+   stack so copy renders correctly. Swap for a branded Arabic webfont
+   (e.g. Tajawal / IBM Plex Sans Arabic) once Reina provides one. */
 [dir="rtl"] body,
-[dir="rtl"] .font-oswald,
-[dir="rtl"] .font-roboto {
+[dir="rtl"] .font-inter {
   font-family: "Tajawal", "Cairo", "Noto Sans Arabic", "Geeza Pro",
     "Segoe UI", Tahoma, sans-serif;
 }

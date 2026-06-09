@@ -56,12 +56,12 @@ function SectorCard({
     >
       <div className="flex items-start justify-between">
         <span className="text-2xl text-[var(--gold-light)]">{sector.icon}</span>
-        <span className="font-oswald text-[10px] tracking-[0.3em] text-white/40">
+        <span className="font-inter text-[10px] tracking-[0.3em] text-white/40">
           0{index + 1}
         </span>
       </div>
       <div>
-        <p className="font-oswald text-sm tracking-[0.15em] text-white/90">
+        <p className="font-inter text-sm tracking-[0.15em] text-white/90">
           {sector.name}
         </p>
         <div className="mt-3 h-px w-8 bg-gradient-to-r from-[var(--gold)] to-transparent" />
@@ -89,10 +89,10 @@ export default function Sectors() {
           style={{ y: textY, opacity: textOpacity }}
         >
           <div>
-            <p className="mb-4 text-xs tracking-[0.4em] text-[var(--gold-light)]/70 font-oswald">
+            <p className="mb-4 text-xs tracking-[0.35em] text-[var(--gold-light)]/70 font-inter">
               / 06
             </p>
-            <h2 className="font-oswald text-4xl font-light leading-[0.95] tracking-tight md:text-6xl lg:text-7xl">
+            <h2 className="font-inter text-4xl font-light leading-[0.95] tracking-tight md:text-6xl lg:text-7xl">
               Sectoral Evolution
               <br />
               <span
