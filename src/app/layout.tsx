@@ -13,10 +13,38 @@ const inter = localFont({
   variable: "--font-inter",
 });
 
+// Canonical origin for absolute OG/Twitter image URLs. Resolves automatically
+// on Vercel (production domain), overridable via NEXT_PUBLIC_SITE_URL, and falls
+// back to the current deployment URL for local/preview builds.
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : "https://united-sands.vercel.app");
+
+const title = "United Sands — We Shape the Future";
+const description =
+  "A Saudi-born technology consultancy engineering the next era of smart cities, digital twins, and geospatial intelligence.";
+
 export const metadata: Metadata = {
-  title: "United Sands — We Shape the Future",
-  description:
-    "A Saudi-born technology consultancy engineering the next era of smart cities, digital twins, and geospatial intelligence.",
+  metadataBase: new URL(siteUrl),
+  title,
+  description,
+  // opengraph-image.png / twitter-image.png in this folder are wired up
+  // automatically by Next; these fields enrich the share preview.
+  openGraph: {
+    type: "website",
+    siteName: "United Sands",
+    title,
+    description,
+    url: "/",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+  },
 };
 
 export default function RootLayout({
