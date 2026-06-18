@@ -88,7 +88,7 @@ export default function Hero() {
         />
 
         {/* Legibility + vignette overlays */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0d0a1a]/50 via-transparent to-[#0d0a1a]" />
+        <div className="absolute inset-0 bg-linear-to-b from-[#0d0a1a]/50 via-transparent to-[#0d0a1a]" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_35%,rgba(13,10,26,0.65)_100%)]" />
         {/* End-of-zoom crossfade to navy */}
         <div
@@ -102,7 +102,7 @@ export default function Hero() {
           {Array.from({ length: 28 }).map((_, i) => (
             <motion.span
               key={i}
-              className="absolute h-1 w-1 rounded-full bg-[var(--gold-light)]"
+              className="absolute h-1 w-1 rounded-full bg-(--gold-light)"
               style={{
                 left: `${(i * 37) % 100}%`,
                 top: `${(i * 53) % 100}%`,
@@ -128,7 +128,7 @@ export default function Hero() {
           className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center"
           style={{ y: contentY, opacity: 1 }}
         >
-          <p className="mb-6 text-xs tracking-[0.35em] text-[var(--gold-light)]/80 font-inter">
+          <p className="mb-6 text-xs tracking-[0.35em] text-(--gold-light)/80 font-inter">
             {t.heroEyebrow}
           </p>
           <h1
@@ -136,7 +136,7 @@ export default function Hero() {
               // Arabic glyphs are taller and carry diacritics + descenders, so
               // the all-caps-tuned 0.95 crushes the two lines together. Give the
               // Arabic title room to breathe.
-              isAr ? "leading-[1.25]" : "leading-[0.95]"
+              isAr ? "leading-tight" : "leading-[0.95]"
             }`}
             style={{
               // PSB hero title is solid white Inter-Bold. Soft shadow keeps it
@@ -155,7 +155,7 @@ export default function Hero() {
           </p>
           <Link
             href="/about"
-            className="mt-10 group flex items-center gap-3 rounded-full border border-white/20 bg-white/5 px-7 py-3 text-xs tracking-[0.25em] backdrop-blur transition hover:border-[var(--gold)]/60 hover:bg-[var(--gold)]/10 font-inter"
+            className="mt-10 group flex items-center gap-3 rounded-full border border-white/20 bg-white/5 px-7 py-3 text-xs tracking-[0.25em] backdrop-blur transition hover:border-(--gold)/60 hover:bg-(--gold)/10 font-inter"
           >
             {t.ourStory}
             <span className="transition-transform group-hover:translate-x-1 rtl:-scale-x-100">→</span>
@@ -172,7 +172,7 @@ export default function Hero() {
             {t.scrollHint}
           </span>
           <motion.div
-            className="h-10 w-px bg-gradient-to-b from-white/60 to-transparent"
+            className="h-10 w-px bg-linear-to-b from-white/60 to-transparent"
             animate={{ scaleY: [0.5, 1, 0.5], opacity: [0.4, 1, 0.4] }}
             style={{ transformOrigin: "top" }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
