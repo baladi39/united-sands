@@ -63,9 +63,9 @@ export type SaudiPillar = {
 export type TeamMember = {
   name: string; // person name (kept identical EN/AR)
   role: string; // localized title
-  bio: string; // revealed on "Read Bio"
+  bio: string[]; // paragraphs, revealed in the "Read Bio" dialog
   linkedin: string; // profile URL ("#" placeholder until provided)
-  initials: string; // monogram for the photo placeholder
+  initials: string; // monogram shown on the card
 };
 
 export type Messages = {
@@ -472,42 +472,47 @@ export const en: Messages = {
   teamTitle: "The\nTeam",
   teamIntro:
     "A leadership team that pairs deep technical depth with on-the-ground knowledge of the Kingdom — the people building United Sands.",
-  // PLACEHOLDER team — names, roles, bios, photos, and LinkedIn URLs pending client (Reina). Do not treat as final.
+  // Real leadership bios + LinkedIn URLs from the client (2026-06-16). All four LinkedIn profiles provided.
   team: [
     {
-      name: "Faisal Al-Otaibi",
-      role: "Chief Executive Officer",
-      bio: "Two decades steering large-scale digital and infrastructure programs across the Gulf, with a focus on aligning delivery to Vision 2030 outcomes.",
-      linkedin: "#",
-      initials: "FA",
+      name: "Suleiman Abed Aljawad",
+      role: "Founder, United Sands and Atlantis Blu Mining | Co-Founder, Marine Mining Company",
+      bio: [
+        "Mr. Suleiman Abed Aljawad is a technology-driven founder and executive focused on building future-ready platforms across smart cities, advanced infrastructure, and industrial innovation.",
+        "His work centers on the localization and commercialization of frontier technologies, including robotics, digital twin systems, AI-powered monitoring, environmental intelligence, and integrated digital infrastructure solutions. Through strategic partnerships and cross-sector collaboration, he leads the development of scalable technology platforms that support sustainable growth and next-generation urban transformation.",
+      ],
+      linkedin: "https://www.linkedin.com/in/suleiman-abdeljawad-49b52987/",
+      initials: "SA",
     },
     {
-      name: "Lina Haddad",
-      role: "Chief Technology Officer",
-      bio: "Leads the engineering practice across digital twins, geospatial platforms, and command-and-control systems, turning research into production at city scale.",
-      linkedin: "#",
-      initials: "LH",
+      name: "Mohammed Aljuaid",
+      role: "Chief Operating Officer",
+      bio: [
+        "Mr. Mohammed Aljuaid is a smart city and digital transformation executive with extensive experience in urban intelligence, digital twin platforms, geospatial technologies, and large-scale infrastructure programs across Saudi Arabia.",
+        "At United Sands, he strengthens operational and delivery capabilities by translating smart city strategies into practical operating models that integrate digital infrastructure, GIS platforms, asset intelligence, data-driven governance, and scalable urban intelligence solutions.",
+      ],
+      linkedin: "https://www.linkedin.com/in/m-aljuaid-sa",
+      initials: "MA",
     },
     {
-      name: "Omar Nasser",
-      role: "Head of Geospatial Intelligence",
-      bio: "Brings reality-capture, LiDAR, and GIS expertise from field-grade inspection programs to nationwide spatial-data initiatives.",
-      linkedin: "#",
-      initials: "ON",
+      name: "Issa Suleiman",
+      role: "Business Development Director",
+      bio: [
+        "Mr. Issa Suleiman leads business development and strategic growth initiatives across smart city infrastructure, advanced technologies, and renewable energy systems.",
+        "His work focuses on identifying market opportunities, developing partnership channels, and shaping commercialization pathways for technology-driven projects. Through engagement with government entities, technology partners, and industry stakeholders, he supports the expansion of United Sands' business ecosystem.",
+      ],
+      linkedin: "https://www.linkedin.com/in/issa-abdeljawad-9361b6324",
+      initials: "IS",
     },
     {
-      name: "Sara Al-Qahtani",
-      role: "Director of Strategy",
-      bio: "Bridges client ambition and technical roadmaps, shaping engagements from first conversation through long-term transformation.",
-      linkedin: "#",
-      initials: "SQ",
-    },
-    {
-      name: "Yousef Karim",
-      role: "Head of Smart City Solutions",
-      bio: "Designs unified city data platforms and urban mobility systems, with a track record delivering integrated operations centres.",
-      linkedin: "#",
-      initials: "YK",
+      name: "Rinad Saeed",
+      role: "Executive Manager",
+      bio: [
+        "Ms. Rinad Saeed is an Executive Manager focused on strategic partnerships, innovation-led initiatives, smart technologies, and executive alignment within smart city and advanced infrastructure projects.",
+        "At United Sands, she supports the development of strategic projects by connecting leadership direction with opportunity development, partnership positioning, stakeholder alignment, and the early structuring of technology-driven initiatives that support scalable smart infrastructure solutions.",
+      ],
+      linkedin: "https://www.linkedin.com/in/rinad-saeed",
+      initials: "RS",
     },
   ],
   teamReadBio: "Read Bio",
@@ -839,42 +844,47 @@ export const ar: Messages = {
   teamTitle: "الفريق",
   teamIntro:
     "فريق قيادي يجمع بين العمق التقني والمعرفة الميدانية بالمملكة — الأشخاص الذين يبنون الرمال المتحدة.",
-  // فريق مبدئي — الأسماء والمناصب والسير والصور وروابط لينكدإن بانتظار العميل؛ ليست نهائية.
+  // النص العربي المعتمد من العميل (2026-06-16). الأسماء تبقى لاتينية (مطابِقة للإنجليزية). جميع روابط لينكدإن الأربعة مُسلَّمة.
   team: [
     {
-      name: "Faisal Al-Otaibi",
-      role: "الرئيس التنفيذي",
-      bio: "عقدان من قيادة البرامج الرقمية والبنية التحتية الكبرى في الخليج، مع تركيز على مواءمة التنفيذ مع مستهدفات رؤية 2030.",
-      linkedin: "#",
-      initials: "FA",
+      name: "Suleiman Abed Aljawad",
+      role: "المؤسس لشركة United Sands وشركة Atlantis Blu Mining | الشريك المؤسس لشركة التعدين البحري",
+      bio: [
+        "يُعد الأستاذ سليمان عبدالجواد مؤسسًا وقياديًا مدفوعًا بالتقنية، يركز على بناء منصات مستقبلية في مجالات المدن الذكية، والبنية التحتية المتقدمة، والابتكار الصناعي.",
+        "تتمحور أعماله حول توطين وتسويق التقنيات المتقدمة، بما في ذلك الروبوتات، وأنظمة التوأم الرقمي، وحلول المراقبة المدعومة بالذكاء الاصطناعي، والذكاء البيئي، وأطر البنية التحتية الرقمية المتكاملة. ومن خلال الشراكات الاستراتيجية والتعاون بين القطاعات، يقود تطوير منصات تقنية قابلة للتوسع تدعم النمو المستدام والتحول الحضري للجيل القادم.",
+      ],
+      linkedin: "https://www.linkedin.com/in/suleiman-abdeljawad-49b52987/",
+      initials: "SA",
     },
     {
-      name: "Lina Haddad",
-      role: "رئيسة التقنية",
-      bio: "تقود الممارسة الهندسية عبر التوائم الرقمية والمنصّات الجيومكانية وأنظمة القيادة والتحكّم، محوّلةً البحث إلى إنتاجٍ على مستوى المدينة.",
-      linkedin: "#",
-      initials: "LH",
+      name: "Mohammed Aljuaid",
+      role: "المدير التنفيذي للعمليات",
+      bio: [
+        "يُعد الأستاذ محمد الجعيد قياديًا في مجال المدن الذكية والتحول الرقمي، ولديه خبرة واسعة في منصات الذكاء الحضري، وأنظمة التوأم الرقمي، والتقنيات الجيومكانية، وبرامج البنية التحتية واسعة النطاق في المملكة العربية السعودية.",
+        "في United Sands، يعمل على تعزيز القدرات التشغيلية والتنفيذية للشركة من خلال تحويل استراتيجيات المدن الذكية إلى نماذج تشغيلية عملية، تدمج البنية التحتية الرقمية، ومنصات نظم المعلومات الجغرافية، وذكاء الأصول، والحوكمة القائمة على البيانات، وحلول الذكاء الحضري القابلة للتوسع.",
+      ],
+      linkedin: "https://www.linkedin.com/in/m-aljuaid-sa",
+      initials: "MA",
     },
     {
-      name: "Omar Nasser",
-      role: "رئيس الذكاء الجيومكاني",
-      bio: "يجلب خبرة تجسيد الواقع والليدار ونظم المعلومات الجيومكانية من برامج الفحص الميدانية إلى مبادرات البيانات المكانية الوطنية.",
-      linkedin: "#",
-      initials: "ON",
+      name: "Issa Suleiman",
+      role: "مدير تطوير الأعمال",
+      bio: [
+        "يقود الأستاذ عيسى سليمان مبادرات تطوير الأعمال والنمو الاستراتيجي في مجالات البنية التحتية للمدن الذكية، والتقنيات المتقدمة، وأنظمة الطاقة المتجددة.",
+        "يركز عمله على تحديد الفرص السوقية، وتطوير قنوات الشراكة، وبناء مسارات تجارية للمشاريع القائمة على التقنية. ومن خلال تواصله مع الجهات الحكومية، والشركاء التقنيين، وأصحاب المصلحة في القطاع، يسهم في توسيع منظومة أعمال United Sands وتعزيز فرصها للنمو.",
+      ],
+      linkedin: "https://www.linkedin.com/in/issa-abdeljawad-9361b6324",
+      initials: "IS",
     },
     {
-      name: "Sara Al-Qahtani",
-      role: "مديرة الاستراتيجية",
-      bio: "تربط بين طموح العميل وخرائط الطريق التقنية، وتصوغ المشاريع من أول حوار حتى التحول طويل الأمد.",
-      linkedin: "#",
-      initials: "SQ",
-    },
-    {
-      name: "Yousef Karim",
-      role: "رئيس حلول المدن الذكية",
-      bio: "يصمّم منصّات بيانات المدينة الموحّدة وأنظمة التنقّل الحضري، بسجلٍّ حافل في تسليم مراكز عمليات متكاملة.",
-      linkedin: "#",
-      initials: "YK",
+      name: "Rinad Saeed",
+      role: "مدير الإدارة التنفيذية",
+      bio: [
+        "تركز الأستاذة ريناد سعيد، بصفتها مديرًا للإدارة التنفيذية، على الشراكات الاستراتيجية، والمبادرات القائمة على الابتكار، والتقنيات الذكية، والمواءمة التنفيذية ضمن مشاريع المدن الذكية والبنية التحتية المتقدمة.",
+        "في United Sands، تسهم في تطوير المشاريع الاستراتيجية من خلال ربط التوجهات القيادية بتطوير الفرص، وتموضع الشراكات، ومواءمة أصحاب المصلحة، والمساهمة في الهيكلة المبكرة للمبادرات التقنية التي تدعم حلول البنية التحتية الذكية القابلة للتوسع.",
+      ],
+      linkedin: "https://www.linkedin.com/in/rinad-saeed",
+      initials: "RS",
     },
   ],
   teamReadBio: "اقرأ السيرة",

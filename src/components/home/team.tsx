@@ -11,16 +11,8 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 /** Gap between cards, in px — must match the `gap-6` (1.5rem) on the track. */
 const GAP = 24;
 
-/**
- * Member photos by position (PSB freepik portraits). Any member without one
- * (e.g. the 5th, pending the client's photo) falls back to the initials monogram.
- */
-const PHOTOS = [
-  "/assets/team/faisal.webp",
-  "/assets/team/lina.webp",
-  "/assets/team/omar.webp",
-  "/assets/team/sara.webp",
-];
+/** A real LinkedIn URL was provided (not the "#" placeholder). */
+const hasLinkedin = (url: string) => Boolean(url) && url !== "#";
 
 /** Left-pointing chevron; flip horizontally with `rotate-180` for the other way. */
 function Chevron({ rotated }: { rotated: boolean }) {
@@ -42,6 +34,14 @@ function Chevron({ rotated }: { rotated: boolean }) {
   );
 }
 
+function CloseIcon() {
+  return (
+    <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+      <path d="M1 1l14 14M15 1L1 15" stroke="currentColor" strokeWidth="1.4" />
+    </svg>
+  );
+}
+
 /**
  * Part 11 — "THE TEAM".
  *
@@ -49,8 +49,10 @@ function Chevron({ rotated }: { rotated: boolean }) {
  * navigated by next/previous, keyboard arrows, AND drag/swipe. Index + keyboard
  * + clamped (non-wrapping) navigation come from {@link useCarousel} (`wrap:
  * false`); the track translate + drag-to-nearest-stop are track-specific here.
- * Each card flips up an inline bio on "Read Bio" and links to LinkedIn.
- * Continues the gradient circle toward the Part 13 finale.
+ *
+ * Photos are intentionally omitted for now — each card is a typographic monogram
+ * tile. "Read Bio" opens a centered dialog that flips open to reveal the full
+ * (multi-paragraph) bio. Continues the gradient circle toward the Part 13 finale.
  */
 export default function Team() {
   const { t, dir } = useLang();
@@ -61,7 +63,7 @@ export default function Team() {
   const members = t.team;
   const [perView, setPerView] = useState(3);
   const [step, setStep] = useState(0); // card width + gap, measured from the DOM
-  const [expanded, setExpanded] = useState<number | null>(null);
+  const [openBio, setOpenBio] = useState<number | null>(null);
 
   // Number of valid track stops (one card per step, no wrap).
   const stops = Math.max(1, members.length - perView + 1);
@@ -93,6 +95,23 @@ export default function Team() {
     };
   }, []);
 
+  // Pause smooth scroll + close the bio dialog on Escape while it's open.
+  useEffect(() => {
+    if (openBio === null) return;
+    const lenis = (
+      window as unknown as { lenis?: { stop: () => void; start: () => void } }
+    ).lenis;
+    lenis?.stop();
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpenBio(null);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => {
+      lenis?.start();
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [openBio]);
+
   // RTL lays the row right-to-left, so advancing moves the track the other way.
   const x = (dir === "rtl" ? 1 : -1) * clampedIndex * step;
   const limit = maxIndex * step;
@@ -107,6 +126,7 @@ export default function Team() {
   };
 
   const [titleLead, titleBrand] = t.teamTitle.split("\n");
+  const active = openBio === null ? null : members[openBio];
 
   return (
     <section id="team" ref={sectionRef} className="relative z-10 px-6 py-32 md:py-48">
@@ -186,50 +206,38 @@ export default function Team() {
                 : { type: "spring", stiffness: 260, damping: 34 }
             }
           >
-            {members.map((m, i) => {
-              const isOpen = expanded === i;
-              return (
-                <article
-                  key={m.name}
-                  className="shrink-0 grow-0 basis-full sm:basis-[calc((100%_-_24px)/2)] lg:basis-[calc((100%_-_48px)/3)]"
-                >
-                  <div className="relative h-[440px] overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]">
-                    {/* PSB portrait, or the initials monogram when none is set. */}
-                    {PHOTOS[i] ? (
-                      <Image
-                        src={PHOTOS[i]}
-                        alt={m.name}
-                        fill
-                        sizes="(min-width: 1024px) 22rem, (min-width: 640px) 50vw, 100vw"
-                        className="object-cover object-top"
-                        draggable={false}
-                      />
-                    ) : (
-                      <div className="absolute inset-0 grid place-items-center bg-gradient-to-br from-[var(--purple-accent)]/35 via-[#0d0a1a] to-[var(--gold)]/15">
-                        <span className="select-none font-inter text-7xl font-light text-white/10">
-                          {m.initials}
-                        </span>
-                      </div>
-                    )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0d0a1a] via-[#0d0a1a]/40 to-transparent" />
+            {members.map((m, i) => (
+              <article
+                key={m.name}
+                className="shrink-0 grow-0 basis-full sm:basis-[calc((100%_-_24px)/2)] lg:basis-[calc((100%_-_48px)/3)]"
+              >
+                <div className="relative flex h-[380px] flex-col justify-between overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-[var(--purple-accent)]/20 via-white/[0.02] to-[var(--gold)]/10 p-7">
+                  {/* Top glow */}
+                  <div className="pointer-events-none absolute inset-x-0 top-0 h-44 bg-[radial-gradient(ellipse_at_top,rgba(133,86,195,0.22),transparent_70%)]" />
 
-                    {/* Bottom content */}
-                    <div className="absolute inset-x-0 bottom-0 p-6">
-                      <h3 className="font-inter text-2xl font-light leading-tight text-white">
-                        {m.name}
-                      </h3>
-                      <p className="mt-1 font-inter text-xs uppercase tracking-[0.25em] text-[var(--gold-light)]/80">
-                        {m.role}
-                      </p>
-                      <div className="mt-5 flex items-center justify-between">
-                        <button
-                          type="button"
-                          onClick={() => setExpanded(isOpen ? null : i)}
-                          aria-expanded={isOpen}
-                          className="font-inter text-xs tracking-[0.3em] text-white/80 transition hover:text-[var(--gold-light)]"
-                        >
-                          {t.teamReadBio}
-                        </button>
+                  {/* Monogram — the card's visual anchor in place of a photo */}
+                  <span className="relative select-none font-inter text-[5.5rem] font-extralight leading-none text-white/10">
+                    {m.initials}
+                  </span>
+
+                  {/* Bottom content */}
+                  <div className="relative">
+                    <h3 className="font-inter text-2xl font-light leading-tight text-white">
+                      {m.name}
+                    </h3>
+                    <p className="mt-2 font-inter text-[11px] uppercase leading-[1.7] tracking-[0.2em] text-[var(--gold-light)]/80">
+                      {m.role}
+                    </p>
+                    <div className="mt-5 flex items-center justify-between">
+                      <button
+                        type="button"
+                        onClick={() => setOpenBio(i)}
+                        aria-haspopup="dialog"
+                        className="font-inter text-xs tracking-[0.3em] text-white/80 transition hover:text-[var(--gold-light)]"
+                      >
+                        {t.teamReadBio}
+                      </button>
+                      {hasLinkedin(m.linkedin) && (
                         <a
                           href={m.linkedin}
                           target="_blank"
@@ -245,55 +253,12 @@ export default function Team() {
                             draggable={false}
                           />
                         </a>
-                      </div>
-                    </div>
-
-                    {/* Inline bio — slides up over the card */}
-                    <AnimatePresence>
-                      {isOpen && (
-                        <motion.div
-                          initial={reduce ? { opacity: 0 } : { y: "100%" }}
-                          animate={reduce ? { opacity: 1 } : { y: 0 }}
-                          exit={reduce ? { opacity: 0 } : { y: "100%" }}
-                          transition={
-                            reduce ? { duration: 0.15 } : { duration: 0.4, ease: EASE }
-                          }
-                          className="absolute inset-0 flex flex-col bg-[#0d0a1a]/95 p-6 backdrop-blur-sm"
-                        >
-                          <div className="flex items-start justify-between gap-3">
-                            <div>
-                              <h3 className="font-inter text-xl font-light leading-tight text-white">
-                                {m.name}
-                              </h3>
-                              <p className="mt-1 font-inter text-xs uppercase tracking-[0.25em] text-[var(--gold-light)]/80">
-                                {m.role}
-                              </p>
-                            </div>
-                            <button
-                              type="button"
-                              onClick={() => setExpanded(null)}
-                              aria-label={t.formClose}
-                              className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/15 text-white/70 transition hover:border-white/40 hover:text-white"
-                            >
-                              <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
-                                <path
-                                  d="M1 1l14 14M15 1L1 15"
-                                  stroke="currentColor"
-                                  strokeWidth="1.4"
-                                />
-                              </svg>
-                            </button>
-                          </div>
-                          <p className="mt-5 font-inter text-sm leading-relaxed text-white/75">
-                            {m.bio}
-                          </p>
-                        </motion.div>
                       )}
-                    </AnimatePresence>
+                    </div>
                   </div>
-                </article>
-              );
-            })}
+                </div>
+              </article>
+            ))}
           </motion.div>
         </div>
 
@@ -313,6 +278,104 @@ export default function Team() {
           ))}
         </div>
       </div>
+
+      {/* Bio dialog — flips open from the side, centered over the page */}
+      <AnimatePresence>
+        {active && (
+          <motion.div
+            className="fixed inset-0 z-[90] flex items-center justify-center p-4"
+            dir={dir}
+            style={{ perspective: 1400 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            {/* Backdrop */}
+            <button
+              type="button"
+              aria-label={t.formClose}
+              onClick={() => setOpenBio(null)}
+              className="absolute inset-0 cursor-default bg-[#07050f]/80 backdrop-blur-md"
+            />
+
+            <motion.div
+              role="dialog"
+              aria-modal="true"
+              aria-label={active.name}
+              className="relative z-10 flex max-h-[85vh] w-full max-w-lg flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#120e22] shadow-[0_30px_120px_rgba(0,0,0,0.6)]"
+              style={{ transformStyle: "preserve-3d", transformOrigin: "center" }}
+              initial={
+                reduce
+                  ? { opacity: 0 }
+                  : { opacity: 0, rotateY: -90, scale: 0.92 }
+              }
+              animate={
+                reduce ? { opacity: 1 } : { opacity: 1, rotateY: 0, scale: 1 }
+              }
+              exit={
+                reduce ? { opacity: 0 } : { opacity: 0, rotateY: 90, scale: 0.92 }
+              }
+              transition={
+                reduce ? { duration: 0.15 } : { duration: 0.55, ease: EASE }
+              }
+            >
+              {/* Glow accent */}
+              <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-[radial-gradient(ellipse_at_top,rgba(133,86,195,0.25),transparent_70%)]" />
+
+              <div className="relative flex items-start justify-between gap-4 p-7 pb-0">
+                <div>
+                  <span className="font-inter text-5xl font-extralight leading-none text-white/10">
+                    {active.initials}
+                  </span>
+                  <h3 className="mt-4 font-inter text-2xl font-light leading-tight text-white">
+                    {active.name}
+                  </h3>
+                  <p className="mt-2 font-inter text-[11px] uppercase leading-[1.7] tracking-[0.2em] text-[var(--gold-light)]/80">
+                    {active.role}
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setOpenBio(null)}
+                  aria-label={t.formClose}
+                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white/70 transition hover:border-white/40 hover:text-white"
+                >
+                  <CloseIcon />
+                </button>
+              </div>
+
+              <div className="relative space-y-4 overflow-y-auto p-7 pt-6">
+                {active.bio.map((para, p) => (
+                  <p
+                    key={p}
+                    className="font-inter text-sm leading-relaxed text-white/75"
+                  >
+                    {para}
+                  </p>
+                ))}
+                {hasLinkedin(active.linkedin) && (
+                  <a
+                    href={active.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 pt-1 font-inter text-xs tracking-[0.2em] text-white/70 transition hover:text-[var(--gold-light)]"
+                  >
+                    <Image
+                      src="/images/linkedin.png"
+                      alt=""
+                      width={18}
+                      height={18}
+                      draggable={false}
+                    />
+                    {t.teamLinkedin}
+                  </a>
+                )}
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

@@ -10,7 +10,8 @@ import { useLang } from "@/lib/i18n/language-context";
 const FOCAL = "50% 48%";
 
 export default function Hero() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
+  const isAr = lang === "ar";
 
   // Measure scroll against this section (not the whole document) so the arch
   // zoom completes within the hero's own 220vh regardless of the sections below
@@ -131,7 +132,12 @@ export default function Hero() {
             {t.heroEyebrow}
           </p>
           <h1
-            className="font-inter text-5xl font-bold leading-[0.95] whitespace-pre-line text-white md:text-7xl lg:text-8xl"
+            className={`font-inter text-5xl font-bold whitespace-pre-line text-white md:text-7xl lg:text-8xl ${
+              // Arabic glyphs are taller and carry diacritics + descenders, so
+              // the all-caps-tuned 0.95 crushes the two lines together. Give the
+              // Arabic title room to breathe.
+              isAr ? "leading-[1.25]" : "leading-[0.95]"
+            }`}
             style={{
               // PSB hero title is solid white Inter-Bold. Soft shadow keeps it
               // legible across the bright arch as it zooms past.
@@ -140,7 +146,11 @@ export default function Hero() {
           >
             {t.heroHeadline}
           </h1>
-          <p className="mx-auto mt-8 max-w-md text-sm leading-relaxed text-white/70">
+          <p
+            className={`mx-auto max-w-md text-sm text-white/70 ${
+              isAr ? "mt-10 leading-loose" : "mt-8 leading-relaxed"
+            }`}
+          >
             {t.heroSub}
           </p>
           <Link
