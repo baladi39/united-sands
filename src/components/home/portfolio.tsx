@@ -77,9 +77,6 @@ export default function Portfolio() {
       <div className="mx-auto max-w-6xl">
         {/* Header — heading only; navigation moves down beside the card */}
         <div className="mb-10 max-w-md">
-          <p className="mb-4 font-inter text-xs tracking-[0.35em] text-[var(--gold-light)]/70">
-            / 09
-          </p>
           <h2 className="font-inter text-3xl font-light leading-[1.02] tracking-tight text-white md:text-5xl">
             {lead}
             <br />

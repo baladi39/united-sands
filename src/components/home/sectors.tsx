@@ -117,9 +117,6 @@ function Heading({ title, intro }: { title: string; intro: string }) {
   const [lead, brand] = title.split("\n");
   return (
     <div>
-      <p className="mb-4 font-inter text-xs tracking-[0.35em] text-(--gold-light)/70">
-        / 06
-      </p>
       <h2 className="font-inter text-4xl font-light leading-[0.95] tracking-tight text-white md:text-5xl">
         {lead}
         <br />
