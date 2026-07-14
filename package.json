@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && chmod -R a+rX .next",
     "start": "next start",
     "lint": "eslint",
     "zip:hostinger": "bash scripts/package-hostinger.sh"
