@@ -16,7 +16,6 @@ import Portfolio from "@/components/home/portfolio";
 import SaudiBorn from "@/components/home/saudi-born";
 import Team from "@/components/home/team";
 import Strategy from "@/components/home/strategy";
-import Partners from "@/components/home/partners";
 import ContactFinale from "@/components/home/contact-finale";
 import GradientCircle from "@/components/home/gradient-circle";
 import { GradientCircleProvider } from "@/components/home/gradient-circle-context";
@@ -79,7 +78,10 @@ export default function Home() {
           <SaudiBorn />
           <Team />
           <Strategy />
-          <Partners />
+          {/* Partners (Part 13a) is hidden until the client delivers real
+              partner logos — src/components/home/partners.tsx still renders
+              placeholder slots. Restore it here, plus its menu link, when the
+              artwork lands. */}
           <ContactFinale />
         </main>
       </GradientCircleProvider>

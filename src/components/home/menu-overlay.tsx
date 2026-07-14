@@ -27,7 +27,6 @@ const MENU_TARGETS = [
   "#services", // Services
   "/case-studies", // Portfolio
   "#who-we-are", // Who We Are
-  "#partners", // Partners
   "#contact", // Contact
 ];
 
