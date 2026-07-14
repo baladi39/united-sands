@@ -1,0 +1,26 @@
+allowBuilds:
+  # Native-binary packages that need their install scripts to fetch/build
+  # bindings: sharp (libvips, Next image optimization) and unrs-resolver
+  # (the ESLint TypeScript import resolver).
+  sharp: true
+  unrs-resolver: true
+
+minimumReleaseAgeExclude:
+  - postcss@8.5.19
+
+# Security patches for transitive dependencies whose parents have not yet
+# released against the fixed versions. Each key is pinned within its own major
+# line (minimatch@3 vs minimatch@9) so consumers keep a compatible API rather
+# than being forced across a breaking major.
+overrides:
+  "@babel/core@7": ^7.29.7
+  ajv@6: ^6.14.0
+  brace-expansion@1: ^1.1.13
+  brace-expansion@2: ^2.0.3
+  flatted@3: ^3.4.2
+  js-yaml@4: ^4.3.0
+  minimatch@3: ^3.1.5
+  minimatch@9: ^9.0.9
+  picomatch@2: ^2.3.2
+  picomatch@4: ^4.0.5
+  postcss@8: ^8.5.19

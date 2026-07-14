@@ -24,6 +24,7 @@ EXCLUDES=(
   "*.log"
   "*.tsbuildinfo"
   "*.pem"
+  "*.zip"
   ".pnp"
   ".pnp.*"
 )
