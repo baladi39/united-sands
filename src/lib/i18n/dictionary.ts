@@ -28,8 +28,8 @@ export type Service = {
 };
 
 export type Project = {
-  client: string; // e.g. "ADNOC"
-  country: string; // e.g. "UAE"
+  client: string; // e.g. "Oil & Gas Company" (clients are anonymized)
+  country: string; // e.g. "KSA"; "" when undisclosed
   title: string; // project title
   stat: string; // headline figure, e.g. "40%"
   statLabel: string; // supporting line under the figure
@@ -354,13 +354,13 @@ export const en: Messages = {
   // PLACEHOLDER projects — pending client (Reina) confirmation of the real 3 newest. Do not treat as final.
   portfolio: [
     {
-      client: "ADNOC",
-      country: "UAE",
+      client: "Oil & Gas Company",
+      country: "",
       title: "Pipeline Inspection Program",
       stat: "40%",
       statLabel: "Cost reduction vs. traditional inspection",
       tags: ["Reality Capture", "GIS", "Drone Intelligence"],
-      slug: "adnoc-pipeline-inspection",
+      slug: "pipeline-inspection-program",
     },
     {
       client: "NEOM",
@@ -403,11 +403,11 @@ export const en: Messages = {
   // sector are from the PSB; service tags are placeholder pending client (Reina) sign-off.
   caseStudies: [
     {
-      slug: "adnoc-pipeline-inspection",
-      client: "ADNOC",
-      country: "UAE",
+      slug: "pipeline-inspection-program",
+      client: "Oil & Gas Company",
+      country: "",
       sector: "Oil & Gas / Safety",
-      title: "Pipeline Inspection for ADNOC (UAE)",
+      title: "Pipeline Inspection for an Oil & Gas Company",
       stat: "40%",
       statLabel:
         "Cost reduction vs. traditional inspection methods, while improving safety compliance.",
@@ -727,13 +727,13 @@ export const ar: Messages = {
   // مشاريع مبدئية — بانتظار تأكيد العميل للمشاريع الثلاثة الأحدث؛ ليست نهائية.
   portfolio: [
     {
-      client: "أدنوك",
-      country: "الإمارات",
+      client: "شركة نفط وغاز",
+      country: "",
       title: "برنامج فحص خطوط الأنابيب",
       stat: "40%",
       statLabel: "خفض التكلفة مقارنةً بالفحص التقليدي",
       tags: ["تجسيد الواقع", "نظم المعلومات الجيومكانية", "ذكاء الطائرات المسيّرة"],
-      slug: "adnoc-pipeline-inspection",
+      slug: "pipeline-inspection-program",
     },
     {
       client: "نيوم",
@@ -774,11 +774,11 @@ export const ar: Messages = {
   caseStudyNotFound: "تعذّر العثور على دراسة الحالة هذه.",
   caseStudies: [
     {
-      slug: "adnoc-pipeline-inspection",
-      client: "أدنوك",
-      country: "الإمارات",
+      slug: "pipeline-inspection-program",
+      client: "شركة نفط وغاز",
+      country: "",
       sector: "النفط والغاز / السلامة",
-      title: "فحص خطوط الأنابيب لأدنوك (الإمارات)",
+      title: "فحص خطوط الأنابيب لشركة نفط وغاز",
       stat: "40%",
       statLabel:
         "خفض التكلفة مقارنةً بطرق الفحص التقليدية، مع تحسين الامتثال للسلامة.",

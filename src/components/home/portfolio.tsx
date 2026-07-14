@@ -150,8 +150,12 @@ export default function Portfolio() {
                 <div>
                   <div className="flex items-center gap-3 font-inter text-xs tracking-[0.3em] text-white/50">
                     <span>{p.client}</span>
-                    <span className="h-px w-4 bg-white/30" />
-                    <span>{p.country}</span>
+                    {p.country && (
+                      <>
+                        <span className="h-px w-4 bg-white/30" />
+                        <span>{p.country}</span>
+                      </>
+                    )}
                   </div>
                   <h3 className="mt-4 font-inter text-3xl font-light leading-tight text-white md:text-5xl">
                     {p.title}

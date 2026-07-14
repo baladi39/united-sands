@@ -5,8 +5,8 @@ import { useState } from "react";
 
 const PROJECTS = [
   {
-    client: "ADNOC",
-    country: "UAE",
+    client: "Oil & Gas Company",
+    country: "",
     title: "Pipeline Inspection Program",
     stat: "40%",
     statLabel: "Cost reduction vs. traditional inspection",
@@ -87,8 +87,12 @@ export default function Portfolio() {
               <div>
                 <div className="flex items-center gap-3 text-xs tracking-[0.3em] text-white/50 font-inter">
                   <span>{p.client}</span>
-                  <span className="h-px w-4 bg-white/30" />
-                  <span>{p.country}</span>
+                  {p.country && (
+                    <>
+                      <span className="h-px w-4 bg-white/30" />
+                      <span>{p.country}</span>
+                    </>
+                  )}
                 </div>
                 <h3 className="mt-4 font-inter text-3xl font-light leading-tight md:text-5xl">
                   {p.title}

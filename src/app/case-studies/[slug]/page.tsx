@@ -20,8 +20,8 @@ const GRADIENT_STAT = {
   WebkitTextFillColor: "transparent",
 } as const;
 
-// Portfolio project detail — "Pipeline Inspection for ADNOC (UAE)" and friends
-// (website.psb artboard 12). Looks the study up from the localized dictionary by
+// Portfolio project detail — "Pipeline Inspection for an Oil & Gas Company" and
+// friends (website.psb artboard 12). Looks the study up from the dictionary by
 // slug. Data is client-side (language context), so this renders the not-found
 // state inline rather than calling notFound().
 export default function CaseStudyDetailPage() {
