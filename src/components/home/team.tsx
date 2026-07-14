@@ -154,9 +154,6 @@ export default function Team() {
         {/* Header — title on the leading side, nav on the trailing side */}
         <div className="mb-12 flex items-end justify-between gap-6">
           <div className="max-w-md">
-            <p className="mb-4 font-inter text-xs tracking-[0.35em] text-(--gold-light)/70">
-              / 11
-            </p>
             <h2 className="font-inter text-3xl font-light leading-[1.02] tracking-tight text-white md:text-5xl">
               {titleBrand ? (
                 <>

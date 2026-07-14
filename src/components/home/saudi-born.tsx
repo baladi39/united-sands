@@ -65,10 +65,7 @@ export default function SaudiBorn() {
         <div className="grid gap-16 md:grid-cols-2 md:items-center md:gap-12">
           {/* Left — PSB framing */}
           <div>
-            <div className="mb-5 flex items-center gap-3">
-              <span className="font-inter text-xs tracking-[0.35em] text-[var(--gold-light)]/70">
-                / 10
-              </span>
+            <div className="mb-5 flex items-center">
               <span className="rounded-full border border-[var(--gold)]/30 px-3 py-1 font-inter text-[10px] uppercase tracking-[0.25em] text-[var(--gold-light)]/80">
                 {t.saudiEyebrow}
               </span>

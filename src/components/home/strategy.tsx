@@ -48,9 +48,6 @@ export default function Strategy() {
         <div className="grid items-center gap-12 md:grid-cols-2 md:gap-16">
           {/* Statement */}
           <div>
-            <p className="mb-4 font-inter text-xs tracking-[0.35em] text-[var(--gold-light)]/70">
-              / 12
-            </p>
             <p className="mb-5 font-inter text-xs uppercase tracking-[0.3em] text-[var(--gold-light)]/80">
               [ {t.strategyEyebrow} ]
             </p>
