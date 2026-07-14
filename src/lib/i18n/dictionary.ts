@@ -425,13 +425,13 @@ export const en: Messages = {
       country: "",
       sector: "Smart City / Governance",
       title: "Integrated Urban Data Platform",
-      stat: "40%",
+      stat: "25%",
       statLabel:
         "Reduction in municipal authority response times, driving citizen satisfaction.",
       summary:
-        "A unified urban data platform that cut municipal response times by 40%.",
+        "A unified urban data platform that cut municipal response times by 25%.",
       description:
-        "United Sands unified fragmented municipal data sources into a single command-and-control view — a governance-grade platform connecting city operations in real time. Municipal authority response times fell by 40%, driving a measurable lift in citizen satisfaction.",
+        "United Sands unified fragmented municipal data sources into a single command-and-control view — a governance-grade platform connecting city operations in real time. Municipal authority response times fell by 25%, driving a measurable lift in citizen satisfaction.",
       tags: ["Command & Control", "Unified City Data", "Governance Dashboards"],
       image: "/assets/portfolio-city.webp",
       accent: "purple",
@@ -796,13 +796,13 @@ export const ar: Messages = {
       country: "",
       sector: "المدن الذكية / الحوكمة",
       title: "منصة البيانات الحضرية المتكاملة",
-      stat: "40%",
+      stat: "25%",
       statLabel:
         "خفض أزمنة استجابة الجهات البلدية، بما يعزّز رضا المواطنين.",
       summary:
-        "منصة بيانات حضرية موحّدة خفضت أزمنة الاستجابة البلدية بنسبة 40%.",
+        "منصة بيانات حضرية موحّدة خفضت أزمنة الاستجابة البلدية بنسبة 25%.",
       description:
-        "وحّدت يونايتد ساندز مصادر البيانات البلدية المتفرّقة في عرضٍ موحّد للقيادة والتحكّم — منصة بمستوى حوكمي تربط عمليات المدينة آنياً. وانخفضت أزمنة استجابة الجهات البلدية بنسبة 40%، بما عزّز رضا المواطنين بشكلٍ ملموس.",
+        "وحّدت يونايتد ساندز مصادر البيانات البلدية المتفرّقة في عرضٍ موحّد للقيادة والتحكّم — منصة بمستوى حوكمي تربط عمليات المدينة آنياً. وانخفضت أزمنة استجابة الجهات البلدية بنسبة 25%، بما عزّز رضا المواطنين بشكلٍ ملموس.",
       tags: ["القيادة والتحكّم", "بيانات المدينة الموحّدة", "لوحات الحوكمة"],
       image: "/assets/portfolio-city.webp",
       accent: "purple",
