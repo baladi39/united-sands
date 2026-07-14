@@ -47,19 +47,19 @@ export default function Stats() {
       <div className="mx-auto max-w-6xl px-6 md:px-12">
         <div className="mb-16 flex items-end justify-between gap-6">
           <div>
-            <p className="mb-3 text-xs tracking-[0.35em] text-[var(--gold-light)]/70 font-inter">
+            <p className="mb-3 text-xs tracking-[0.35em] text-(--gold-light)/70 font-inter">
               / 04
             </p>
             <h2 className="font-inter text-3xl font-light tracking-tight md:text-5xl">
               Why Choose
               <br />
-              <span className="text-[var(--gold-light)]">United Sands?</span>
+              <span className="text-(--gold-light)">United Sands?</span>
             </h2>
           </div>
           <div className="flex items-center gap-3">
             <button
               onClick={prev}
-              className="flex h-12 w-12 items-center justify-center rounded-full border border-white/20 text-white/70 transition hover:border-[var(--gold)]/60 hover:text-white"
+              className="flex h-12 w-12 items-center justify-center rounded-full border border-white/20 text-white/70 transition hover:border-(--gold)/60 hover:text-white"
               aria-label="Previous stat"
               type="button"
             >
@@ -71,7 +71,7 @@ export default function Stats() {
             </span>
             <button
               onClick={next}
-              className="flex h-12 w-12 items-center justify-center rounded-full border border-white/20 text-white/70 transition hover:border-[var(--gold)]/60 hover:text-white"
+              className="flex h-12 w-12 items-center justify-center rounded-full border border-white/20 text-white/70 transition hover:border-(--gold)/60 hover:text-white"
               aria-label="Next stat"
               type="button"
             >
@@ -80,7 +80,7 @@ export default function Stats() {
           </div>
         </div>
 
-        <div className="relative min-h-[320px] rounded-2xl border border-white/10 bg-white/[0.03] p-10 backdrop-blur-sm md:p-16">
+        <div className="relative min-h-80 rounded-2xl border border-white/10 bg-white/3 p-10 backdrop-blur-sm md:p-16">
           <AnimatePresence mode="wait">
             <motion.div
               key={index}
@@ -104,7 +104,7 @@ export default function Stats() {
                     {s.value}
                   </span>
                   {s.unit && (
-                    <span className="font-inter text-sm tracking-[0.3em] text-[var(--gold-light)]/80">
+                    <span className="font-inter text-sm tracking-[0.3em] text-(--gold-light)/80">
                       {s.unit}
                     </span>
                   )}

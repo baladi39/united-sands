@@ -46,13 +46,15 @@ function CloseIcon() {
  * Part 11 — "THE TEAM".
  *
  * A multi-card sliding track (3 cards on desktop, 2 on tablet, 1 on mobile)
- * navigated by next/previous, keyboard arrows, AND drag/swipe. Index + keyboard
- * + clamped (non-wrapping) navigation come from {@link useCarousel} (`wrap:
- * false`); the track translate + drag-to-nearest-stop are track-specific here.
+ * navigated by next/previous, keyboard arrows, and — on touch only — swipe.
+ * Index + keyboard + clamped (non-wrapping) navigation come from
+ * {@link useCarousel} (`wrap: false`); the track translate + swipe-to-nearest-stop
+ * are track-specific here.
  *
  * Photos are intentionally omitted for now — each card is a typographic monogram
- * tile. "Read Bio" opens a centered dialog that flips open to reveal the full
- * (multi-paragraph) bio. Continues the gradient circle toward the Part 13 finale.
+ * tile. Clicking anywhere on a card opens a centered dialog that flips open to
+ * reveal the full (multi-paragraph) bio. Continues the gradient circle toward the
+ * Part 13 finale.
  */
 export default function Team() {
   const { t, dir } = useLang();
@@ -64,6 +66,11 @@ export default function Team() {
   const [perView, setPerView] = useState(3);
   const [step, setStep] = useState(0); // card width + gap, measured from the DOM
   const [openBio, setOpenBio] = useState<number | null>(null);
+  // Swipe belongs to touch. On a mouse the whole card is a click target, so
+  // dragging the track would only fight with it (and hand back a grab cursor).
+  const [swipeable, setSwipeable] = useState(false);
+  // A swipe ends in a click on whichever card is under the finger — swallow it.
+  const swipedRef = useRef(false);
 
   // Number of valid track stops (one card per step, no wrap).
   const stops = Math.max(1, members.length - perView + 1);
@@ -93,6 +100,14 @@ export default function Team() {
       window.removeEventListener("resize", measure);
       cancelAnimationFrame(raf);
     };
+  }, []);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(pointer: coarse)");
+    const sync = () => setSwipeable(mq.matches);
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
   }, []);
 
   // Pause smooth scroll + close the bio dialog on Escape while it's open.
@@ -125,6 +140,11 @@ export default function Team() {
     goTo(Math.round(moved)); // goTo clamps to [0, stops-1]
   };
 
+  const openProfile = (i: number) => {
+    if (swipedRef.current) return; // the click that trails a swipe
+    setOpenBio(i);
+  };
+
   const [titleLead, titleBrand] = t.teamTitle.split("\n");
   const active = openBio === null ? null : members[openBio];
 
@@ -134,7 +154,7 @@ export default function Team() {
         {/* Header — title on the leading side, nav on the trailing side */}
         <div className="mb-12 flex items-end justify-between gap-6">
           <div className="max-w-md">
-            <p className="mb-4 font-inter text-xs tracking-[0.35em] text-[var(--gold-light)]/70">
+            <p className="mb-4 font-inter text-xs tracking-[0.35em] text-(--gold-light)/70">
               / 11
             </p>
             <h2 className="font-inter text-3xl font-light leading-[1.02] tracking-tight text-white md:text-5xl">
@@ -165,7 +185,7 @@ export default function Team() {
             <button
               onClick={prev}
               disabled={clampedIndex <= 0}
-              className="flex h-12 w-12 items-center justify-center rounded-full border border-white/20 text-white/70 transition hover:border-[var(--gold)]/60 hover:text-white disabled:cursor-not-allowed disabled:opacity-30"
+              className="flex h-12 w-12 items-center justify-center rounded-full border border-white/20 text-white/70 transition hover:border-(--gold)/60 hover:text-white disabled:cursor-not-allowed disabled:opacity-30"
               aria-label={t.teamPrev}
               type="button"
             >
@@ -174,7 +194,7 @@ export default function Team() {
             <button
               onClick={next}
               disabled={clampedIndex >= maxIndex}
-              className="flex h-12 w-12 items-center justify-center rounded-full border border-white/20 text-white/70 transition hover:border-[var(--gold)]/60 hover:text-white disabled:cursor-not-allowed disabled:opacity-30"
+              className="flex h-12 w-12 items-center justify-center rounded-full border border-white/20 text-white/70 transition hover:border-(--gold)/60 hover:text-white disabled:cursor-not-allowed disabled:opacity-30"
               aria-label={t.teamNext}
               type="button"
             >
@@ -190,14 +210,20 @@ export default function Team() {
           aria-label={t.teamTitle.replace("\n", " ")}
           tabIndex={0}
           onKeyDown={onKeyDown}
-          className="overflow-hidden rounded-3xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--gold)]"
+          className="overflow-hidden rounded-3xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--gold)"
         >
           <motion.div
             ref={trackRef}
-            className="flex cursor-grab gap-6 touch-pan-y active:cursor-grabbing"
-            drag="x"
+            className="flex gap-6 touch-pan-y"
+            drag={swipeable ? "x" : false}
             dragConstraints={dragConstraints}
             dragElastic={0.15}
+            onPointerDown={() => {
+              swipedRef.current = false;
+            }}
+            onDrag={(_e, info: PanInfo) => {
+              if (Math.abs(info.offset.x) > 6) swipedRef.current = true;
+            }}
             onDragEnd={onDragEnd}
             animate={{ x }}
             transition={
@@ -209,11 +235,21 @@ export default function Team() {
             {members.map((m, i) => (
               <article
                 key={m.name}
-                className="shrink-0 grow-0 basis-full sm:basis-[calc((100%_-_24px)/2)] lg:basis-[calc((100%_-_48px)/3)]"
+                className="shrink-0 grow-0 basis-full sm:basis-[calc((100%-24px)/2)] lg:basis-[calc((100%-48px)/3)]"
               >
-                <div className="relative flex h-[380px] flex-col justify-between overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-[var(--purple-accent)]/20 via-white/[0.02] to-[var(--gold)]/10 p-7">
+                <div className="group relative flex h-95 flex-col justify-between overflow-hidden rounded-2xl border border-white/10 bg-linear-to-br from-(--purple-accent)/20 via-white/2 to-(--gold)/10 p-7 transition-colors hover:border-(--gold)/50">
                   {/* Top glow */}
                   <div className="pointer-events-none absolute inset-x-0 top-0 h-44 bg-[radial-gradient(ellipse_at_top,rgba(133,86,195,0.22),transparent_70%)]" />
+
+                  {/* The whole card opens the bio. Kept under the LinkedIn link
+                      (z-20) so that stays its own target. */}
+                  <button
+                    type="button"
+                    onClick={() => openProfile(i)}
+                    aria-haspopup="dialog"
+                    aria-label={`${m.name} — ${t.teamReadBio}`}
+                    className="absolute inset-0 z-10 cursor-pointer rounded-2xl focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--gold)"
+                  />
 
                   {/* Monogram — the card's visual anchor in place of a photo */}
                   <span className="relative select-none font-inter text-[5.5rem] font-extralight leading-none text-white/10">
@@ -225,25 +261,23 @@ export default function Team() {
                     <h3 className="font-inter text-2xl font-light leading-tight text-white">
                       {m.name}
                     </h3>
-                    <p className="mt-2 font-inter text-[11px] uppercase leading-[1.7] tracking-[0.2em] text-[var(--gold-light)]/80">
+                    <p className="mt-2 font-inter text-[11px] uppercase leading-[1.7] tracking-[0.2em] text-(--gold-light)/80">
                       {m.role}
                     </p>
                     <div className="mt-5 flex items-center justify-between">
-                      <button
-                        type="button"
-                        onClick={() => setOpenBio(i)}
-                        aria-haspopup="dialog"
-                        className="font-inter text-xs tracking-[0.3em] text-white/80 transition hover:text-[var(--gold-light)]"
+                      <span
+                        aria-hidden="true"
+                        className="font-inter text-xs tracking-[0.3em] text-white/80 transition-colors group-hover:text-(--gold-light)"
                       >
                         {t.teamReadBio}
-                      </button>
+                      </span>
                       {hasLinkedin(m.linkedin) && (
                         <a
                           href={m.linkedin}
                           target="_blank"
                           rel="noopener noreferrer"
                           aria-label={`${m.name} ${t.teamLinkedin}`}
-                          className="opacity-70 transition-opacity hover:opacity-100"
+                          className="relative z-20 opacity-70 transition-opacity hover:opacity-100"
                         >
                           <Image
                             src="/images/linkedin.png"
@@ -269,7 +303,7 @@ export default function Team() {
               key={i}
               onClick={() => goTo(i)}
               className={`h-px transition-all ${
-                i === clampedIndex ? "w-16 bg-[var(--gold)]" : "w-8 bg-white/20"
+                i === clampedIndex ? "w-16 bg-(--gold)" : "w-8 bg-white/20"
               }`}
               aria-label={`${i + 1}`}
               aria-current={i === clampedIndex}
@@ -283,7 +317,7 @@ export default function Team() {
       <AnimatePresence>
         {active && (
           <motion.div
-            className="fixed inset-0 z-[90] flex items-center justify-center p-4"
+            className="fixed inset-0 z-90 flex items-center justify-center p-4"
             dir={dir}
             style={{ perspective: 1400 }}
             initial={{ opacity: 0 }}
@@ -331,7 +365,7 @@ export default function Team() {
                   <h3 className="mt-4 font-inter text-2xl font-light leading-tight text-white">
                     {active.name}
                   </h3>
-                  <p className="mt-2 font-inter text-[11px] uppercase leading-[1.7] tracking-[0.2em] text-[var(--gold-light)]/80">
+                  <p className="mt-2 font-inter text-[11px] uppercase leading-[1.7] tracking-[0.2em] text-(--gold-light)/80">
                     {active.role}
                   </p>
                 </div>
@@ -359,7 +393,7 @@ export default function Team() {
                     href={active.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 pt-1 font-inter text-xs tracking-[0.2em] text-white/70 transition hover:text-[var(--gold-light)]"
+                    className="inline-flex items-center gap-2 pt-1 font-inter text-xs tracking-[0.2em] text-white/70 transition hover:text-(--gold-light)"
                   >
                     <Image
                       src="/images/linkedin.png"

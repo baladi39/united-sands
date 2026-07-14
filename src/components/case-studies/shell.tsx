@@ -22,7 +22,7 @@ export default function CaseStudiesShell({
   const { openForm } = useRequestProject();
 
   return (
-    <main className="relative min-h-screen overflow-hidden bg-[var(--background)] text-white">
+    <main className="relative min-h-screen overflow-hidden bg-background text-white">
       {/* Ambient brand glow */}
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(ellipse_at_top,rgba(133,86,195,0.18),transparent_60%)]" />
 
@@ -45,7 +45,7 @@ export default function CaseStudiesShell({
           <button
             type="button"
             onClick={openForm}
-            className="rounded-full border border-[var(--gold)]/40 bg-[var(--gold)]/10 px-5 py-2 font-inter text-[11px] tracking-[0.2em] text-[var(--gold-light)] transition hover:bg-[var(--gold)]/20"
+            className="rounded-full border border-(--gold)/40 bg-(--gold)/10 px-5 py-2 font-inter text-[11px] tracking-[0.2em] text-(--gold-light) transition hover:bg-(--gold)/20"
           >
             {t.navRequest}
           </button>
