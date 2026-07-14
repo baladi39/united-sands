@@ -56,7 +56,7 @@ export async function POST(req: Request) {
     ];
 
     const text = rows
-      .map(([k, v]) => `${k}: ${v || "—"}`)
+      .map(([k, v]) => `${k}: ${v || "-"}`)
       .join("\n");
     const html = `
       <h2>New Project Request</h2>
@@ -66,7 +66,7 @@ export async function POST(req: Request) {
             ([k, v]) =>
               `<tr><td style="font-weight:600">${escape(k)}</td><td>${escape(
                 v,
-              ) || "—"}</td></tr>`,
+              ) || "-"}</td></tr>`,
           )
           .join("")}
       </table>
@@ -77,7 +77,7 @@ export async function POST(req: Request) {
       from: "United Sands <no-reply@unitedsands.co>",
       to: "info@unitedsands.co",
       replyTo: typeof email === "string" ? email.trim() : undefined,
-      subject: `New Project Request — ${name || email}`,
+      subject: `New Project Request: ${name || email}`,
       text,
       html,
     });

@@ -31,7 +31,7 @@ export default function CaseStudiesShell({
         <Link
           href="/"
           className="relative h-11 w-10 shrink-0"
-          aria-label="United Sands — home"
+          aria-label="United Sands home"
         >
           <Image
             src="/assets/logo-lockup.svg"

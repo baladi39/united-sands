@@ -42,7 +42,7 @@ export default function CaseStudyDetailPage() {
           </p>
           <Link
             href="/case-studies"
-            className="mt-6 inline-block font-inter text-xs tracking-[0.3em] text-[var(--gold-light)] transition hover:text-white"
+            className="mt-6 inline-block font-inter text-xs tracking-[0.3em] text-(--gold-light) transition hover:text-white"
           >
             {backArrow} {t.caseStudiesBackToGrid}
           </Link>
@@ -71,7 +71,7 @@ export default function CaseStudyDetailPage() {
             className="mt-8 grid gap-8 lg:grid-cols-[1.15fr_1fr] lg:items-stretch"
           >
             {/* Project panel */}
-            <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-[var(--purple-accent)]/30 via-[#1a1330]/50 to-transparent p-8 md:p-12">
+            <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-linear-to-br from-(--purple-accent)/30 via-[#1a1330]/50 to-transparent p-8 md:p-12">
               <div className="relative h-10 w-9">
                 <Image
                   src="/assets/u-mark.svg"
@@ -81,7 +81,7 @@ export default function CaseStudyDetailPage() {
                 />
               </div>
 
-              <p className="mt-7 font-inter text-[11px] uppercase tracking-[0.35em] text-[var(--gold-light)]/80">
+              <p className="mt-7 font-inter text-[11px] uppercase tracking-[0.35em] text-(--gold-light)/80">
                 {study.sector}
               </p>
               <h1
@@ -134,7 +134,7 @@ export default function CaseStudyDetailPage() {
             </div>
 
             {/* Featured visual */}
-            <div className="relative min-h-[280px] overflow-hidden rounded-3xl border border-[var(--gold)]/20 bg-gradient-to-br from-[var(--gold)]/10 via-transparent to-[var(--purple-accent)]/25">
+            <div className="relative min-h-70 overflow-hidden rounded-3xl border border-(--gold)/20 bg-linear-to-br from-(--gold)/10 via-transparent to-(--purple-accent)/25">
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(133,86,195,0.25),transparent_65%)]" />
               <Image
                 src={study.image}
@@ -152,10 +152,10 @@ export default function CaseStudyDetailPage() {
             <button
               type="button"
               onClick={openForm}
-              className="group relative flex h-44 w-44 flex-col items-center justify-center rounded-full border border-[var(--gold)]/40 bg-[radial-gradient(circle,rgba(133,86,195,0.25),rgba(13,10,26,0.6))] text-center transition hover:border-[var(--gold)]/80"
+              className="group relative flex h-44 w-44 flex-col items-center justify-center rounded-full border border-(--gold)/40 bg-[radial-gradient(circle,rgba(133,86,195,0.25),rgba(13,10,26,0.6))] text-center transition hover:border-(--gold)/80"
               aria-label={t.caseStudyRequestCta}
             >
-              <span className="absolute inset-0 rounded-full bg-[var(--gold)]/0 transition group-hover:bg-[var(--gold)]/10" />
+              <span className="absolute inset-0 rounded-full bg-(--gold)/0 transition group-hover:bg-(--gold)/10" />
               <div className="relative h-9 w-8">
                 <Image
                   src="/assets/u-mark.svg"
@@ -164,7 +164,7 @@ export default function CaseStudyDetailPage() {
                   className="object-contain opacity-90"
                 />
               </div>
-              <span className="relative mt-3 max-w-[7rem] font-inter text-[11px] uppercase tracking-[0.25em] text-white/85">
+              <span className="relative mt-3 max-w-28 font-inter text-[11px] uppercase tracking-[0.25em] text-white/85">
                 {t.caseStudyRequestCta}
               </span>
             </button>

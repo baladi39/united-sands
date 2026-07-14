@@ -22,7 +22,7 @@ const siteUrl =
     ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
     : "https://united-sands.vercel.app");
 
-const title = "United Sands — We Shape the Future";
+const title = "United Sands | We Shape the Future";
 const description =
   "A Saudi-born technology consultancy engineering the next era of smart cities, digital twins, and geospatial intelligence.";
 

@@ -270,7 +270,7 @@ export const en: Messages = {
       value: "60",
       unit: "EXPERTS",
       label: "Team Strength",
-      copy: "Engineers, data scientists, and regulatory specialists — fluent in both global tech and local context.",
+      copy: "Engineers, data scientists, and regulatory specialists, fluent in both global tech and local context.",
     },
     {
       value: "30+",
@@ -350,7 +350,7 @@ export const en: Messages = {
 
   portfolioTitle: "Latest\nPortfolio",
   portfolioIntro:
-    "A snapshot of our newest engagements — from reality-capture programs to city-scale digital twins.",
+    "A snapshot of our newest engagements, from reality-capture programs to city-scale digital twins.",
   // PLACEHOLDER projects — pending client (Reina) confirmation of the real 3 newest. Do not treat as final.
   portfolio: [
     {
@@ -414,7 +414,7 @@ export const en: Messages = {
       summary:
         "Drone-led reality capture cut pipeline inspection cost by 40% while raising safety compliance.",
       description:
-        "United Sands replaced manual pipeline survey routines with a reality-capture and geospatial-intelligence program — drone-based capture feeding a live GIS model of the network. The result was a 40% reduction in inspection cost compared with traditional methods, alongside measurable gains in safety compliance across the asset base.",
+        "United Sands replaced manual pipeline survey routines with a reality-capture and geospatial-intelligence program, with drone-based capture feeding a live GIS model of the network. The result was a 40% reduction in inspection cost compared with traditional methods, alongside measurable gains in safety compliance across the asset base.",
       tags: ["Reality Capture", "GIS", "Drone Intelligence"],
       image: "/assets/portfolio-city.webp",
       accent: "gold",
@@ -431,7 +431,7 @@ export const en: Messages = {
       summary:
         "A unified urban data platform that cut municipal response times by 25%.",
       description:
-        "United Sands unified fragmented municipal data sources into a single command-and-control view — a governance-grade platform connecting city operations in real time. Municipal authority response times fell by 25%, driving a measurable lift in citizen satisfaction.",
+        "United Sands unified fragmented municipal data sources into a single command-and-control view, a governance-grade platform connecting city operations in real time. Municipal authority response times fell by 25%, driving a measurable lift in citizen satisfaction.",
       tags: ["Command & Control", "Unified City Data", "Governance Dashboards"],
       image: "/assets/portfolio-city.webp",
       accent: "purple",
@@ -441,12 +441,12 @@ export const en: Messages = {
   saudiEyebrow: "Vision 2030",
   saudiTitle: "Why Being\nSaudi-Born Matters",
   saudiIntro:
-    "Global capability is only half the equation. Being Saudi-born is the other — the local fluency, trust, and alignment that turn ambition into delivery on the ground.",
+    "Global capability is only half the equation. Being Saudi-born is the other: the local fluency, trust, and alignment that turn ambition into delivery on the ground.",
   // PLACEHOLDER copy — pending client (Reina) confirmation. Do not treat as final.
   saudiPillars: [
     {
       title: "Deep Alignment with Vision 2030",
-      copy: "Every engagement is engineered to advance the Kingdom's national goals — from Giga-Project delivery to the wider digital transformation agenda.",
+      copy: "Every engagement is engineered to advance the Kingdom's national goals, from Giga-Project delivery to the wider digital transformation agenda.",
     },
     {
       title: "Fluent in Saudi Regulation",
@@ -454,7 +454,7 @@ export const en: Messages = {
     },
     {
       title: "Cultural & Stakeholder Intelligence",
-      copy: "Rooted in the local context, we read the stakeholders and decision dynamics that outside firms miss — earning trust faster.",
+      copy: "Rooted in the local context, we read the stakeholders and decision dynamics that outside firms miss, earning trust faster.",
     },
     {
       title: "Growing Saudi Talent",
@@ -462,7 +462,7 @@ export const en: Messages = {
     },
     {
       title: "Agility with Accountability",
-      copy: "Startup-speed delivery backed by enterprise-grade governance — we move fast and own the outcome.",
+      copy: "Startup-speed delivery backed by enterprise-grade governance. We move fast and own the outcome.",
     },
   ],
   saudiPrev: "Previous reason",
@@ -471,7 +471,7 @@ export const en: Messages = {
   teamEyebrow: "The Team",
   teamTitle: "The\nTeam",
   teamIntro:
-    "A leadership team that pairs deep technical depth with on-the-ground knowledge of the Kingdom — the people building United Sands.",
+    "A leadership team that pairs deep technical depth with on-the-ground knowledge of the Kingdom. These are the people building United Sands.",
   // Real leadership bios + LinkedIn URLs from the client (2026-06-16). All four LinkedIn profiles provided.
   team: [
     {
@@ -523,7 +523,7 @@ export const en: Messages = {
   strategyEyebrow: "You've Seen the Results.",
   strategyTitle: "Now Meet\nthe Strategy.",
   strategyBody:
-    "Success at United Sands is never accidental—it is the result of a unified vision. Our founding team works in lockstep with a formidable network of Limited Partners and advisors from the government and defense sectors to turn complex logistics into seamless execution. With decades of shared history at the helm, we provide the strategic depth that ensures every project under the United Sands umbrella is built to last.",
+    "Success at United Sands is never accidental. It is the result of a unified vision. Our founding team works in lockstep with a formidable network of Limited Partners and advisors from the government and defense sectors to turn complex logistics into seamless execution. With decades of shared history at the helm, we provide the strategic depth that ensures every project under the United Sands umbrella is built to last.",
   strategyCta: "Meet the rest of the team",
 
   partnersEyebrow: "Powering Progress Together",
@@ -582,7 +582,7 @@ export const en: Messages = {
   formSubmit: "Submit Request",
   formSending: "Sending…",
   formSuccessTitle: "Request received",
-  formSuccessBody: "Thank you — our team will reach out shortly.",
+  formSuccessBody: "Thank you. Our team will reach out shortly.",
   formError: "Something went wrong. Please try again.",
   formClose: "Close",
   formEmailInvalid: "Please enter a valid email address.",
@@ -590,13 +590,13 @@ export const en: Messages = {
   aboutEyebrow: "OUR STORY",
   aboutTitle: "Why Being Saudi-Born Matters",
   aboutBody:
-    "A Saudi-born technology consultancy aligned with Vision 2030 — fluent in local regulation, rooted in cultural and stakeholder intelligence, and engineered to deliver. The full About Us page is on the way.",
+    "A Saudi-born technology consultancy aligned with Vision 2030, fluent in local regulation, rooted in cultural and stakeholder intelligence, and engineered to deliver. The full About Us page is on the way.",
   aboutBack: "Back to home",
 
   valueChainEyebrow: "Digital Value Chain",
   valueChainTitle: "Serving You Across Every Step",
   valueChainBody:
-    "From vision and strategy through system architecture, integration, cybersecurity, and predictive optimization — we walk every step of the digital transformation lifecycle with you. The full value-chain page is on the way.",
+    "From vision and strategy through system architecture, integration, cybersecurity, and predictive optimization, we walk every step of the digital transformation lifecycle with you. The full value-chain page is on the way.",
   valueChainBack: "Back to home",
 };
 
@@ -648,7 +648,7 @@ export const ar: Messages = {
       value: "60",
       unit: "خبير",
       label: "قوة الفريق",
-      copy: "مهندسون وعلماء بيانات ومختصون تنظيميون — يجيدون التقنية العالمية والسياق المحلي معاً.",
+      copy: "مهندسون وعلماء بيانات ومختصون تنظيميون يجيدون التقنية العالمية والسياق المحلي معاً.",
     },
     {
       value: "+30",
@@ -723,7 +723,7 @@ export const ar: Messages = {
 
   portfolioTitle: "أحدث\nالأعمال",
   portfolioIntro:
-    "لمحة عن أحدث مشاريعنا — من برامج تجسيد الواقع إلى التوائم الرقمية على مستوى المدينة.",
+    "لمحة عن أحدث مشاريعنا، من برامج تجسيد الواقع إلى التوائم الرقمية على مستوى المدينة.",
   // مشاريع مبدئية — بانتظار تأكيد العميل للمشاريع الثلاثة الأحدث؛ ليست نهائية.
   portfolio: [
     {
@@ -785,7 +785,7 @@ export const ar: Messages = {
       summary:
         "خفض تجسيد الواقع بالطائرات المسيّرة تكلفة فحص خطوط الأنابيب بنسبة 40% مع رفع الامتثال للسلامة.",
       description:
-        "استبدلت يونايتد ساندز إجراءات المسح اليدوي لخطوط الأنابيب ببرنامج تجسيد الواقع والذكاء الجيومكاني — تجسيد الواقع بالطائرات المسيّرة يغذّي نموذجاً جيومكانياً حياً للشبكة. وكانت النتيجة خفض تكلفة الفحص بنسبة 40% مقارنةً بالطرق التقليدية، إلى جانب مكاسب ملموسة في الامتثال للسلامة عبر الأصول.",
+        "استبدلت يونايتد ساندز إجراءات المسح اليدوي لخطوط الأنابيب ببرنامج تجسيد الواقع والذكاء الجيومكاني، حيث يغذّي تجسيد الواقع بالطائرات المسيّرة نموذجاً جيومكانياً حياً للشبكة. وكانت النتيجة خفض تكلفة الفحص بنسبة 40% مقارنةً بالطرق التقليدية، إلى جانب مكاسب ملموسة في الامتثال للسلامة عبر الأصول.",
       tags: ["تجسيد الواقع", "نظم المعلومات الجيومكانية", "ذكاء الطائرات المسيّرة"],
       image: "/assets/portfolio-city.webp",
       accent: "gold",
@@ -802,7 +802,7 @@ export const ar: Messages = {
       summary:
         "منصة بيانات حضرية موحّدة خفضت أزمنة الاستجابة البلدية بنسبة 25%.",
       description:
-        "وحّدت يونايتد ساندز مصادر البيانات البلدية المتفرّقة في عرضٍ موحّد للقيادة والتحكّم — منصة بمستوى حوكمي تربط عمليات المدينة آنياً. وانخفضت أزمنة استجابة الجهات البلدية بنسبة 25%، بما عزّز رضا المواطنين بشكلٍ ملموس.",
+        "وحّدت يونايتد ساندز مصادر البيانات البلدية المتفرّقة في عرضٍ موحّد للقيادة والتحكّم، عبر منصة بمستوى حوكمي تربط عمليات المدينة آنياً. وانخفضت أزمنة استجابة الجهات البلدية بنسبة 25%، بما عزّز رضا المواطنين بشكلٍ ملموس.",
       tags: ["القيادة والتحكّم", "بيانات المدينة الموحّدة", "لوحات الحوكمة"],
       image: "/assets/portfolio-city.webp",
       accent: "purple",
@@ -812,12 +812,12 @@ export const ar: Messages = {
   saudiEyebrow: "رؤية 2030",
   saudiTitle: "لماذا يهمّ\nأن نكون سعوديي المنشأ",
   saudiIntro:
-    "القدرة العالمية نصف المعادلة فقط، والنصف الآخر هو كوننا سعوديي المنشأ — الفهم المحلي والثقة والتوافق الذي يحوّل الطموح إلى إنجازٍ على أرض الواقع.",
+    "القدرة العالمية نصف المعادلة فقط، والنصف الآخر هو كوننا سعوديي المنشأ: الفهم المحلي والثقة والتوافق الذي يحوّل الطموح إلى إنجازٍ على أرض الواقع.",
   // نصوص مبدئية — بانتظار تأكيد العميل؛ ليست نهائية.
   saudiPillars: [
     {
       title: "توافق عميق مع رؤية 2030",
-      copy: "كل مشروع مهندَس لخدمة أهداف المملكة الوطنية — من إنجاز المشاريع العملاقة إلى أجندة التحول الرقمي الأوسع.",
+      copy: "كل مشروع مهندَس لخدمة أهداف المملكة الوطنية، من إنجاز المشاريع العملاقة إلى أجندة التحول الرقمي الأوسع.",
     },
     {
       title: "إلمام باللوائح المحلية",
@@ -825,7 +825,7 @@ export const ar: Messages = {
     },
     {
       title: "ذكاء ثقافي ومعرفة بأصحاب المصلحة",
-      copy: "متجذّرون في السياق المحلي، نقرأ أصحاب المصلحة وديناميكيات القرار التي تغفل عنها الشركات الخارجية — فنكسب الثقة أسرع.",
+      copy: "متجذّرون في السياق المحلي، نقرأ أصحاب المصلحة وديناميكيات القرار التي تغفل عنها الشركات الخارجية، فنكسب الثقة أسرع.",
     },
     {
       title: "تنمية الكفاءات السعودية",
@@ -833,7 +833,7 @@ export const ar: Messages = {
     },
     {
       title: "مرونة مع شفافية",
-      copy: "سرعة إنجازٍ كالشركات الناشئة مدعومة بحوكمةٍ بمستوى المؤسسات — نتحرك بسرعة ونتحمّل مسؤولية النتيجة.",
+      copy: "سرعة إنجازٍ كالشركات الناشئة مدعومة بحوكمةٍ بمستوى المؤسسات. نتحرك بسرعة ونتحمّل مسؤولية النتيجة.",
     },
   ],
   saudiPrev: "السبب السابق",
@@ -842,7 +842,7 @@ export const ar: Messages = {
   teamEyebrow: "الفريق",
   teamTitle: "الفريق",
   teamIntro:
-    "فريق قيادي يجمع بين العمق التقني والمعرفة الميدانية بالمملكة — الأشخاص الذين يبنون الرمال المتحدة.",
+    "فريق قيادي يجمع بين العمق التقني والمعرفة الميدانية بالمملكة، وهم الأشخاص الذين يبنون الرمال المتحدة.",
   // النص العربي المعتمد من العميل (2026-06-16). الأسماء تبقى لاتينية (مطابِقة للإنجليزية). جميع روابط لينكدإن الأربعة مُسلَّمة.
   team: [
     {
@@ -953,7 +953,7 @@ export const ar: Messages = {
   formSubmit: "إرسال الطلب",
   formSending: "جارٍ الإرسال…",
   formSuccessTitle: "تم استلام طلبك",
-  formSuccessBody: "شكراً لك — سيتواصل معك فريقنا قريباً.",
+  formSuccessBody: "شكراً لك. سيتواصل معك فريقنا قريباً.",
   formError: "حدث خطأ ما. يُرجى المحاولة مجدداً.",
   formClose: "إغلاق",
   formEmailInvalid: "يُرجى إدخال بريد إلكتروني صحيح.",
@@ -961,13 +961,13 @@ export const ar: Messages = {
   aboutEyebrow: "قصتنا",
   aboutTitle: "لماذا يهمّ أن نكون سعوديي المنشأ",
   aboutBody:
-    "شركة استشارات تقنية سعودية المنشأ، متوائمة مع رؤية 2030 — ملمّة باللوائح المحلية، متجذّرة في الفهم الثقافي ومعرفة أصحاب المصلحة، ومهندَسة للإنجاز. صفحة «من نحن» الكاملة قادمة قريباً.",
+    "شركة استشارات تقنية سعودية المنشأ، متوائمة مع رؤية 2030، ملمّة باللوائح المحلية، متجذّرة في الفهم الثقافي ومعرفة أصحاب المصلحة، ومهندَسة للإنجاز. صفحة «من نحن» الكاملة قادمة قريباً.",
   aboutBack: "العودة إلى الرئيسية",
 
   valueChainEyebrow: "سلسلة القيمة الرقمية",
   valueChainTitle: "نخدمك في كل خطوة",
   valueChainBody:
-    "من الرؤية والاستراتيجية مروراً ببنية الأنظمة والتكامل والأمن السيبراني وصولاً إلى التحسين التنبئي — نسير معك في كل خطوة من رحلة التحول الرقمي. صفحة سلسلة القيمة الكاملة قادمة قريباً.",
+    "من الرؤية والاستراتيجية مروراً ببنية الأنظمة والتكامل والأمن السيبراني وصولاً إلى التحسين التنبئي، نسير معك في كل خطوة من رحلة التحول الرقمي. صفحة سلسلة القيمة الكاملة قادمة قريباً.",
   valueChainBack: "العودة إلى الرئيسية",
 };
 

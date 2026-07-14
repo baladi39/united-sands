@@ -26,7 +26,7 @@ const STATS = [
     value: "60",
     unit: "EXPERTS",
     label: "Team Strength",
-    copy: "Engineers, data scientists, and regulatory specialists — fluent in both global tech and local context.",
+    copy: "Engineers, data scientists, and regulatory specialists, fluent in both global tech and local context.",
   },
   {
     value: "30+",

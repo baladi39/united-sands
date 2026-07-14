@@ -42,7 +42,7 @@ export default function Nav({
       animate={show ? { y: 0, opacity: 1 } : { y: -80, opacity: 0 }}
       transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: show ? 0.3 : 0 }}
     >
-      <a href="#top" className="relative h-11 w-10 shrink-0" aria-label="United Sands — home">
+      <a href="#top" className="relative h-11 w-10 shrink-0" aria-label="United Sands home">
         <Image
           src="/assets/logo-lockup.svg"
           alt="United Sands"

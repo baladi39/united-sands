@@ -17,7 +17,7 @@ export default function ValueChainPage() {
       <Link
         href="/"
         className="absolute start-6 top-6 h-11 w-10"
-        aria-label="United Sands — home"
+        aria-label="United Sands home"
       >
         <Image
           src="/assets/logo-lockup.svg"
